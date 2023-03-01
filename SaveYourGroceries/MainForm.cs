@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Windows.Forms;
 using OpenQA.Selenium;
 using SaveYourGroceriesLib;
@@ -11,14 +12,15 @@ namespace SaveYourGroceries
         public MainForm()
         {
             InitializeComponent();
+            //WebScraper scraper = new WebScraper();
         }
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            Item item = scraper.SearchItem(sender, e, this.searchBox.Text);
+            ArrayList items = scraper.SearchItem(sender, e, this.searchBox.Text);
 
-            this.itemNameBox.Text = item.name;
-            this.itemPriceBox.Text = item.price;
+            //this.itemNameBox.Text = item.name;
+            //this.itemPriceBox.Text = item.price;
             //this.itemPictureBox.Image = item.imageUrl;
            
         }

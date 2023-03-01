@@ -39,16 +39,18 @@
             // searchBox
             // 
             this.searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchBox.Location = new System.Drawing.Point(32, 49);
+            this.searchBox.Location = new System.Drawing.Point(16, 24);
+            this.searchBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(580, 89);
+            this.searchBox.Size = new System.Drawing.Size(292, 48);
             this.searchBox.TabIndex = 0;
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(651, 49);
+            this.searchButton.Location = new System.Drawing.Point(326, 24);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(302, 89);
+            this.searchButton.Size = new System.Drawing.Size(151, 44);
             this.searchButton.TabIndex = 1;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -57,37 +59,40 @@
             // itemNameBox
             // 
             this.itemNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemNameBox.Location = new System.Drawing.Point(42, 517);
+            this.itemNameBox.Location = new System.Drawing.Point(21, 258);
+            this.itemNameBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.itemNameBox.Name = "itemNameBox";
-            this.itemNameBox.Size = new System.Drawing.Size(432, 62);
+            this.itemNameBox.Size = new System.Drawing.Size(218, 35);
             this.itemNameBox.TabIndex = 2;
             // 
             // itemPriceBox
             // 
             this.itemPriceBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemPriceBox.Location = new System.Drawing.Point(42, 628);
+            this.itemPriceBox.Location = new System.Drawing.Point(21, 314);
+            this.itemPriceBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.itemPriceBox.Name = "itemPriceBox";
-            this.itemPriceBox.Size = new System.Drawing.Size(432, 62);
+            this.itemPriceBox.Size = new System.Drawing.Size(218, 35);
             this.itemPriceBox.TabIndex = 3;
             // 
             // itemPictureBox
             // 
-            this.itemPictureBox.Location = new System.Drawing.Point(42, 194);
+            this.itemPictureBox.Location = new System.Drawing.Point(21, 97);
+            this.itemPictureBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.itemPictureBox.Name = "itemPictureBox";
-            this.itemPictureBox.Size = new System.Drawing.Size(570, 256);
+            this.itemPictureBox.Size = new System.Drawing.Size(285, 128);
             this.itemPictureBox.TabIndex = 4;
             this.itemPictureBox.TabStop = false;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(288F, 288F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1022, 753);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(511, 376);
             this.Controls.Add(this.itemPictureBox);
             this.Controls.Add(this.itemPriceBox);
             this.Controls.Add(this.itemNameBox);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.searchBox);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainForm";
             this.Text = "MainForm";
             ((System.ComponentModel.ISupportInitialize)(this.itemPictureBox)).EndInit();
