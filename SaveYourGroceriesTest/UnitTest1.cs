@@ -4,11 +4,22 @@ using System;
 namespace SaveYourGroceriesTest
 {
     [TestClass]
-    public class UnitTest1
+    public class WebScraperTests
     {
         [TestMethod]
-        public void TestMethod1()
-        {
+        public void SearchItemMethodTest()
+
+           SearchedItem = string itemName 
+            
+            Item item = new Item();
+            
+        
+            // Test that message appears when user cannot find an item. 
+
+            Assert.Throws<NoSuchElementException> error (
+                
+            () => MessageBox.Show(error.ToString());    
+                ); 
         }
     }
-}
+
