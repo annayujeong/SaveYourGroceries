@@ -21,8 +21,9 @@ namespace SaveYourGroceriesLib
             options.AddArguments(new List<string>() { "headless", "disable-gpu" });
         }
 
-        public Item SearchItem(object sender, EventArgs e, string itemName)
+        public List<Item> SearchItem(object sender, EventArgs e, string itemName)
         {
+            List<Item> items = new List<Item>();
             Item item = new Item();
 
             // console doesn't close if application crashes?
@@ -78,7 +79,7 @@ namespace SaveYourGroceriesLib
             {
                 MessageBox.Show(error.ToString());
             }
-            return item;
+            return items;
         }
 
     }
