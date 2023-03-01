@@ -195,7 +195,7 @@ namespace SaveYourGroceriesLib
             {
                 MessageBox.Show(error.ToString());
             }
-            return item;
+            return items;
         }
     }
 
