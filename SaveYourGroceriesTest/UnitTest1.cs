@@ -72,6 +72,20 @@ namespace SaveYourGroceriesTest
         }
 
         [TestMethod]
+        public void TestScrapTnTItemPrice()
+        {
+            // Arrange
+            WebScraper webScraper = new WebScraper();
+
+            // Act
+            Item item = webScraper.SearchItemsTandT("apple");
+            webScraper.driver.Quit();
+
+            // Assert
+            Assert.IsTrue(item.price.Contains("$2.22"));
+        }
+
+        [TestMethod]
         public void TestScrapSaveOnFoodItemName()
         {
             // Arrange
@@ -112,6 +126,18 @@ namespace SaveYourGroceriesTest
 
             // Assert
             Assert.AreEqual(expectedUrl, item.imageUrl);
+        }
+        public void TestScrapSaveOnFoodsItemPrice()
+        {
+            // Arrange
+            WebScraper webScraper = new WebScraper();
+
+            // Act
+            Item item = webScraper.SearchItemSaveOnFoods("apple");
+            webScraper.driver.Quit();
+
+            // Assert
+            Assert.IsTrue(item.price.Contains("$1.05"));
         }
 
         [TestMethod]
@@ -172,6 +198,20 @@ namespace SaveYourGroceriesTest
 
             // Assert
             Assert.AreEqual(expectedUrl, item.imageUrl);
+        }
+
+        [TestMethod]
+        public void TestScrapSuperStoreItemPrice()
+        {
+            // Arrange
+            WebScraper webScraper = new WebScraper();
+
+            // Act
+            Item item = webScraper.SearchItemSuperstore("apple");
+            webScraper.driver.Quit();
+
+            // Assert
+            Assert.IsTrue(item.price.Contains("$1.38"));
         }
     }
 }
