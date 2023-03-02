@@ -58,8 +58,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1756, 1093);
-            this.Controls.Add(this.itemNameBox);
-            this.Controls.Add(this.itemNameBox);
+            //this.Controls.Add(this.itemNameBox);
+            //this.Controls.Add(this.itemNameBox);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.searchBox);
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);

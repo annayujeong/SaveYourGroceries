@@ -63,6 +63,7 @@ namespace SaveYourGroceriesLib
                 item.price = price;
                 item.name = itemName;
                 item.imageUrl = imageURL;
+                item.store = "Superstore";
             } catch (Exception e)
             {
                 MessageBox.Show(e.Message);
@@ -85,12 +86,12 @@ namespace SaveYourGroceriesLib
 
 
             // TODO: Searching more than once causes Walmart to block further searches
-            //items.Add(SearchItemWalmart(itemName));
+            items.Add(SearchItemWalmart(itemName));
 
             items.Add(SearchItemSaveOnFoods(itemName));
-            //items.Add(SearchItemsTandT(itemName));
+            items.Add(SearchItemsTandT(itemName));
 
-            //items.Add(SearchItemSuperstore(itemName));    
+            items.Add(SearchItemSuperstore(itemName));    
 
 
             foreach(Item item in items)
@@ -123,6 +124,8 @@ namespace SaveYourGroceriesLib
 
                 string imageURL = driver.FindElement(By.ClassName("css-19q6667")).GetAttribute("src");
                 item.imageUrl = imageURL;
+
+                item.store = "Walmart";
 
                 return item;
 
@@ -160,6 +163,8 @@ namespace SaveYourGroceriesLib
                 string imageURL = driver.FindElements(By.ClassName("Image--v39pjb"))[2].GetAttribute("src");
                 item.imageUrl = imageURL;
 
+                item.store = "Save On Foods";
+
                 return item;
 
             } catch (Exception e)
@@ -189,13 +194,14 @@ namespace SaveYourGroceriesLib
                 item.name = driver.FindElement(By.ClassName("item-name--yq")).GetAttribute("title");
                 item.price = driver.FindElement(By.ClassName("item-price-zRu")).Text;
                 item.imageUrl = driver.FindElement(By.ClassName("item-image-4D0")).GetAttribute("src");
+                item.store = "T & T Supermarket";
 
             }
             catch (NoSuchElementException error)
             {
                 MessageBox.Show(error.ToString());
             }
-            return items;
+            return item;
         }
     }
 

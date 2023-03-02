@@ -12,11 +12,14 @@ namespace SaveYourGroceriesLib
         public string price { get; set; }
         public string imageUrl { get; set; }
 
+        public string store { get; set; }
+
         public Item() {}
-        public Item(string name, string price, string imageUrl) {
+        public Item(string name, string price, string imageUrl, string store) {
             this.name = name;
             this.price = price;
             this.imageUrl = imageUrl;
+            this.store = store;
         }
     }
 }
