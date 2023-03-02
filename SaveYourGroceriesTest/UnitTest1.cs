@@ -11,7 +11,6 @@ namespace SaveYourGroceriesTest
     [TestClass]
     public class UnitTest1
     {
-
         [TestMethod]
         public void TestNoSuchElementException()
         {
@@ -40,7 +39,7 @@ namespace SaveYourGroceriesTest
             webScraper.driver.Quit();
 
             // Assert
-            Assert.IsTrue(item.name.ToLower().Contains("apple"));
+            Assert.AreEqual("Gala Apple 3.2lbs", item.name);
         }
 
         [TestMethod]
@@ -83,7 +82,7 @@ namespace SaveYourGroceriesTest
             webScraper.driver.Quit();
 
             // Assert
-            Assert.IsTrue(item.name.ToLower().Contains("apple"));
+            Assert.IsTrue(item.name.Contains("Apples - Granny Smith, 160 Gram"));
         }
 
         [TestMethod]
@@ -109,6 +108,66 @@ namespace SaveYourGroceriesTest
 
             // Act
             Item item = webScraper.SearchItemSaveOnFoods("apple");
+            webScraper.driver.Quit();
+
+            // Assert
+            Assert.AreEqual(expectedUrl, item.imageUrl);
+        }
+
+        [TestMethod]
+        public void TestInvalidDriverUrl()
+        {
+            // Arrange
+            WebScraper webScraper = new WebScraper();
+
+            // Act
+            Exception exception = Assert.ThrowsException<WebDriverException>(() =>
+            {
+                webScraper.driver.Url = "http://annasinvalidurl.com";
+                webScraper.driver.Quit();
+            });
+
+            // Assert
+            Assert.IsTrue(exception is WebDriverException);
+        }
+
+        [TestMethod]
+        public void TestScrapSuperStoreItemName()
+        {
+            // Arrange
+            WebScraper webScraper = new WebScraper();
+
+            // Act
+            Item item = webScraper.SearchItemSuperstore("apple");
+            webScraper.driver.Quit();
+
+            // Assert
+            Assert.AreEqual("Royal Gala Apples", item.name);
+        }
+
+        [TestMethod]
+        public void TestScrapSuperStoreItemStoreName()
+        {
+            // Arrange
+            WebScraper webScraper = new WebScraper();
+
+            // Act
+            Item item = webScraper.SearchItemSuperstore("apple");
+            webScraper.driver.Quit();
+
+            // Assert
+            Assert.AreEqual("Superstore", item.store);
+        }
+
+        [TestMethod]
+        public void TestScrapSuperStoreItemImageUrl()
+        {
+            // Arrange
+            WebScraper webScraper = new WebScraper();
+            string expectedUrl = "https://assets.shop.loblaws.ca/products/20132621001/b1/en/front/20132621001_front_a01.png";
+
+            // Act
+            Item item = webScraper.SearchItemSuperstore("apple");
             webScraper.driver.Quit();
 
             // Assert
