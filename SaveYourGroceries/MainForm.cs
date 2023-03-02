@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -12,11 +13,12 @@ namespace SaveYourGroceries
         public MainForm()
         {
             InitializeComponent();
+            //WebScraper scraper = new WebScraper();
         }
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            List<Item> itemList = scraper.SearchItem(sender, e, this.searchBox.Text);
+            ArrayList itemList = scraper.SearchItem(sender, e, this.searchBox.Text);
 
             int groupPointX = 15;
             int groupPointY = 100;
@@ -30,11 +32,16 @@ namespace SaveYourGroceries
             {
                 PictureBox itemPictureBox = new PictureBox
                 {
-                    Size = new Size(200, 100),
-                    BackColor = Color.Blue,
-                    Location = new Point(childPointX, childPointY),
-                    TabIndex = 2
+                    //Size = new Size(200, 100),
+                    //BackColor = Color.Blue,
+                    //Location = new Point(childPointX, childPointY),
+                    //TabIndex = 2
+
+                   
                 };
+
+                itemPictureBox.Load(item.imageUrl);
+
                 TextBox itemNameTextBox = new TextBox
                 {
                     Text = item.name,
@@ -49,7 +56,7 @@ namespace SaveYourGroceries
                 };
                 TextBox itemStoreTextBox = new TextBox
                 {
-                    Text = item.price,
+                    Text = item.store,
                     Location = new Point(childPointX, childPointY += gapChild),
                     TabIndex = 2
                 };
