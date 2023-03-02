@@ -35,16 +35,18 @@
             // searchBox
             // 
             this.searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchBox.Location = new System.Drawing.Point(32, 49);
+            this.searchBox.Location = new System.Drawing.Point(16, 24);
+            this.searchBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(580, 89);
+            this.searchBox.Size = new System.Drawing.Size(292, 48);
             this.searchBox.TabIndex = 0;
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(651, 49);
+            this.searchButton.Location = new System.Drawing.Point(326, 24);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(302, 89);
+            this.searchButton.Size = new System.Drawing.Size(151, 44);
             this.searchButton.TabIndex = 1;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -56,8 +58,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1756, 1093);
+            //this.Controls.Add(this.itemNameBox);
+            //this.Controls.Add(this.itemNameBox);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.searchBox);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.ResumeLayout(false);
