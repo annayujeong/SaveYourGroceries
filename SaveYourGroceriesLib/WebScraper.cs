@@ -99,7 +99,6 @@ namespace SaveYourGroceriesLib
                 MessageBox.Show(item.name + "\n" + item.price + "\n" + item.imageUrl);
             }
 
-            driver.Quit();
             return items;
         }
 
