@@ -107,7 +107,6 @@ namespace SaveYourGroceriesLib
         {
             Item item = new Item();
 
-
             // walmart query works
             //driver.Url = "https://www.walmart.ca/search?q=apples&c=10019";
             //string price = driver.FindElement(By.ClassName("css-2vqe5n")).Text;

@@ -23,6 +23,7 @@ namespace SaveYourGroceries
         }
 
         // TODO: add loading indicator while driver is searching for the item
+        // TODO: clear search results for previous search when user does a new search
         private void mainSearchButton_Click(object sender, EventArgs e)
         {
             ShowSearchControls();
@@ -54,13 +55,26 @@ namespace SaveYourGroceries
             int itemBoxHeight = 150;
             int itemBoxGap = 5;
 
+
+            // TODO: handle if an item is not found, or one or more properties is not found
+            // -> current web parse methods all return an Item, even if that Item is null
             foreach (Item item in itemList)
             {
                 SearchedItem searchedItem = new SearchedItem();
                 searchedItem.itemNameTextBox.Text = item.name;
                 searchedItem.itemPriceTextBox.Text = item.price;
                 searchedItem.storeNameTextBox.Text = item.store;
-                searchedItem.itemPictureBox.Load(item.imageUrl);
+
+
+                // temporary code to handle when Walmart blocks us lol, need to change
+                if(item.imageUrl == null)
+                {
+                    searchedItem.itemPictureBox.Load("https://static.vecteezy.com/system/resources/thumbnails/000/536/310/small/food_paper_bag-01.jpg");
+                } else
+                {
+                    searchedItem.itemPictureBox.Load(item.imageUrl);
+                }
+                
                 searchedItem.Location = new Point(5, itemBoxGap);
                 searchedItemsList.Add(searchedItem);
                 itemBoxGap += itemBoxHeight;
