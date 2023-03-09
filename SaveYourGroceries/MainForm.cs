@@ -89,7 +89,7 @@ namespace SaveYourGroceries
             foreach (var control in Controls.OfType<Control>())
             {
                 controlName = control.Name;
-                if (controlName.Contains("mainPage") || controlName == "navBar")
+                if (controlName.Contains("mainPage") || controlName == "navBar" || controlName == "savedGroceryItemsListBox")
                 {
                     control.Show();
                 }
