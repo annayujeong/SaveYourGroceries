@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using SaveYourGroceriesLib;
 
@@ -10,76 +15,112 @@ namespace SaveYourGroceries
     public partial class MainForm : Form
     {
         WebScraper scraper = new WebScraper();
+
         public MainForm()
         {
             InitializeComponent();
-            //WebScraper scraper = new WebScraper();
+            ShowMainControls();
         }
 
-        private void searchButton_Click(object sender, EventArgs e)
+        // TODO: add loading indicator while driver is searching for the item
+        // TODO: clear search results for previous search when user does a new search
+        private void mainSearchButton_Click(object sender, EventArgs e)
         {
-            ArrayList itemList = scraper.SearchItem(sender, e, this.searchBox.Text);
+            ShowSearchControls();
 
-            int groupPointX = 15;
-            int groupPointY = 100;
-            int gapGroup = 220;
+            ArrayList itemList = scraper.SearchItem(sender, e, this.mainPageSearchBox.Text);
+            this.mainPageSearchBox.Text = String.Empty;
+            DisplaySearchedItems(sender, e, itemList);
+        }
 
-            int childPointX = 15;
-            int childPointY = 25;
-            int gapChild = 25;
+        private void searchPageSearchButton_Click(object sender, EventArgs e)
+        {
+            ArrayList itemList = scraper.SearchItem(sender, e, this.searchPageSearchBox.Text);
+            this.searchPageSearchBox.Text = String.Empty;
+            DisplaySearchedItems(sender, e, itemList);
+        }
 
-            foreach (Item item in itemList)
+        private void searchMenu_Click(object sender, EventArgs e)
+        {
+            ShowMainControls();
+        }
+
+        private void DisplaySearchedItems(object sender, EventArgs e, ArrayList itemList)
+        {
+            if (this.Controls["searchedItemsList"] != null)
             {
-                PictureBox itemPictureBox = new PictureBox
-                {
-                    //Size = new Size(200, 100),
-                    //BackColor = Color.Blue,
-                    //Location = new Point(childPointX, childPointY),
-                    //TabIndex = 2
-
-                   
-                };
-
-                itemPictureBox.Load(item.imageUrl);
-
-                TextBox itemNameTextBox = new TextBox
-                {
-                    Text = item.name,
-                    Location = new Point(childPointX, childPointY += 90 + gapChild),
-                    TabIndex = 2
-                };
-                TextBox itemPriceTextBox = new TextBox
-                {
-                    Text = item.price,
-                    Location = new Point(childPointX, childPointY += gapChild),
-                    TabIndex = 2
-                };
-                TextBox itemStoreTextBox = new TextBox
-                {
-                    Text = item.store,
-                    Location = new Point(childPointX, childPointY += gapChild),
-                    TabIndex = 2
-                };
-
-                GroupBox itemBox = new GroupBox
-                {
-                    Size = new Size(300, 220),
-                    Location = new Point(groupPointX, groupPointY),
-                    TabIndex = 3
-                };
-
-                groupPointY += gapGroup;
-
-                itemBox.Controls.Add(itemPictureBox);
-                itemBox.Controls.Add(itemNameTextBox);
-                itemBox.Controls.Add(itemPriceTextBox);
-                itemBox.Controls.Add(itemStoreTextBox);
-
-                this.Controls.Add(itemBox);
-
-                childPointY = 15;
+                this.Controls.Remove(this.Controls["searchedItemsList"]);
             }
 
+            SearchedItemsList searchedItemsList = new SearchedItemsList
+            {
+                Location = new Point(5, 50),
+                Name = "searchedItemsList"
+            };
+
+            int itemBoxHeight = 150;
+            int itemBoxGap = 5;
+
+
+            // TODO: handle if an item is not found, or one or more properties is not found
+            // -> current web parse methods all return an Item, even if that Item is null
+            foreach (Item item in itemList)
+            {
+                SearchedItem searchedItem = new SearchedItem();
+                searchedItem.itemNameTextBox.Text = item.name;
+                searchedItem.itemPriceTextBox.Text = item.price;
+                searchedItem.storeNameTextBox.Text = item.store;
+
+                // temporary code to handle when Walmart blocks us lol, need to change
+                if(item.imageUrl == null)
+                {
+                    searchedItem.itemPictureBox.Load("https://static.vecteezy.com/system/resources/thumbnails/000/536/310/small/food_paper_bag-01.jpg");
+                } else
+                {
+                    searchedItem.itemPictureBox.Load(item.imageUrl);
+                }
+                
+                searchedItem.Location = new Point(5, itemBoxGap);
+                searchedItemsList.Add(searchedItem);
+                itemBoxGap += itemBoxHeight;
+            }
+
+            this.Controls.Add(searchedItemsList);
         }
+
+        private void ShowMainControls()
+        {
+            string controlName;
+            foreach (var control in Controls.OfType<Control>())
+            {
+                controlName = control.Name;
+                if (controlName.Contains("mainPage") || controlName == "navBar" || controlName == "savedGroceryItemsListBox")
+                {
+                    control.Show();
+                }
+                else
+                {
+                    control.Hide();
+                }
+            }
+        }
+
+        private void ShowSearchControls()
+        {
+            string controlName;
+            foreach (var control in Controls.OfType<Control>())
+            {
+                controlName = control.Name;
+                if (controlName.Contains("searchPage") || controlName == "navBar")
+                {
+                    control.Show();
+                }
+                else
+                {
+                    control.Hide();
+                }
+            }
+        }
+
     }
 }

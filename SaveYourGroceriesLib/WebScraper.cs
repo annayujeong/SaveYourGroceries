@@ -11,7 +11,7 @@ namespace SaveYourGroceriesLib
 {
     public class WebScraper
     {
-        private IWebDriver driver = new FirefoxDriver();
+        public IWebDriver driver = new ChromeDriver();
 
         public WebScraper()
         {
@@ -107,7 +107,6 @@ namespace SaveYourGroceriesLib
         {
             Item item = new Item();
 
-
             // walmart query works
             //driver.Url = "https://www.walmart.ca/search?q=apples&c=10019";
             //string price = driver.FindElement(By.ClassName("css-2vqe5n")).Text;
@@ -129,9 +128,9 @@ namespace SaveYourGroceriesLib
 
                 return item;
 
-            } catch (Exception e)
+            } catch (Exception ex)
             {
-                MessageBox.Show("There was an error lol");
+                Debug.WriteLine(ex.Message);
             }
 
             return item;
@@ -167,9 +166,9 @@ namespace SaveYourGroceriesLib
 
                 return item;
 
-            } catch (Exception e)
+            } catch (Exception ex)
             {
-                MessageBox.Show("There was an error lol");
+                Debug.WriteLine(ex.Message);
             }
 
             return item;
@@ -186,21 +185,26 @@ namespace SaveYourGroceriesLib
             //driver.Url = "https://www.tntsupermarket.com/eng/search.html?query=apple";
 
             driver.Url = "https://www.tntsupermarket.com/eng/search.html?query=" + itemName;
+            
+            item.name = driver.FindElement(By.ClassName("item-name--yq")).GetAttribute("title");
+            item.price = driver.FindElement(By.ClassName("item-price-zRu")).Text;
+            item.imageUrl = driver.FindElement(By.ClassName("item-image-4D0")).GetAttribute("src");
+            item.store = "T & T Supermarket";
 
-            try
-            {
-                // TODO: need to set wait in here or in MainForm searchButton_Click
-                //       since sometimes it takes some time to load the search result
-                item.name = driver.FindElement(By.ClassName("item-name--yq")).GetAttribute("title");
-                item.price = driver.FindElement(By.ClassName("item-price-zRu")).Text;
-                item.imageUrl = driver.FindElement(By.ClassName("item-image-4D0")).GetAttribute("src");
-                item.store = "T & T Supermarket";
+            //try
+            //{
+            //    // TODO: need to set wait in here or in MainForm searchButton_Click
+            //    //       since sometimes it takes some time to load the search result
+            //    item.name = driver.FindElement(By.ClassName("item-name--yq")).GetAttribute("title");
+            //    item.price = driver.FindElement(By.ClassName("item-price-zRu")).Text;
+            //    item.imageUrl = driver.FindElement(By.ClassName("item-image-4D0")).GetAttribute("src");
+            //    item.store = "T & T Supermarket";
 
-            }
-            catch (NoSuchElementException error)
-            {
-                MessageBox.Show(error.ToString());
-            }
+            //}
+            //catch (NoSuchElementException ex)
+            //{
+            //    Debug.WriteLine(ex.Message);
+            //}
             return item;
         }
     }
