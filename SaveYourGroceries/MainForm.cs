@@ -47,9 +47,15 @@ namespace SaveYourGroceries
 
         private void DisplaySearchedItems(object sender, EventArgs e, ArrayList itemList)
         {
+            if (this.Controls["searchedItemsList"] != null)
+            {
+                this.Controls.Remove(this.Controls["searchedItemsList"]);
+            }
+
             SearchedItemsList searchedItemsList = new SearchedItemsList
             {
-                Location = new Point(5, 50)
+                Location = new Point(5, 50),
+                Name = "searchedItemsList"
             };
 
             int itemBoxHeight = 150;
@@ -64,7 +70,6 @@ namespace SaveYourGroceries
                 searchedItem.itemNameTextBox.Text = item.name;
                 searchedItem.itemPriceTextBox.Text = item.price;
                 searchedItem.storeNameTextBox.Text = item.store;
-
 
                 // temporary code to handle when Walmart blocks us lol, need to change
                 if(item.imageUrl == null)
