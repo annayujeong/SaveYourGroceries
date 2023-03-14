@@ -12,6 +12,8 @@ using SaveYourGroceriesLib;
 
 namespace SaveYourGroceries
 {
+    // TODO: Have JSONParser load in data from an existing JSON form
+    // -> How to do a unit test for this?
     public partial class MainForm : Form
     {
         WebScraper scraper = new WebScraper();
@@ -72,7 +74,7 @@ namespace SaveYourGroceries
                 searchedItem.storeNameTextBox.Text = item.store;
 
                 // temporary code to handle when Walmart blocks us lol, need to change
-                if(item.imageUrl == null)
+                if(item.imageUrl == "")
                 {
                     searchedItem.itemPictureBox.Load("https://static.vecteezy.com/system/resources/thumbnails/000/536/310/small/food_paper_bag-01.jpg");
                 } else
