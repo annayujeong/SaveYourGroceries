@@ -31,7 +31,7 @@ namespace SaveYourGroceriesLib
         // limitation -> grabbing only first element that matches the class name/xpath/etc, so
         // generic query such as "apple" may result in different types of apples being compared
 
-        public ArrayList SearchItem(object sender, EventArgs e, string itemName)
+        public ArrayList SearchItem(string itemName)
         {
 
             ArrayList items = new ArrayList();

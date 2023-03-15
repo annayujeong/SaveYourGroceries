@@ -30,14 +30,14 @@ namespace SaveYourGroceries
         {
             ShowSearchControls();
 
-            ArrayList itemList = scraper.SearchItem(sender, e, this.mainPageSearchBox.Text);
+            ArrayList itemList = scraper.SearchItem(mainPageSearchBox.Text);
             this.mainPageSearchBox.Text = String.Empty;
             DisplaySearchedItems(sender, e, itemList);
         }
 
         private void searchPageSearchButton_Click(object sender, EventArgs e)
         {
-            ArrayList itemList = scraper.SearchItem(sender, e, this.searchPageSearchBox.Text);
+            ArrayList itemList = scraper.SearchItem(this.searchPageSearchBox.Text);
             this.searchPageSearchBox.Text = String.Empty;
             DisplaySearchedItems(sender, e, itemList);
         }
