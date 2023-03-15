@@ -6,6 +6,7 @@ This has been automated by Jenkins, scheduled every <time>
 #### Jenkins
 ##### Before setup
 **IMPORTANT!** Open .sln in VS and update MSTest.TestAdapter and MSTest.TestFramwork to the latest version for SaveYourGroceriesLib
+**IMPORTANT!** Make sure you have MSBuild.exe and dotnet.exe on local and env var for their directories
 ##### How to setup Jenkins?
 - Follow https://www.jenkins.io/doc/book/installing/war-file/ to setup
 - Do this on your own account since we planned to run the job locally
