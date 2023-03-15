@@ -40,5 +40,6 @@ This has been automated by Jenkins, scheduled every <time>
 configure*
 - We currently use local project folder to run the script since the saved item list json file will be on Appdata/roaming
 - If we have the file under solution directory, Jenkins can be run on Github directly, and this will be stable since it has the latest code
-  - Jenkins
-static path* : we use static path for now - relative path can be specified using Jenkins global env var, this is next step
+
+static path*
+- we use static path for now - relative path can be specified using Jenkins global env var, this is next step
