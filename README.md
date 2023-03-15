@@ -8,11 +8,12 @@ This has been automated by Jenkins, scheduled every <time>
 **IMPORTANT!** Open .sln in VS and update MSTest.TestAdapter and MSTest.TestFramwork to the latest version for SaveYourGroceriesLib
 ##### How to setup Jenkins?
 - Follow https://www.jenkins.io/doc/book/installing/war-file/ to setup
-- Contact Anna for admin password
+- Do this on your own account since we planned to run the job locally
+- If we want to do this remote, contact Anna for admin password
 ##### How to setup MSBuild?
 - Follow https://plugins.jenkins.io/msbuild/
 ##### How to run Jenkins?
-- in CLI: java -jar C:\Users\yujeo\Documents\Selenium\exe\jenkins.war
+- in CLI: ``java -jar C:\Users\yujeo\Documents\Selenium\exe\jenkins.war``
 - Go to localhost:8080 (by default)
 ##### How to configure* the project?
 - Go to Dashboard - SaveYourGroceries - Configure - Scroll down to Build Steps
@@ -24,6 +25,7 @@ This has been automated by Jenkins, scheduled every <time>
 - Click Add build steps - Execute Windows batch command
   - Command
       - ``dotnet vstest <static-path-to-SaveYourCroceriesLib.dll>``
+- To push whatever outcome from a job (e.g., update .json) to GH repo master,
 - Save
 ##### How to run?
 - Manually
