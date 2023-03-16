@@ -2,13 +2,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SaveYourGroceriesLib;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace SaveYourGroceries
 {
@@ -61,9 +56,17 @@ namespace SaveYourGroceries
             parser.serializeItems(updatedItems, Constants.JSON_UPDATED_FILE_LOCATION);
         }
 
+        // if we want to use SaveYourGroceries Settings.settings,
+        // get Settings.Default.notificationCheckboxStatus
         [TestMethod]
         public void Test004PushNotificationOnLowerPriceFound()
         {
+            bool isNotificationOn = Convert.ToBoolean(File.ReadAllText(Constants.NOTI_TXT_FILE_LOCATION));
+            if (!isNotificationOn)
+            {
+                return;
+            }
+
             for (int index = 0; index < updatedItems.Count; index++)
             {
                 Item updatedItem = updatedItems[index];
