@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -30,14 +31,14 @@ namespace SaveYourGroceries
         {
             ShowSearchControls();
 
-            ArrayList itemList = scraper.SearchItem(sender, e, this.mainPageSearchBox.Text);
+            ArrayList itemList = scraper.SearchItem(mainPageSearchBox.Text);
             this.mainPageSearchBox.Text = String.Empty;
             DisplaySearchedItems(sender, e, itemList);
         }
 
         private void searchPageSearchButton_Click(object sender, EventArgs e)
         {
-            ArrayList itemList = scraper.SearchItem(sender, e, this.searchPageSearchBox.Text);
+            ArrayList itemList = scraper.SearchItem(this.searchPageSearchBox.Text);
             this.searchPageSearchBox.Text = String.Empty;
             DisplaySearchedItems(sender, e, itemList);
         }
@@ -45,6 +46,11 @@ namespace SaveYourGroceries
         private void searchMenu_Click(object sender, EventArgs e)
         {
             ShowMainControls();
+        }
+
+        private void settingsMenu_Click(object sender, EventArgs e)
+        {
+            ShowSettingsControls();
         }
 
         private void DisplaySearchedItems(object sender, EventArgs e, ArrayList itemList)
@@ -124,5 +130,39 @@ namespace SaveYourGroceries
             }
         }
 
+        private void ShowSettingsControls()
+        {
+            string controlName;
+            foreach (var control in Controls.OfType<Control>())
+            {
+                controlName = control.Name;
+                if (controlName.Contains("settingsPage") || controlName == "navBar")
+                {
+                    control.Show();
+                }
+                else
+                {
+                    control.Hide();
+                }
+            }
+        }
+
+        private void settingsPageSaveButton_Click(object sender, EventArgs e)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            Notification notification = new Notification();
+
+            if (this.settingsPageNotificationCheckbox.Checked)
+            {
+                config.AppSettings.Settings["notificationCheckboxStatus"].Value = "true";
+                notification.UpdateNotificationStatus(true);
+            } else
+            {
+                config.AppSettings.Settings["notificationCheckboxStatus"].Value = "false";
+                notification.UpdateNotificationStatus(false);
+            }
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace SaveYourGroceriesLib
         /// Private constructor for singleton pattern. Loads data in existing JSON data if the
         /// file already exists.
         /// </summary>
-        private JSONParser()
+        public JSONParser()
         {
             // TODO: Load in data from previous exisiting file
             //savedItems = deserializeItems();
@@ -126,13 +126,21 @@ namespace SaveYourGroceriesLib
         /// Serializes the current list of saved items into a JSON file at the
         /// specified location.
         /// </summary>
-        public void serializeItems()
+        public void serializeItems(List<Item> itemList=null, string fileLocation=null)
         {
+            if (itemList == null)
+            {
+                itemList = this.savedItems;
+            }
+            if (fileLocation == null)
+            {
+                fileLocation = Constants.JSON_FILE_LOCATION;
+            }
             var serializer = new JsonSerializer();
 
-            using (var sw = new StreamWriter(Constants.JSON_FILE_LOCATION))
+            using (var sw = new StreamWriter(fileLocation))
                 using (JsonWriter write = new JsonTextWriter(sw)) {
-                serializer.Serialize(write, savedItems);
+                serializer.Serialize(write, itemList);
             }
         }
 
