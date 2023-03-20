@@ -45,17 +45,29 @@ namespace SaveYourGroceries
             ShowMainControls();
         }
 
+        // ------------------ OnClick method liked to the "Saved" button in MainForm ------------------- // 
+        // This onClick method will reference two methods: on line 56 reference "SearchItem() subject to change.
+        // Second method that must be created from scratch is the "DisplaySavedItems()" method as referenced on line 58.
+        // Once this method is complete, link this method with the Saved button via the lightning bolt Click dropdown menu. 
+    
+        private void mainSavedButton_Click(object sender, EventArgs e)
+        {
+            ShowSaveControls();
+
+              // ArrayList itemList = SearchItem(sender, e, this.savedListMenu.Text);
+            // ArrayList itemList = scraper.SearchItem(sender, e, this.savedListMenu.Text);
+            // ArrayList itemList = scraper.SearchItem(sender, e, this.itemNameTextBox.Text, this.itemPriceTextBox.Text);
+            // ArrayList itemList = scraper.SearchItem(sender, e, this.mainPageSearchBox.Text);
+
+            // this.mainPageSearchBox.Text = String.Empty;
+            // DisplaySavedItems(sender, e, itemList);
+        }
+        // ------------------------------------------------------------------------------------------- // 
         private void DisplaySearchedItems(object sender, EventArgs e, ArrayList itemList)
         {
-            if (this.Controls["searchedItemsList"] != null)
-            {
-                this.Controls.Remove(this.Controls["searchedItemsList"]);
-            }
-
             SearchedItemsList searchedItemsList = new SearchedItemsList
             {
-                Location = new Point(5, 50),
-                Name = "searchedItemsList"
+                Location = new Point(5, 50)
             };
 
             int itemBoxHeight = 150;
@@ -70,6 +82,7 @@ namespace SaveYourGroceries
                 searchedItem.itemNameTextBox.Text = item.name;
                 searchedItem.itemPriceTextBox.Text = item.price;
                 searchedItem.storeNameTextBox.Text = item.store;
+
 
                 // temporary code to handle when Walmart blocks us lol, need to change
                 if(item.imageUrl == null)
@@ -88,13 +101,61 @@ namespace SaveYourGroceries
             this.Controls.Add(searchedItemsList);
         }
 
+      // -------- DisplaySavedItems() : Will be based off DisplaySearchedItems() : ------------------------------------------------//
+
+        //private void DisplaySavedItems(object sender, EventArgs e, ArrayList itemlist)
+        //{
+        //    SavedItemsList savedItemsList = new SavedItemsList
+        //    {
+        //        Location = new Point(5, 50)
+        //    };
+
+        //    int itemboxheight = 150;
+        //    int itemboxgap = 5;
+
+
+        //    // todo: handle if an item is not found, or one or more properties is not found
+        //    // -> current web parse methods all return an item, even if that item is null
+        //    foreach (Item item in itemlist)
+        //    {
+        //        SearchedItem searchedItem = new SearchedItem();
+        //        // SavedItem savedItem = new SavedItem();
+        //        searchedItem.itemNameTextBox.Text = item.name;
+        //        // savedItem.itemNameTextBox.Text = item.name; 
+        //        searchedItem.itemPriceTextBox.Text = item.price;
+        //        // savedItem.itemPriceTextBox.Text = item.price;
+        //        searchedItem.storeNameTextBox.Text = item.store;
+        //        // savedItem.storeNameTextBox.Text = item.store;
+
+
+        //        // temporary code to handle when walmart blocks us lol, need to change
+        //        if (item.imageUrl == null)
+        //        {
+        //            searchedItem.itemPictureBox.Load("https://static.vecteezy.com/system/resources/thumbnails/000/536/310/small/food_paper_bag-01.jpg");
+        //        }
+        //        else
+        //        {
+        //            searchedItem.itemPictureBox.Load(item.imageUrl);
+        //        }
+
+        //        searchedItem.Location = new Point(5, itemboxgap);
+        //        savedItemsList.Add(searchedItem);
+        //        itemboxgap += itemboxheight;
+        //    }
+
+        //    this.Controls.Add(savedItemsList);
+        //}
+
+
+        // ------------------------------------------------------------------------------------ //
+
         private void ShowMainControls()
         {
             string controlName;
             foreach (var control in Controls.OfType<Control>())
             {
                 controlName = control.Name;
-                if (controlName.Contains("mainPage") || controlName == "navBar" || controlName == "savedGroceryItemsListBox")
+                if (controlName.Contains("mainPage") || controlName == "navBar")
                 {
                     control.Show();
                 }
@@ -121,6 +182,25 @@ namespace SaveYourGroceries
                 }
             }
         }
+
+        // Show Saved button, and NavBar while hiding all other control elements 
+        private void ShowSaveControls()
+
+        { string controlName;
+          foreach (var control in Controls.OfType<Control>()) 
+          { 
+              controlName = control.Name;
+              if (controlName.Contains("saved") || controlName == "searchPage" || controlName == "navBar")
+                {
+                    control.Show();
+                }
+                else
+                { 
+                    control.Hide();
+                }
+                    
+           }
+         }
 
     }
 }

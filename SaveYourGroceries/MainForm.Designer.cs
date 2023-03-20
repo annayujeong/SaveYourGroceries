@@ -41,7 +41,6 @@ namespace SaveYourGroceries
             this.mainPageLogoBox = new System.Windows.Forms.PictureBox();
             this.searchPageSearchButton = new System.Windows.Forms.Button();
             this.searchPageSearchBox = new System.Windows.Forms.TextBox();
-            this.savedGroceryItemsListBox = new System.Windows.Forms.ListBox();
             this.navBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPageLogoBox)).BeginInit();
             this.SuspendLayout();
@@ -61,6 +60,7 @@ namespace SaveYourGroceries
             this.savedListMenu.Name = "savedListMenu";
             this.savedListMenu.Size = new System.Drawing.Size(121, 109);
             this.savedListMenu.Text = "Saved";
+            this.savedListMenu.Click += new System.EventHandler(this.mainSavedButton_Click);
             // 
             // searchMenu
             // 
@@ -159,31 +159,12 @@ namespace SaveYourGroceries
             this.searchPageSearchBox.Size = new System.Drawing.Size(660, 67);
             this.searchPageSearchBox.TabIndex = 5;
             // 
-            // savedGroceryItemsListBox
-            // 
-            this.savedGroceryItemsListBox.FormattingEnabled = true;
-            this.savedGroceryItemsListBox.ItemHeight = 31;
-            this.savedGroceryItemsListBox.Items.AddRange(new object[] {
-            "Saved Grocery Items List Box ",
-            "",
-            "Apple",
-            "Orange",
-            "Banana",
-            "Bread",
-            "Eggs ",
-            "Milk "});
-            this.savedGroceryItemsListBox.Location = new System.Drawing.Point(32, 484);
-            this.savedGroceryItemsListBox.Name = "savedGroceryItemsListBox";
-            this.savedGroceryItemsListBox.Size = new System.Drawing.Size(342, 252);
-            this.savedGroceryItemsListBox.TabIndex = 7;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(891, 1219);
-            this.Controls.Add(this.savedGroceryItemsListBox);
             this.Controls.Add(this.searchPageSearchButton);
             this.Controls.Add(this.searchPageSearchBox);
             this.Controls.Add(this.mainPageLogoBox);
@@ -214,6 +195,5 @@ namespace SaveYourGroceries
         private System.Windows.Forms.PictureBox mainPageLogoBox;
         private Button searchPageSearchButton;
         private TextBox searchPageSearchBox;
-        private ListBox savedGroceryItemsListBox;
     }
 }
