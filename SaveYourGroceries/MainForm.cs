@@ -96,6 +96,8 @@ namespace SaveYourGroceries
             this.Controls.Add(searchedItemsList);
         }
 
+        // Display SavedItems list from Json file 
+
         private void DisplaySavedItems(object sender, EventArgs e, ArrayList savedItems)
         {
             ShowMainControls();
