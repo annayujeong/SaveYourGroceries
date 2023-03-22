@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SaveYourGroceriesLib;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace SaveYourGroceries
 {
@@ -98,6 +99,10 @@ namespace SaveYourGroceries
         private void DisplaySavedItems(object sender, EventArgs e, ArrayList savedItems)
         {
             ShowMainControls();
+
+            //var savedItemsListJsonFile = File.ReadAllText(@"JSON_FILE_LINK");
+            //var showSavedListJson = jsonParser.deserializeItems(savedItemsListJsonFile);
+
 
             foreach (Item item in savedItems) 
             {
