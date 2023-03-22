@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SaveYourGroceriesLib;
+using Newtonsoft.Json;
 
 namespace SaveYourGroceries
 {
@@ -17,6 +18,8 @@ namespace SaveYourGroceries
     public partial class MainForm : Form
     {
         WebScraper scraper = new WebScraper();
+        
+        JSONParser jsonParser = new JSONParser();
 
         public MainForm()
         {
@@ -46,6 +49,8 @@ namespace SaveYourGroceries
         {
             ShowMainControls();
         }
+
+ 
 
         private void DisplaySearchedItems(object sender, EventArgs e, ArrayList itemList)
         {
@@ -88,6 +93,17 @@ namespace SaveYourGroceries
             }
 
             this.Controls.Add(searchedItemsList);
+        }
+
+        private void DisplaySavedItems(object sender, EventArgs e, ArrayList savedItems)
+        {
+            ShowMainControls();
+
+            foreach (Item item in savedItems) 
+            {
+                jsonParser.deserializeItems(savedItems, item);
+            }
+            
         }
 
         private void ShowMainControls()

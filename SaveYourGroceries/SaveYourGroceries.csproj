@@ -67,6 +67,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SavedItemsList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SavedItemsList.Designer.cs">
+      <DependentUpon>SavedItemsList.cs</DependentUpon>
+    </Compile>
     <Compile Include="SearchedItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -95,6 +101,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SavedItemsList.resx">
+      <DependentUpon>SavedItemsList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SearchedItem.resx">
       <DependentUpon>SearchedItem.cs</DependentUpon>
     </EmbeddedResource>
