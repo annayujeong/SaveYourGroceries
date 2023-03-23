@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.savedItemRemoveButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.savedItemNameTextBox = new System.Windows.Forms.TextBox();
+            this.savedItemPriceTextBox = new System.Windows.Forms.TextBox();
+            this.savedItemStoreTextBox = new System.Windows.Forms.TextBox();
+            this.savedItemPictureBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.savedItemPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // savedItemRemoveButton
@@ -46,48 +46,50 @@
             this.savedItemRemoveButton.TabIndex = 0;
             this.savedItemRemoveButton.Text = "Remove";
             this.savedItemRemoveButton.UseVisualStyleBackColor = false;
+            this.savedItemRemoveButton.Click += new System.EventHandler(this.removeItemFromJSON);
             // 
-            // textBox1
+            // savedItemNameTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(335, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(384, 38);
-            this.textBox1.TabIndex = 1;
+            this.savedItemNameTextBox.Location = new System.Drawing.Point(335, 32);
+            this.savedItemNameTextBox.Name = "savedItemNameTextBox";
+            this.savedItemNameTextBox.Size = new System.Drawing.Size(384, 38);
+            this.savedItemNameTextBox.TabIndex = 1;
             // 
-            // textBox2
+            // savedItemPriceTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(335, 97);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(384, 38);
-            this.textBox2.TabIndex = 2;
+            this.savedItemPriceTextBox.Location = new System.Drawing.Point(335, 99);
+            this.savedItemPriceTextBox.Name = "savedItemPriceTextBox";
+            this.savedItemPriceTextBox.Size = new System.Drawing.Size(384, 38);
+            this.savedItemPriceTextBox.TabIndex = 2;
             // 
-            // textBox3
+            // savedItemStoreTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(335, 169);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(384, 38);
-            this.textBox3.TabIndex = 3;
+            this.savedItemStoreTextBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.savedItemStoreTextBox.Location = new System.Drawing.Point(335, 169);
+            this.savedItemStoreTextBox.Name = "savedItemStoreTextBox";
+            this.savedItemStoreTextBox.Size = new System.Drawing.Size(384, 38);
+            this.savedItemStoreTextBox.TabIndex = 3;
             // 
-            // pictureBox1
+            // savedItemPictureBox
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(22, 32);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(293, 262);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            this.savedItemPictureBox.Location = new System.Drawing.Point(23, 32);
+            this.savedItemPictureBox.Name = "savedItemPictureBox";
+            this.savedItemPictureBox.Size = new System.Drawing.Size(293, 262);
+            this.savedItemPictureBox.TabIndex = 4;
+            this.savedItemPictureBox.TabStop = false;
             // 
             // SavedItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.savedItemPictureBox);
+            this.Controls.Add(this.savedItemStoreTextBox);
+            this.Controls.Add(this.savedItemPriceTextBox);
+            this.Controls.Add(this.savedItemNameTextBox);
             this.Controls.Add(this.savedItemRemoveButton);
             this.Name = "SavedItem";
             this.Size = new System.Drawing.Size(747, 310);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.savedItemPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -96,9 +98,9 @@
         #endregion
 
         private System.Windows.Forms.Button savedItemRemoveButton;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.TextBox savedItemNameTextBox;
+        public System.Windows.Forms.TextBox savedItemPriceTextBox;
+        public System.Windows.Forms.TextBox savedItemStoreTextBox;
+        public System.Windows.Forms.PictureBox savedItemPictureBox;
     }
 }

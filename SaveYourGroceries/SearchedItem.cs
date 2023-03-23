@@ -54,6 +54,11 @@ using Item = SaveYourGroceriesLib.Item;
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Saves an Item to a Saved List in JSON format - References and uses the JSONParser.cs addItem and serialize method. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveItemToJSON(object sender, EventArgs e)
         {
             jsonParser.addItem(item);
@@ -63,23 +68,16 @@ using Item = SaveYourGroceriesLib.Item;
 
         }
 
-        //var searchedItem = new SearchedItem()
+
+
+        // 
+       // private void saveItemToJsonSavedList_Click(object sender, EventArgs e, List<Item> savedListOfItems, SearchedItem savedGroceryListItem, ArrayList itemList)
         //{
-        //    searchedItemName = Convert.ToString(itemNameTextBox.Text),
-        //    searchedItemPrice = Convert.ToString(itemPriceTextBox.Text),
-        //    searchedItemStore = Convert.ToString(storeNameTextBox.Text)
-        //}
+           // List<Item> savedItems = new List<Item>();
 
-
-
-        // Saves an Item to a Saved List in JSON format - References and uses the JSONParser.cs addItem and serialize method. 
-        private void saveItemToJsonSavedList_Click(object sender, EventArgs e, List<Item> savedListOfItems, SearchedItem savedGroceryListItem, ArrayList itemList)
-        {
-            List<Item> savedItems = new List<Item>();
-
-            string itemNameValue = Convert.ToString(itemNameTextBox.Text);
-            string itemPriceValue = Convert.ToString(itemPriceTextBox.Text);
-            string itemStoreNameValue = Convert.ToString(storeNameTextBox.Text);
+           // string itemNameValue = Convert.ToString(itemNameTextBox.Text);
+            //string itemPriceValue = Convert.ToString(itemPriceTextBox.Text);
+            //string itemStoreNameValue = Convert.ToString(storeNameTextBox.Text);
 
 
             //var savedGroceryItem = new SearchedItem(itemNameTextBox.Text, itemPriceTextBox.Text, storeNameTextBox.Text);
@@ -89,7 +87,7 @@ using Item = SaveYourGroceriesLib.Item;
 
             //jsonParser.addItem(savedGroceryItem);
 
-            jsonParser.serializeItems();
+            //jsonParser.serializeItems();
 
             // Display Saved Item List after
             //MainForm.DisplaySavedItems();
@@ -143,40 +141,10 @@ using Item = SaveYourGroceriesLib.Item;
             //    jsonParser.serializeItems();
             //}
 
-         
-
-
-            //class Item
-            //{
-            // var resultItem = new List<Item>();
-            // itemName = DisplaySearchedItems().itemNameTextBox.Text;
-            // itemPrice = itemPriceTextBox.Text;
-            // itemStoreName = storeNameTextBox.Text;
-
-            //    jsonParser.addItem(resultItem);
-            // // this.itemSaveButton.Text = String.Empty;
-            //jsonParser.serializeItems(sender, e, savedItems);
-
-            //List<Item> previousItems;
-            //try
-            //{
-            //    if(FileDialog.Exists(Constants.JSON_FILE_LOCATION))
-            //    {
-            //        previousItems = deserializeItems();
-
-            //        if (previousItems != null)
-            //        {
-            //            savedItems = previousItems;
-            //        }
-            //    } else
-            //    {
-            //        createJSONFile();
-            //    }
-            //}
 
         }
 
     }
 
-}
+
 

@@ -61,6 +61,7 @@ namespace SaveYourGroceries
             this.savedListMenu.Name = "savedListMenu";
             this.savedListMenu.Size = new System.Drawing.Size(121, 109);
             this.savedListMenu.Text = "Saved";
+            this.savedListMenu.Click += new System.EventHandler(this.savedItemsButton_Click);
             // 
             // searchMenu
             // 

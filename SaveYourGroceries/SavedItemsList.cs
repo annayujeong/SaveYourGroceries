@@ -21,28 +21,11 @@ namespace SaveYourGroceries
             InitializeComponent();
         }
 
-
-
-        // Display SavedItems list from Json file using Bradner's Json Parser. 
-
-        private void DisplaySavedItems(object sender, EventArgs e, ArrayList savedItems)
+        internal void Add(SavedItem searchedItem)
         {
-            //ShowMainControls();
-
-            //var savedItemsListJsonFile = File.ReadAllText(@"JSON_FILE_LINK");
-            //var showSavedListJson = jsonParser.deserializeItems(savedItemsListJsonFile);
-
-            //var savedItemsList = File.ReadAllText(@"JSON_FILE_LINK");
-            //Item item = jsonParser.deserializeItems(savedItemsList);
-
-
-            foreach (Item item in savedItems)
-            {
-                //string jsonString = JsonSerializer.Serialize(savedItems);
-                jsonParser.deserializeItems();
-            }
-
+            this.Controls.Add(searchedItem);
         }
+
 
     }
 }
