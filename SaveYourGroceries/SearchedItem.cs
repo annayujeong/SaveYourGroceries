@@ -14,26 +14,33 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 using JSONParser = SaveYourGroceriesLib.JSONParser;
 using Item = SaveYourGroceriesLib.Item;
-using MainForm 
 
 
-namespace SaveYourGroceries
+
+ namespace SaveYourGroceries
 {
     public partial class SearchedItem : UserControl
     {
 
-        SearchedItem searchedItem = new SearchedItem();
+        //SearchedItem searchedItem = new SearchedItem();
 
-        JSONParser jsonParser = new JSONParser();
+        JSONParser jsonParser = JSONParser.getInstance();
 
-        public string resultName { get; set; }
-        public string resultPrice { get; set; }
+        public Item item;
 
-        public string resultStore { get; set; }
+        //public string resultName { get; set; }
+        //public string resultPrice { get; set; }
 
-        public SearchedItem(string itemNameValue, string itemPriceValue, string itemStoreNameValue)
+        //public string resultStore { get; set; }
+
+        //public SearchedItem(string itemNameValue, string itemPriceValue, string itemStoreNameValue)
+        //{
+        //    InitializeComponent();
+        //}
+
+        public SearchedItem(Item item)
         {
-            InitializeComponent();
+            this.item = item;
         }
 
         public SearchedItem(Point Location)
@@ -47,6 +54,15 @@ namespace SaveYourGroceries
             InitializeComponent();
         }
 
+        private void saveItemToJSON(object sender, EventArgs e)
+        {
+            jsonParser.addItem(item);
+            MessageBox.Show(item.name);
+            MessageBox.Show(jsonParser.getSavedItemsLength().ToString());
+            jsonParser.serializeItems();
+
+        }
+
         //var searchedItem = new SearchedItem()
         //{
         //    searchedItemName = Convert.ToString(itemNameTextBox.Text),
@@ -57,7 +73,7 @@ namespace SaveYourGroceries
 
 
         // Saves an Item to a Saved List in JSON format - References and uses the JSONParser.cs addItem and serialize method. 
-        private void saveItemToJsonSavedList_Click(object sender, EventArgs e, List<Item> savedListOfItems, SearchedItem savedGroceryListItem)
+        private void saveItemToJsonSavedList_Click(object sender, EventArgs e, List<Item> savedListOfItems, SearchedItem savedGroceryListItem, ArrayList itemList)
         {
             List<Item> savedItems = new List<Item>();
 
@@ -67,29 +83,25 @@ namespace SaveYourGroceries
 
 
             //var savedGroceryItem = new SearchedItem(itemNameTextBox.Text, itemPriceTextBox.Text, storeNameTextBox.Text);
-            var savedGroceryItem = new Item(itemNameValue, itemPriceValue, itemStoreNameValue);
+            //var savedGroceryItem = new Item(itemNameValue, itemPriceValue, itemStoreNameValue);
 
-            savedItems.Add(savedGroceryItem);
+            //savedItems.Add(savedGroceryItem);
 
-            jsonParser.addItem(savedGroceryItem);
+            //jsonParser.addItem(savedGroceryItem);
 
             jsonParser.serializeItems();
 
             // Display Saved Item List after
-            MainForm.DisplaySavedItems();
+            //MainForm.DisplaySavedItems();
 
-
-
-
-
-           
+         // ------------------  Array foreach loop  ---------------------
             //{
             //    if (this.Controls["searchedItemsList"] != null)
             //    {
             //        this.Controls.Remove(this.Controls["searchedItemsList"]);
             //    }
 
-            //    SearchedItemsList searchedItemsList = new SearchedItemsList 
+            //    SearchedItemsList searchedItemsList = new SearchedItemsList
             //    {
             //        Location = new Point(5, 50),
             //        Name = "searchedItemsList"
@@ -107,6 +119,7 @@ namespace SaveYourGroceries
             //        searchedItem.itemNameTextBox.Text = item.name;
             //        searchedItem.itemPriceTextBox.Text = item.price;
             //        searchedItem.storeNameTextBox.Text = item.store;
+                    
 
             //        // temporary code to handle when Walmart blocks us lol, need to change
             //        if (item.imageUrl == "")
@@ -119,16 +132,19 @@ namespace SaveYourGroceries
             //        }
 
             //        searchedItem.Location = new Point(5, itemBoxGap);
-            //        searchedItemsList.Add(searchedItem);
+            //        savedItemsList.Add(searchedItem);
             //        itemBoxGap += itemBoxHeight;
             //    }
 
-            //    this.Controls.Add(searchedItemsList);
+            //    this.Controls.Add(savedItemsList);
+
+            //    jsonParser.addItem(savedGroceryItem);
+
+            //    jsonParser.serializeItems();
             //}
 
-            //     var item = JsonConvert.SerializeObject<Item>(jsonFile)
-            //     valueItem.name = itemNameTextBox.Text; 
-                 
+         
+
 
             //class Item
             //{
@@ -158,7 +174,7 @@ namespace SaveYourGroceries
             //    }
             //}
 
-             }
+        }
 
     }
 

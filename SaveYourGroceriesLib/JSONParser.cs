@@ -73,7 +73,10 @@ namespace SaveYourGroceriesLib
 
         public void addItem(Item item)
         {
-            savedItems.Add(item);
+            if (!savedItems.Contains(item))
+            {
+                savedItems.Add(item);
+            }
         }
 
         public void removeItem(Item item) { 

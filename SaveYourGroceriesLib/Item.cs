@@ -15,9 +15,9 @@ namespace SaveYourGroceriesLib
         public string store { get; set; }
 
         public string itemURL { get; set; }
-        public string ItemNameValue { get; }
-        public string ItemPriceValue { get; }
-        public string ItemStoreNameValue { get; }
+        //public string ItemNameValue { get; }
+        //public string ItemPriceValue { get; }
+        //public string ItemStoreNameValue { get; }
 
         public Item() {
             this.name = "";
@@ -36,11 +36,11 @@ namespace SaveYourGroceriesLib
             this.itemURL = itemURL;
         }
 
-        public Item(string itemNameValue, string itemPriceValue, string itemStoreNameValue)
-        {
-            ItemNameValue = itemNameValue;
-            ItemPriceValue = itemPriceValue;
-            ItemStoreNameValue = itemStoreNameValue;
-        }
+        //public Item(string itemNameValue, string itemPriceValue, string itemStoreNameValue)
+        //{
+        //    ItemNameValue = itemNameValue;
+        //    ItemPriceValue = itemPriceValue;
+        //    ItemStoreNameValue = itemStoreNameValue;
+        //}
     }
 }
