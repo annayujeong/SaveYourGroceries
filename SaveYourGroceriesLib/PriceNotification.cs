@@ -7,6 +7,10 @@ namespace SaveYourGroceriesLib
 {
     public class PriceNotification
     {
+        /// <summary>
+        /// reference: https://christkho.medium.com/background-job-with-quartz-net-in-c-and-net-core-a5a2f8cb5619
+        /// </summary>
+        /// <param name="hours">int</param>
         public async void PushNotificationOnFrequencySet(int hours)
         {
             // 1. Create a scheduler Factory
@@ -18,14 +22,13 @@ namespace SaveYourGroceriesLib
 
             // 3. Create a job
             IJobDetail job = JobBuilder.Create<PriceUpdate>()
-                    .WithIdentity("number generator job", "number generator group")
+                    .WithIdentity("push notification job", "push notification group")
                     .Build();
 
             // 4. Create a trigger
             ITrigger trigger = TriggerBuilder.Create()
-                .WithIdentity("number generator trigger", "number generator group")
-                .WithSimpleSchedule(x => x.WithIntervalInSeconds(hours).RepeatForever())
-                //.WithSimpleSchedule(x => x.WithIntervalInHours(hours).RepeatForever())
+                .WithIdentity("push notification trigger", "push notification group")
+                .WithSimpleSchedule(x => x.WithIntervalInHours(hours).RepeatForever())
                 .Build();
 
             // 5. Schedule the job using the job and trigger 
