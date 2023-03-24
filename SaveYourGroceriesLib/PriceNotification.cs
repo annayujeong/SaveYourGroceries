@@ -5,35 +5,40 @@ using SaveYourGroceries;
 
 namespace SaveYourGroceriesLib
 {
+    /// <summary>
+    /// Author: Anna
+    /// Contain push notification functionality.
+    /// </summary>
     public class PriceNotification
     {
         /// <summary>
+        /// Create scheduler factory and the job to enable pushing notification on price update
+        /// depending on whether the user turned the notification setting on and how often they want to get notified.
         /// reference: https://christkho.medium.com/background-job-with-quartz-net-in-c-and-net-core-a5a2f8cb5619
         /// </summary>
         /// <param name="hours">int</param>
         public async void PushNotificationOnFrequencySet(int hours)
         {
-            // 1. Create a scheduler Factory
+            // Create a scheduler Factory
             ISchedulerFactory schedulerFactory = new StdSchedulerFactory();
 
-            // 2. Get and start a scheduler
+            // Get and start a scheduler
             IScheduler scheduler = await schedulerFactory.GetScheduler();
             await scheduler.Start();
 
-            // 3. Create a job
+            // Create PriceUpdate job
             IJobDetail job = JobBuilder.Create<PriceUpdate>()
                     .WithIdentity("push notification job", "push notification group")
                     .Build();
 
-            // 4. Create a trigger
+            // Create a trigger
             ITrigger trigger = TriggerBuilder.Create()
                 .WithIdentity("push notification trigger", "push notification group")
                 .WithSimpleSchedule(x => x.WithIntervalInHours(hours).RepeatForever())
                 .Build();
 
-            // 5. Schedule the job using the job and trigger 
+            // Schedule the job using the job and trigger 
             await scheduler.ScheduleJob(job, trigger);
-            Console.ReadLine();
         }
 
     }

@@ -8,16 +8,27 @@ using System.Threading.Tasks;
 
 namespace SaveYourGroceries
 {
+    /// <summary>
+    /// Author: Anna
+    /// Contain reading saved item json file and get new prices.
+    /// Send a notification If lower prices are found.
+    /// </summary>
     public class PriceUpdate: IJob
     {
         List<Item> savedItems = null;
         List<Item> updatedItems = null;
 
         JSONParser parser = new JSONParser();
+        WebScraper webScraper = new WebScraper();
 
         //TODO: can be deleted in the future
         private string testJSON = "[{\"name\":\"Apple\",\"price\":\"3.45\",\"imageUrl\":\"https://upload.wikimedia.org/wikipedia/commons/0/07/Whole_apple_and_bitten_apple.jpg\",\"store\":\"Superstore\",\"itemURL\":\"https://en.wikipedia.org/wiki/Main_Page\"},{\"name\":\"Pear\",\"price\":\"4.56\",\"imageUrl\":\"https://upload.wikimedia.org/wikipedia/commons/9/99/Four_pears.jpg\",\"store\":\"Save on Foods\",\"itemURL\":\"https://en.wikipedia.org/wiki/Main_Page\"},{\"name\":\"Strawberries\",\"price\":\"9.43\",\"imageUrl\":\"https://upload.wikimedia.org/wikipedia/commons/6/64/Garden_strawberry_%28Fragaria_%C3%97_ananassa%29_single.jpg\",\"store\":\"Walmart\",\"itemURL\":\"https://en.wikipedia.org/wiki/Main_Page\"}]";
 
+        /// <summary>
+        /// Combine and execute all functions needed to push notification.
+        /// </summary>
+        /// <param name="context">IJobExecutionContext</param>
+        /// <returns>CompletedTask</returns>
         public async Task Execute(IJobExecutionContext context)
         {
             ReadSavedList();
@@ -26,6 +37,9 @@ namespace SaveYourGroceries
             await Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Read saved list json file and store it in a list.
+        /// </summary>
         public void ReadSavedList()
         {
             savedItems = parser.deserializeItems();
@@ -36,9 +50,11 @@ namespace SaveYourGroceries
             Assert.IsNotNull(this.savedItems);
         }
 
+        /// <summary>
+        /// Loop through the list, get new prices for the items and save in a list.
+        /// </summary>
         public void GetNewPrices()
         {
-            WebScraper webScraper = new WebScraper();
             foreach (var item in savedItems)
             {
                 switch (item.store)
@@ -56,6 +72,9 @@ namespace SaveYourGroceries
             webScraper.driver.Quit();
         }
 
+        /// <summary>
+        /// Push notification if lower price of the item is found.
+        /// </summary>
         public void PushNotificationOnLowerPriceFound()
         {
             for (int index = 0; index < updatedItems.Count; index++)
@@ -66,7 +85,7 @@ namespace SaveYourGroceries
                 if (int.Parse(updatedItem.price) < int.Parse(savedItem.price))
                 {
                     new ToastContentBuilder()
-                         .AddHeader("header", "New Price Found!", "TODO")
+                         .AddHeader("header", "New Price Found!", "")
                          .AddText("We found your saved item " + savedItem.name
                                   + " with $"
                                   + (int.Parse(savedItem.price) - int.Parse(updatedItem.price))
