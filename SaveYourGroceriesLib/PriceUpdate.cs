@@ -1,14 +1,14 @@
 ﻿using Microsoft.Toolkit.Uwp.Notifications;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Quartz;
 using SaveYourGroceriesLib;
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Threading.Tasks;
 
 namespace SaveYourGroceries
 {
-    [TestClass]
-    public class PriceUpdate
+    public class PriceUpdate: IJob
     {
         List<Item> savedItems = null;
         List<Item> updatedItems = null;
@@ -18,8 +18,15 @@ namespace SaveYourGroceries
         //TODO: can be deleted in the future
         private string testJSON = "[{\"name\":\"Apple\",\"price\":\"3.45\",\"imageUrl\":\"https://upload.wikimedia.org/wikipedia/commons/0/07/Whole_apple_and_bitten_apple.jpg\",\"store\":\"Superstore\",\"itemURL\":\"https://en.wikipedia.org/wiki/Main_Page\"},{\"name\":\"Pear\",\"price\":\"4.56\",\"imageUrl\":\"https://upload.wikimedia.org/wikipedia/commons/9/99/Four_pears.jpg\",\"store\":\"Save on Foods\",\"itemURL\":\"https://en.wikipedia.org/wiki/Main_Page\"},{\"name\":\"Strawberries\",\"price\":\"9.43\",\"imageUrl\":\"https://upload.wikimedia.org/wikipedia/commons/6/64/Garden_strawberry_%28Fragaria_%C3%97_ananassa%29_single.jpg\",\"store\":\"Walmart\",\"itemURL\":\"https://en.wikipedia.org/wiki/Main_Page\"}]";
 
-        [TestMethod]
-        public void Test001ReadSavedList()
+        public async Task Execute(IJobExecutionContext context)
+        {
+            ReadSavedList();
+            GetNewPrices();
+            PushNotificationOnLowerPriceFound();
+            await Task.CompletedTask;
+        }
+
+        public void ReadSavedList()
         {
             savedItems = parser.deserializeItems();
             foreach (var item in savedItems)
@@ -29,8 +36,7 @@ namespace SaveYourGroceries
             Assert.IsNotNull(this.savedItems);
         }
 
-        [TestMethod]
-        public void Test002GetNewPrices()
+        public void GetNewPrices()
         {
             WebScraper webScraper = new WebScraper();
             foreach (var item in savedItems)
@@ -50,23 +56,8 @@ namespace SaveYourGroceries
             webScraper.driver.Quit();
         }
 
-        [TestMethod]
-        public void Test003WriteUpdatedPrices()
+        public void PushNotificationOnLowerPriceFound()
         {
-            parser.serializeItems(updatedItems, Constants.JSON_UPDATED_FILE_LOCATION);
-        }
-
-        // if we want to use SaveYourGroceries Settings.settings,
-        // get Settings.Default.notificationCheckboxStatus
-        [TestMethod]
-        public void Test004PushNotificationOnLowerPriceFound()
-        {
-            bool isNotificationOn = Convert.ToBoolean(File.ReadAllText(Constants.NOTI_TXT_FILE_LOCATION));
-            if (!isNotificationOn)
-            {
-                return;
-            }
-
             for (int index = 0; index < updatedItems.Count; index++)
             {
                 Item updatedItem = updatedItems[index];
@@ -84,12 +75,5 @@ namespace SaveYourGroceries
                 }
             }
         }
-
-        //[TestMethod]
-        //public void Test000()
-        //{
-        //    Console.WriteLine("hi from anna");
-        //    Assert.Fail();
-        //}
     }
 }

@@ -49,13 +49,14 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="JSONParser.cs" />
-    <Compile Include="Notification.cs" />
+    <Compile Include="PriceNotification.cs" />
     <Compile Include="PriceUpdate.cs" />
     <Compile Include="Search.cs" />
-    <Compile Include="Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
+    <Compile Include="SettingsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsPage.Designer.cs">
+      <DependentUpon>SettingsPage.cs</DependentUpon>
     </Compile>
     <Compile Include="WebScraper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,6 +74,9 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.3</Version>
     </PackageReference>
+    <PackageReference Include="Quartz">
+      <Version>3.6.2</Version>
+    </PackageReference>
     <PackageReference Include="Selenium.WebDriver">
       <Version>4.8.1</Version>
     </PackageReference>
@@ -81,11 +85,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
+    <EmbeddedResource Include="SettingsPage.resx">
+      <DependentUpon>SettingsPage.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
