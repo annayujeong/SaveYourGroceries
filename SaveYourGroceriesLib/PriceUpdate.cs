@@ -18,6 +18,16 @@ namespace SaveYourGroceries
         List<Item> savedItems = null;
         List<Item> updatedItems = null;
 
+        public List<Item> SavedItems { 
+            get {  return savedItems; }
+            set { savedItems = value; }
+        }
+
+        public List<Item> UpdatedItems { 
+            get { return updatedItems; }
+            set { updatedItems = value; }
+        }
+
         JSONParser parser = new JSONParser();
         WebScraper webScraper = new WebScraper();
 
@@ -75,14 +85,16 @@ namespace SaveYourGroceries
         /// <summary>
         /// Push notification if lower price of the item is found.
         /// </summary>
-        public void PushNotificationOnLowerPriceFound()
+        /// <returns>count of pushed notification</returns>
+        public int PushNotificationOnLowerPriceFound()
         {
+            int notificationCount = 0;
             for (int index = 0; index < updatedItems.Count; index++)
             {
                 Item updatedItem = updatedItems[index];
                 Item savedItem = savedItems[index];
 
-                if (int.Parse(updatedItem.price) < int.Parse(savedItem.price))
+                if (double.Parse(updatedItem.price) < double.Parse(savedItem.price))
                 {
                     new ToastContentBuilder()
                          .AddHeader("header", "New Price Found!", "")
@@ -91,8 +103,10 @@ namespace SaveYourGroceries
                                   + (int.Parse(savedItem.price) - int.Parse(updatedItem.price))
                                   + " lower price")
                          .Show();
+                    notificationCount++;
                 }
             }
+            return notificationCount;
         }
     }
 }

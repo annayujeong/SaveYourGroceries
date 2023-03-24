@@ -51,7 +51,6 @@
     <Compile Include="JSONParser.cs" />
     <Compile Include="PriceNotification.cs" />
     <Compile Include="PriceUpdate.cs" />
-    <Compile Include="Search.cs" />
     <Compile Include="SettingsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
