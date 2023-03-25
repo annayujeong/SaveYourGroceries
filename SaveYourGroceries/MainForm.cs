@@ -70,6 +70,11 @@ namespace SaveYourGroceries
             ShowMainControls();
         }
 
+        private void settingsMenu_Click(object sender, EventArgs e)
+        {
+            ShowSettingsControls();
+        }
+
 
         // ---------------- Toggle Button functionality -------------------- // 
 
@@ -79,7 +84,7 @@ namespace SaveYourGroceries
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        
+
         private void toggleButtonSuperstore_Load(object sender, EventArgs e)
         {
             if (toggleButtonSuperstore.Check == true)
