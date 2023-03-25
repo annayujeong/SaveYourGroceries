@@ -43,11 +43,7 @@ namespace SaveYourGroceries
             this.mainPageLogoBox = new System.Windows.Forms.PictureBox();
             this.searchPageSearchButton = new System.Windows.Forms.Button();
             this.searchPageSearchBox = new System.Windows.Forms.TextBox();
-            this.savedGroceryItemsListBox = new System.Windows.Forms.ListBox();
-            this.settingsPageTitleLabel = new System.Windows.Forms.Label();
-            this.settingsPageNotificationLabel = new System.Windows.Forms.Label();
-            this.settingsPageNotificationCheckbox = new System.Windows.Forms.CheckBox();
-            this.settingsPageSaveButton = new System.Windows.Forms.Button();
+            this.settingsPage = new SaveYourGroceries.SettingsPage();
             this.navBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPageLogoBox)).BeginInit();
             this.SuspendLayout();
@@ -55,24 +51,23 @@ namespace SaveYourGroceries
             // mainPageSearchBox
             // 
             this.mainPageSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainPageSearchBox.Location = new System.Drawing.Point(37, 467);
-            this.mainPageSearchBox.Margin = new System.Windows.Forms.Padding(10, 8, 10, 8);
+            this.mainPageSearchBox.Location = new System.Drawing.Point(12, 195);
             this.mainPageSearchBox.Name = "mainPageSearchBox";
-            this.mainPageSearchBox.Size = new System.Drawing.Size(783, 79);
+            this.mainPageSearchBox.Size = new System.Drawing.Size(250, 31);
             this.mainPageSearchBox.TabIndex = 1;
             // 
             // savedListMenu
             // 
             this.savedListMenu.ForeColor = System.Drawing.Color.White;
             this.savedListMenu.Name = "savedListMenu";
-            this.savedListMenu.Size = new System.Drawing.Size(142, 130);
+            this.savedListMenu.Size = new System.Drawing.Size(50, 46);
             this.savedListMenu.Text = "Saved";
             // 
             // searchMenu
             // 
             this.searchMenu.ForeColor = System.Drawing.Color.White;
             this.searchMenu.Name = "searchMenu";
-            this.searchMenu.Size = new System.Drawing.Size(154, 130);
+            this.searchMenu.Size = new System.Drawing.Size(54, 46);
             this.searchMenu.Text = "Search";
             this.searchMenu.Click += new System.EventHandler(this.searchMenu_Click);
             // 
@@ -80,7 +75,7 @@ namespace SaveYourGroceries
             // 
             this.settingsMenu.ForeColor = System.Drawing.Color.White;
             this.settingsMenu.Name = "settingsMenu";
-            this.settingsMenu.Size = new System.Drawing.Size(175, 130);
+            this.settingsMenu.Size = new System.Drawing.Size(61, 46);
             this.settingsMenu.Text = "Settings";
             this.settingsMenu.Click += new System.EventHandler(this.settingsMenu_Click);
             // 
@@ -94,10 +89,9 @@ namespace SaveYourGroceries
             this.savedListMenu,
             this.searchMenu,
             this.settingsMenu});
-            this.navBar.Location = new System.Drawing.Point(0, 1313);
+            this.navBar.Location = new System.Drawing.Point(0, 456);
             this.navBar.Name = "navBar";
-            this.navBar.Padding = new System.Windows.Forms.Padding(19, 6, 0, 6);
-            this.navBar.Size = new System.Drawing.Size(1058, 142);
+            this.navBar.Size = new System.Drawing.Size(332, 50);
             this.navBar.TabIndex = 0;
             this.navBar.Text = "menuStrip1";
             // 
@@ -107,10 +101,9 @@ namespace SaveYourGroceries
             this.mainPageSearchButton.FlatAppearance.BorderSize = 0;
             this.mainPageSearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.mainPageSearchButton.ForeColor = System.Drawing.SystemColors.Window;
-            this.mainPageSearchButton.Location = new System.Drawing.Point(853, 458);
-            this.mainPageSearchButton.Margin = new System.Windows.Forms.Padding(10, 8, 10, 8);
+            this.mainPageSearchButton.Location = new System.Drawing.Point(269, 196);
             this.mainPageSearchButton.Name = "mainPageSearchButton";
-            this.mainPageSearchButton.Size = new System.Drawing.Size(167, 88);
+            this.mainPageSearchButton.Size = new System.Drawing.Size(53, 31);
             this.mainPageSearchButton.TabIndex = 2;
             this.mainPageSearchButton.Text = "Go";
             this.mainPageSearchButton.UseVisualStyleBackColor = false;
@@ -122,21 +115,19 @@ namespace SaveYourGroceries
             this.pageTitleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.pageTitleTextBox.Enabled = false;
             this.pageTitleTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.pageTitleTextBox.Location = new System.Drawing.Point(38, 35);
-            this.pageTitleTextBox.Margin = new System.Windows.Forms.Padding(10, 8, 10, 8);
+            this.pageTitleTextBox.Location = new System.Drawing.Point(12, 12);
             this.pageTitleTextBox.Name = "pageTitleTextBox";
             this.pageTitleTextBox.ReadOnly = true;
-            this.pageTitleTextBox.Size = new System.Drawing.Size(982, 68);
+            this.pageTitleTextBox.Size = new System.Drawing.Size(310, 23);
             this.pageTitleTextBox.TabIndex = 3;
             this.pageTitleTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // mainPageLogoBox
             // 
             this.mainPageLogoBox.Image = global::SaveYourGroceries.Properties.Resources.logo;
-            this.mainPageLogoBox.Location = new System.Drawing.Point(37, 183);
-            this.mainPageLogoBox.Margin = new System.Windows.Forms.Padding(10, 8, 10, 8);
+            this.mainPageLogoBox.Location = new System.Drawing.Point(12, 95);
             this.mainPageLogoBox.Name = "mainPageLogoBox";
-            this.mainPageLogoBox.Size = new System.Drawing.Size(982, 214);
+            this.mainPageLogoBox.Size = new System.Drawing.Size(310, 75);
             this.mainPageLogoBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.mainPageLogoBox.TabIndex = 4;
             this.mainPageLogoBox.TabStop = false;
@@ -147,10 +138,9 @@ namespace SaveYourGroceries
             this.searchPageSearchButton.FlatAppearance.BorderSize = 0;
             this.searchPageSearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.searchPageSearchButton.ForeColor = System.Drawing.SystemColors.Window;
-            this.searchPageSearchButton.Location = new System.Drawing.Point(851, 35);
-            this.searchPageSearchButton.Margin = new System.Windows.Forms.Padding(10, 8, 10, 8);
+            this.searchPageSearchButton.Location = new System.Drawing.Point(269, 12);
             this.searchPageSearchButton.Name = "searchPageSearchButton";
-            this.searchPageSearchButton.Size = new System.Drawing.Size(167, 88);
+            this.searchPageSearchButton.Size = new System.Drawing.Size(53, 31);
             this.searchPageSearchButton.TabIndex = 6;
             this.searchPageSearchButton.Text = "Go";
             this.searchPageSearchButton.UseVisualStyleBackColor = false;
@@ -159,87 +149,28 @@ namespace SaveYourGroceries
             // searchPageSearchBox
             // 
             this.searchPageSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchPageSearchBox.Location = new System.Drawing.Point(38, 35);
-            this.searchPageSearchBox.Margin = new System.Windows.Forms.Padding(10, 8, 10, 8);
+            this.searchPageSearchBox.Location = new System.Drawing.Point(12, 12);
             this.searchPageSearchBox.Name = "searchPageSearchBox";
-            this.searchPageSearchBox.Size = new System.Drawing.Size(783, 79);
+            this.searchPageSearchBox.Size = new System.Drawing.Size(250, 31);
             this.searchPageSearchBox.TabIndex = 5;
             // 
-            // savedGroceryItemsListBox
+            // settingsPage
             // 
-            this.savedGroceryItemsListBox.FormattingEnabled = true;
-            this.savedGroceryItemsListBox.ItemHeight = 37;
-            this.savedGroceryItemsListBox.Items.AddRange(new object[] {
-            "Saved Grocery Items List Box ",
-            "",
-            "Apple",
-            "Orange",
-            "Banana",
-            "Bread",
-            "Eggs ",
-            "Milk "});
-            this.savedGroceryItemsListBox.Location = new System.Drawing.Point(38, 578);
-            this.savedGroceryItemsListBox.Margin = new System.Windows.Forms.Padding(4);
-            this.savedGroceryItemsListBox.Name = "savedGroceryItemsListBox";
-            this.savedGroceryItemsListBox.Size = new System.Drawing.Size(405, 300);
-            this.savedGroceryItemsListBox.TabIndex = 7;
-            // 
-            // settingsPageTitleLabel
-            // 
-            this.settingsPageTitleLabel.AutoSize = true;
-            this.settingsPageTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.settingsPageTitleLabel.Location = new System.Drawing.Point(38, 37);
-            this.settingsPageTitleLabel.Name = "settingsPageTitleLabel";
-            this.settingsPageTitleLabel.Size = new System.Drawing.Size(265, 73);
-            this.settingsPageTitleLabel.TabIndex = 8;
-            this.settingsPageTitleLabel.Text = "Settings";
-            // 
-            // settingsPageNotificationLabel
-            // 
-            this.settingsPageNotificationLabel.Location = new System.Drawing.Point(0, 0);
-            this.settingsPageNotificationLabel.Name = "settingsPageNotificationLabel";
-            this.settingsPageNotificationLabel.Size = new System.Drawing.Size(100, 23);
-            this.settingsPageNotificationLabel.TabIndex = 12;
-            // 
-            // settingsPageNotificationCheckbox
-            // 
-            this.settingsPageNotificationCheckbox.AutoSize = true;
-            this.settingsPageNotificationCheckbox.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.settingsPageNotificationCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.settingsPageNotificationCheckbox.Location = new System.Drawing.Point(64, 183);
-            this.settingsPageNotificationCheckbox.Name = "settingsPageNotificationCheckbox";
-            this.settingsPageNotificationCheckbox.Size = new System.Drawing.Size(849, 51);
-            this.settingsPageNotificationCheckbox.TabIndex = 10;
-            this.settingsPageNotificationCheckbox.Text = "Get push notification on finding lower price";
-            this.settingsPageNotificationCheckbox.UseVisualStyleBackColor = true;
-            this.settingsPageNotificationCheckbox.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["notificationCheckboxStatus"]);
-            // 
-            // settingsPageSaveButton
-            // 
-            this.settingsPageSaveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(191)))), ((int)(((byte)(163)))));
-            this.settingsPageSaveButton.FlatAppearance.BorderSize = 0;
-            this.settingsPageSaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.settingsPageSaveButton.ForeColor = System.Drawing.SystemColors.Window;
-            this.settingsPageSaveButton.Location = new System.Drawing.Point(853, 395);
-            this.settingsPageSaveButton.Margin = new System.Windows.Forms.Padding(10, 8, 10, 8);
-            this.settingsPageSaveButton.Name = "settingsPageSaveButton";
-            this.settingsPageSaveButton.Size = new System.Drawing.Size(167, 88);
-            this.settingsPageSaveButton.TabIndex = 11;
-            this.settingsPageSaveButton.Text = "Save";
-            this.settingsPageSaveButton.UseVisualStyleBackColor = false;
-            this.settingsPageSaveButton.Click += new System.EventHandler(this.settingsPageSaveButton_Click);
+            this.settingsPage.Location = new System.Drawing.Point(0, 1);
+            this.settingsPage.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.settingsPage.Name = "settingsPage";
+            this.settingsPage.Size = new System.Drawing.Size(332, 454);
+            this.settingsPage.State = System.Windows.Forms.CheckState.Unchecked;
+            this.settingsPage.TabIndex = 7;
+            this.settingsPage.Hide();
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(1058, 1455);
-            this.Controls.Add(this.settingsPageSaveButton);
-            this.Controls.Add(this.settingsPageNotificationCheckbox);
-            this.Controls.Add(this.settingsPageNotificationLabel);
-            this.Controls.Add(this.settingsPageTitleLabel);
-            this.Controls.Add(this.savedGroceryItemsListBox);
+            this.ClientSize = new System.Drawing.Size(332, 506);
+            this.Controls.Add(this.settingsPage);
             this.Controls.Add(this.searchPageSearchButton);
             this.Controls.Add(this.searchPageSearchBox);
             this.Controls.Add(this.mainPageLogoBox);
@@ -247,7 +178,7 @@ namespace SaveYourGroceries
             this.Controls.Add(this.mainPageSearchButton);
             this.Controls.Add(this.mainPageSearchBox);
             this.Controls.Add(this.navBar);
-            this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.navBar.ResumeLayout(false);
@@ -270,10 +201,6 @@ namespace SaveYourGroceries
         private System.Windows.Forms.PictureBox mainPageLogoBox;
         private Button searchPageSearchButton;
         private TextBox searchPageSearchBox;
-        private ListBox savedGroceryItemsListBox;
-        private Label settingsPageTitleLabel;
-        private Label settingsPageNotificationLabel;
-        private CheckBox settingsPageNotificationCheckbox;
-        private Button settingsPageSaveButton;
+        private SettingsPage settingsPage;
     }
 }

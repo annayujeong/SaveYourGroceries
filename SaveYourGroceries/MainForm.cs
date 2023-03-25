@@ -147,22 +147,5 @@ namespace SaveYourGroceries
             }
         }
 
-        private void settingsPageSaveButton_Click(object sender, EventArgs e)
-        {
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            Notification notification = new Notification();
-
-            if (this.settingsPageNotificationCheckbox.Checked)
-            {
-                config.AppSettings.Settings["notificationCheckboxStatus"].Value = "true";
-                notification.UpdateNotificationStatus(true);
-            } else
-            {
-                config.AppSettings.Settings["notificationCheckboxStatus"].Value = "false";
-                notification.UpdateNotificationStatus(false);
-            }
-            config.Save(ConfigurationSaveMode.Modified);
-            ConfigurationManager.RefreshSection("appSettings");
-        }
     }
 }

@@ -1,38 +1,78 @@
 ﻿using Microsoft.Toolkit.Uwp.Notifications;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Quartz;
 using SaveYourGroceriesLib;
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace SaveYourGroceries
 {
-    [TestClass]
-    public class PriceUpdate
+    /// <summary>
+    /// Author: Anna
+    /// Contain reading saved item json file and get new prices.
+    /// Send a notification If lower prices are found.
+    /// </summary>
+    public class PriceUpdate: IJob
     {
         List<Item> savedItems = null;
-        List<Item> updatedItems = null;
+        List<Item> updatedItems = new List<Item>();
+
+        public List<Item> SavedItems { 
+            get {  return savedItems; }
+            set { savedItems = value; }
+        }
+
+        public List<Item> UpdatedItems { 
+            get { return updatedItems; }
+            set { updatedItems = value; }
+        }
 
         JSONParser parser = new JSONParser();
 
         //TODO: can be deleted in the future
         private string testJSON = "[{\"name\":\"Apple\",\"price\":\"3.45\",\"imageUrl\":\"https://upload.wikimedia.org/wikipedia/commons/0/07/Whole_apple_and_bitten_apple.jpg\",\"store\":\"Superstore\",\"itemURL\":\"https://en.wikipedia.org/wiki/Main_Page\"},{\"name\":\"Pear\",\"price\":\"4.56\",\"imageUrl\":\"https://upload.wikimedia.org/wikipedia/commons/9/99/Four_pears.jpg\",\"store\":\"Save on Foods\",\"itemURL\":\"https://en.wikipedia.org/wiki/Main_Page\"},{\"name\":\"Strawberries\",\"price\":\"9.43\",\"imageUrl\":\"https://upload.wikimedia.org/wikipedia/commons/6/64/Garden_strawberry_%28Fragaria_%C3%97_ananassa%29_single.jpg\",\"store\":\"Walmart\",\"itemURL\":\"https://en.wikipedia.org/wiki/Main_Page\"}]";
 
-        [TestMethod]
-        public void Test001ReadSavedList()
+        /// <summary>
+        /// Combine and execute all functions needed to push notification.
+        /// </summary>
+        /// <param name="context">IJobExecutionContext</param>
+        /// <returns>CompletedTask</returns>
+        public async Task Execute(IJobExecutionContext context)
         {
-            savedItems = parser.deserializeItems();
-            foreach (var item in savedItems)
+            bool isSavedList = ReadSavedList();
+            if (isSavedList)
             {
-                Console.WriteLine(item.name);
+                GetNewPrices();
+                PushNotificationOnLowerPriceFound();
             }
-            Assert.IsNotNull(this.savedItems);
+            await Task.CompletedTask;
         }
 
-        [TestMethod]
-        public void Test002GetNewPrices()
+        /// <summary>
+        /// Read saved list json file and store it in a list.
+        /// </summary>
+        public bool ReadSavedList()
         {
+            savedItems = parser.deserializeItems();
+            if (savedItems == null)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Loop through the list, get new prices for the items and save in a list.
+        /// </summary>
+        public void GetNewPrices()
+        {
+            Console.WriteLine("in GetNewPrices");
+
             WebScraper webScraper = new WebScraper();
+
             foreach (var item in savedItems)
             {
                 switch (item.store)
@@ -50,46 +90,50 @@ namespace SaveYourGroceries
             webScraper.driver.Quit();
         }
 
-        [TestMethod]
-        public void Test003WriteUpdatedPrices()
+        /// <summary>
+        /// Push notification if lower price of the item is found.
+        /// </summary>
+        /// <returns>count of pushed notification</returns>
+        public int PushNotificationOnLowerPriceFound()
         {
-            parser.serializeItems(updatedItems, Constants.JSON_UPDATED_FILE_LOCATION);
-        }
-
-        // if we want to use SaveYourGroceries Settings.settings,
-        // get Settings.Default.notificationCheckboxStatus
-        [TestMethod]
-        public void Test004PushNotificationOnLowerPriceFound()
-        {
-            bool isNotificationOn = Convert.ToBoolean(File.ReadAllText(Constants.NOTI_TXT_FILE_LOCATION));
-            if (!isNotificationOn)
-            {
-                return;
-            }
-
+            int notificationCount = 0;
             for (int index = 0; index < updatedItems.Count; index++)
             {
                 Item updatedItem = updatedItems[index];
-                Item savedItem = savedItems[index];
+                Item originalItem = savedItems[index];
 
-                if (int.Parse(updatedItem.price) < int.Parse(savedItem.price))
+                double updatedPrice = ExtractDoubleFromString(updatedItem.price);
+                double originalPrice = ExtractDoubleFromString(originalItem.price);
+
+                if (updatedPrice < originalPrice)
                 {
+                    double priceDifference = originalPrice - updatedPrice;
                     new ToastContentBuilder()
-                         .AddHeader("header", "New Price Found!", "TODO")
-                         .AddText("We found your saved item " + savedItem.name
+                         .AddHeader("header", "New Price Found!", "")
+                         .AddText("We found your saved item " + updatedItem.name
                                   + " with $"
-                                  + (int.Parse(savedItem.price) - int.Parse(updatedItem.price))
+                                  + priceDifference.ToString()
                                   + " lower price")
                          .Show();
+                    notificationCount++;
                 }
             }
+            return notificationCount;
         }
 
-        //[TestMethod]
-        //public void Test000()
-        //{
-        //    Console.WriteLine("hi from anna");
-        //    Assert.Fail();
-        //}
+        public double ExtractDoubleFromString(string priceString)
+        {
+            double result = 0;
+            try
+            {
+                result = Convert.ToDouble(Regex.Match(priceString, @"\d+(.\d+)?").Value);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return result;
+        }
     }
 }
