@@ -12,6 +12,9 @@ using System.Windows.Forms;
 using SaveYourGroceriesLib;
 using Newtonsoft.Json;
 using System.IO;
+using System.Net.Mime;
+using Toggle = SaveYourGroceries.Toggle;
+using System.Drawing.Text;
 
 namespace SaveYourGroceries
 {
@@ -25,7 +28,11 @@ namespace SaveYourGroceries
 
         public Item item;
 
+        string queriedItem;
+
         public SavedItemsList savedItems;
+
+        ArrayList storesToSearch = new ArrayList();
 
         public MainForm()
         {
@@ -39,7 +46,7 @@ namespace SaveYourGroceries
         {
             ShowSearchControls();
 
-            ArrayList itemList = scraper.SearchItem(sender, e, this.mainPageSearchBox.Text);
+            ArrayList itemList = scraper.SearchItem(sender, e, this.mainPageSearchBox.Text, storesToSearch);
             this.mainPageSearchBox.Text = String.Empty;
             DisplaySearchedItems(sender, e, itemList);
         }
@@ -53,7 +60,7 @@ namespace SaveYourGroceries
 
         private void searchPageSearchButton_Click(object sender, EventArgs e)
         {
-            ArrayList itemList = scraper.SearchItem(sender, e, this.searchPageSearchBox.Text);
+            ArrayList itemList = scraper.SearchItem(sender, e, this.searchPageSearchBox.Text, storesToSearch);
             this.searchPageSearchBox.Text = String.Empty;
             DisplaySearchedItems(sender, e, itemList);
         }
@@ -63,6 +70,77 @@ namespace SaveYourGroceries
             ShowMainControls();
         }
 
+
+        // ---------------- Toggle Button functionality -------------------- // 
+
+        /// <summary>
+        /// Toggle buttons that displays / hides search results from the Searh Results page. 
+        /// It provides users with a Message indicating the stores they will receive search results from.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        
+        private void toggleButtonSuperstore_Load(object sender, EventArgs e)
+        {
+            if (toggleButtonSuperstore.Check == true)
+            {
+                storesToSearch.Add("Superstore");
+               //scraper.SearchItem(sender, e, this.toggleButton1);
+                
+                MessageBox.Show("You are now going to receive search results from Superstore!");
+
+
+            }
+            else if (toggleButtonSuperstore.Check == false)
+            {
+                MessageBox.Show("You are not going to receive search results from Superstore");
+                            
+                   storesToSearch.Remove("Superstore");             
+            }
+        }
+
+        private void toggleButtonWalmart_Load(object sender, EventArgs e)
+        {
+            if (toggleButtonWalmart.Check == true)
+            {
+                storesToSearch.Add("Walmart");
+                MessageBox.Show("You are now going to receive search results from Walmart!");
+            }
+
+            else if (toggleButtonWalmart.Check == false)
+            {
+                MessageBox.Show("You are not going to receive search results from Walmart");
+                storesToSearch.Remove("Walmart");
+            }
+        }
+
+        private void toggleButtonTnT_Load(object sender, EventArgs e)
+        {
+            if (toggleButtonTnT.Check == true)
+            {
+                storesToSearch.Add("TNT");
+                MessageBox.Show("You are now going to receive search results from T & T!");
+            }
+            else if (toggleButtonTnT.Check == false)
+            {
+                MessageBox.Show("You are not going to receive search results from T & T");
+                storesToSearch.Remove("TNT");
+            }
+        }
+
+        private void toggleButtonSaveOnFoods_Load(object sender, EventArgs e)
+        {
+            if (toggleButtonSaveOnFoods.Check == true)
+            {
+                storesToSearch.Add("SaveOnFoods");
+                MessageBox.Show("You are now going to receive search results from Save On Foods!");
+            }
+            else if (toggleButtonSaveOnFoods.Check == false)
+            {
+               MessageBox.Show("You are not going to receive search results from Save On Foods");
+                storesToSearch.Remove("SaveOnFoods");
+            }     
+        }
 
 
         private void DisplaySearchedItems(object sender, EventArgs e, ArrayList itemList)
@@ -108,7 +186,6 @@ namespace SaveYourGroceries
 
             this.Controls.Add(searchedItemsList);
         }
-
 
 
 
@@ -178,7 +255,9 @@ namespace SaveYourGroceries
             foreach (var control in Controls.OfType<Control>())
             {
                 controlName = control.Name;
-                if (controlName.Contains("mainPage") || controlName == "navBar" || controlName == "savedGroceryItemsListBox")
+                if (controlName.Contains("mainPage") || controlName == "navBar" || controlName == "groupBoxCheckbox" || controlName == "toggleButtonSuperstore" || controlName == "toggleButtonWalmart" || controlName == "toggleButtonTnT" || controlName == "toggleButtonSaveOnFoods"
+                                              || controlName == "labelToggleInstructions" || controlName == "labelForSuperstoreToggle" || controlName == "labelForWalmartToggle" || controlName == "labelForTnTToggle" || controlName == "labelForSaveOnFoodsToggle")
+                                         
                 {
                     control.Show();
                 }
@@ -195,7 +274,8 @@ namespace SaveYourGroceries
             foreach (var control in Controls.OfType<Control>())
             {
                 controlName = control.Name;
-                if (controlName.Contains("searchPage") || controlName == "navBar")
+                if (controlName.Contains("searchPage") || controlName == "navBar" )
+                                         
                 {
                     control.Show();
                 }
@@ -222,7 +302,6 @@ namespace SaveYourGroceries
                 }
             }
         }
-
 
     }
 }

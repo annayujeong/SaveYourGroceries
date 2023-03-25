@@ -31,18 +31,44 @@ namespace SaveYourGroceriesLib
         // limitation -> grabbing only first element that matches the class name/xpath/etc, so
         // generic query such as "apple" may result in different types of apples being compared
 
-        public ArrayList SearchItem(object sender, EventArgs e, string itemName)
+        public ArrayList SearchItem(object sender, EventArgs e, string itemName, ArrayList storesToSearch)
         {
 
             ArrayList items = new ArrayList();
 
+            foreach (string item in storesToSearch)
+            {
+                
+                if (item.Equals("Superstore"))
+                {
+                    items.Add(SearchItemSuperstore(itemName));
+                }
 
+               
+                if (item.Equals("Walmart"))
+                {
+                    items.Add(SearchItemWalmart(itemName));
+                }
+
+              
+                if (item.Equals("TNT"))
+                {
+                    items.Add(SearchItemsTandT(itemName));
+                }
+
+                
+                if (item.Equals("SaveOnFoods"))
+                {
+                    items.Add(SearchItemSaveOnFoods(itemName));
+                }
+
+            }
             // TODO: Searching more than once causes Walmart to block further searches
             
-            items.Add(SearchItemWalmart(itemName));
-            items.Add(SearchItemSaveOnFoods(itemName));
-            items.Add(SearchItemsTandT(itemName));
-            items.Add(SearchItemSuperstore(itemName));    
+            //items.Add(SearchItemWalmart(itemName));
+            //items.Add(SearchItemSaveOnFoods(itemName));
+            //items.Add(SearchItemsTandT(itemName));
+            //items.Add(SearchItemSuperstore(itemName));    
 
 
             foreach(Item item in items)
