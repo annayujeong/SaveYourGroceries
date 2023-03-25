@@ -1,8 +1,8 @@
 ﻿using System;
-//using System.Text.Json;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -171,7 +171,7 @@ namespace SaveYourGroceries
                 searchedItem.storeNameTextBox.Text = item.store;
 
                 // temporary code to handle when Walmart blocks us lol, need to change
-                if (item.imageUrl == "")
+                if(item.imageUrl == "")
                 {
                     searchedItem.itemPictureBox.Load("https://static.vecteezy.com/system/resources/thumbnails/000/536/310/small/food_paper_bag-01.jpg");
                 } else
@@ -303,5 +303,39 @@ namespace SaveYourGroceries
             }
         }
 
+        private void ShowSettingsControls()
+        {
+            string controlName;
+            foreach (var control in Controls.OfType<Control>())
+            {
+                controlName = control.Name;
+                if (controlName.Contains("settingsPage") || controlName == "navBar")
+                {
+                    control.Show();
+                }
+                else
+                {
+                    control.Hide();
+                }
+            }
+        }
+
+        private void settingsPageSaveButton_Click(object sender, EventArgs e)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            Notification notification = new Notification();
+
+            if (this.settingsPageNotificationCheckbox.Checked)
+            {
+                config.AppSettings.Settings["notificationCheckboxStatus"].Value = "true";
+                notification.UpdateNotificationStatus(true);
+            } else
+            {
+                config.AppSettings.Settings["notificationCheckboxStatus"].Value = "false";
+                notification.UpdateNotificationStatus(false);
+            }
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+        }
     }
 }

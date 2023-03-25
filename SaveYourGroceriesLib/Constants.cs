@@ -20,6 +20,19 @@ namespace SaveYourGroceriesLib
         public static string JSON_FILE_LOCATION = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
             JSON_FILE_NAME);
 
+        // The name of updated Save Your Groceries' JSON file
+        public static string JSON_UPDATED_FILE_NAME = "SaveYourGroceriesUpdated.json";
+
+        // Location of update Save Your Groceries' JSON file
+        // Should be roughly C:\Users\Home\AppData\Roaming
+        public static string JSON_UPDATED_FILE_LOCATION = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+            JSON_UPDATED_FILE_NAME);
+
+        public static string NOTI_TXT_FILE_NAME = "SaveYourGroceriesNotificationSetting.txt";
+        public static string NOTI_TXT_FILE_LOCATION = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+            NOTI_TXT_FILE_NAME);
+
+
         // Constants for HTML/CSS selectors for respective grocery store websites
 
         // Superstore
