@@ -5,6 +5,8 @@ using SaveYourGroceriesLib;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace SaveYourGroceries
 {
@@ -16,7 +18,7 @@ namespace SaveYourGroceries
     public class PriceUpdate: IJob
     {
         List<Item> savedItems = null;
-        List<Item> updatedItems = null;
+        List<Item> updatedItems = new List<Item>();
 
         public List<Item> SavedItems { 
             get {  return savedItems; }
@@ -29,7 +31,6 @@ namespace SaveYourGroceries
         }
 
         JSONParser parser = new JSONParser();
-        WebScraper webScraper = new WebScraper();
 
         //TODO: can be deleted in the future
         private string testJSON = "[{\"name\":\"Apple\",\"price\":\"3.45\",\"imageUrl\":\"https://upload.wikimedia.org/wikipedia/commons/0/07/Whole_apple_and_bitten_apple.jpg\",\"store\":\"Superstore\",\"itemURL\":\"https://en.wikipedia.org/wiki/Main_Page\"},{\"name\":\"Pear\",\"price\":\"4.56\",\"imageUrl\":\"https://upload.wikimedia.org/wikipedia/commons/9/99/Four_pears.jpg\",\"store\":\"Save on Foods\",\"itemURL\":\"https://en.wikipedia.org/wiki/Main_Page\"},{\"name\":\"Strawberries\",\"price\":\"9.43\",\"imageUrl\":\"https://upload.wikimedia.org/wikipedia/commons/6/64/Garden_strawberry_%28Fragaria_%C3%97_ananassa%29_single.jpg\",\"store\":\"Walmart\",\"itemURL\":\"https://en.wikipedia.org/wiki/Main_Page\"}]";
@@ -41,23 +42,26 @@ namespace SaveYourGroceries
         /// <returns>CompletedTask</returns>
         public async Task Execute(IJobExecutionContext context)
         {
-            ReadSavedList();
-            GetNewPrices();
-            PushNotificationOnLowerPriceFound();
+            bool isSavedList = ReadSavedList();
+            if (isSavedList)
+            {
+                GetNewPrices();
+                PushNotificationOnLowerPriceFound();
+            }
             await Task.CompletedTask;
         }
 
         /// <summary>
         /// Read saved list json file and store it in a list.
         /// </summary>
-        public void ReadSavedList()
+        public bool ReadSavedList()
         {
             savedItems = parser.deserializeItems();
-            foreach (var item in savedItems)
+            if (savedItems == null)
             {
-                Console.WriteLine(item.name);
+                return false;
             }
-            Assert.IsNotNull(this.savedItems);
+            return true;
         }
 
         /// <summary>
@@ -65,6 +69,10 @@ namespace SaveYourGroceries
         /// </summary>
         public void GetNewPrices()
         {
+            Console.WriteLine("in GetNewPrices");
+
+            WebScraper webScraper = new WebScraper();
+
             foreach (var item in savedItems)
             {
                 switch (item.store)
@@ -92,21 +100,40 @@ namespace SaveYourGroceries
             for (int index = 0; index < updatedItems.Count; index++)
             {
                 Item updatedItem = updatedItems[index];
-                Item savedItem = savedItems[index];
+                Item originalItem = savedItems[index];
 
-                if (double.Parse(updatedItem.price) < double.Parse(savedItem.price))
+                double updatedPrice = ExtractDoubleFromString(updatedItem.price);
+                double originalPrice = ExtractDoubleFromString(originalItem.price);
+
+                if (updatedPrice < originalPrice)
                 {
+                    double priceDifference = originalPrice - updatedPrice;
                     new ToastContentBuilder()
                          .AddHeader("header", "New Price Found!", "")
-                         .AddText("We found your saved item " + savedItem.name
+                         .AddText("We found your saved item " + updatedItem.name
                                   + " with $"
-                                  + (int.Parse(savedItem.price) - int.Parse(updatedItem.price))
+                                  + priceDifference.ToString()
                                   + " lower price")
                          .Show();
                     notificationCount++;
                 }
             }
             return notificationCount;
+        }
+
+        public double ExtractDoubleFromString(string priceString)
+        {
+            double result = 0;
+            try
+            {
+                result = Convert.ToDouble(Regex.Match(priceString, @"\d+(.\d+)?").Value);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return result;
         }
     }
 }
