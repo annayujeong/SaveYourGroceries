@@ -39,7 +39,6 @@ namespace SaveYourGroceries
             this.searchMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.navBar = new System.Windows.Forms.MenuStrip();
-            this.mainPageSearchButton = new System.Windows.Forms.Button();
             this.pageTitleTextBox = new System.Windows.Forms.TextBox();
             this.mainPageLogoBox = new System.Windows.Forms.PictureBox();
             this.searchPageSearchButton = new System.Windows.Forms.Button();
@@ -49,17 +48,10 @@ namespace SaveYourGroceries
             this.labelForWalmartToggle = new System.Windows.Forms.Label();
             this.labelForTnTToggle = new System.Windows.Forms.Label();
             this.labelForSaveOnFoodsToggle = new System.Windows.Forms.Label();
-            this.settingsPageTitleLabel = new System.Windows.Forms.Label();
-            this.settingsPageNotificationLabel = new System.Windows.Forms.Label();
-            this.settingsPageNotificationCheckbox = new System.Windows.Forms.CheckBox();
-            this.settingsPageSaveButton = new System.Windows.Forms.Button();
             this.savedItemsListLabel = new System.Windows.Forms.Label();
-            this.toggleButtonSaveOnFoods = new SaveYourGroceries.Toggle();
-            this.toggleButtonTnT = new SaveYourGroceries.Toggle();
-            this.toggleButtonWalmart = new SaveYourGroceries.Toggle();
-            this.toggleButtonSuperstore = new SaveYourGroceries.Toggle();
             this.savedItemsListPageRefreshButton = new System.Windows.Forms.Button();
             this.settingsPage = new SaveYourGroceries.SettingsPage();
+            this.mainPageSearchButton = new System.Windows.Forms.Button();
             this.toggleButtonSaveOnFoods = new SaveYourGroceries.Toggle();
             this.toggleButtonTnT = new SaveYourGroceries.Toggle();
             this.toggleButtonWalmart = new SaveYourGroceries.Toggle();
@@ -112,26 +104,12 @@ namespace SaveYourGroceries
             this.savedListMenu,
             this.searchMenu,
             this.settingsMenu});
-            this.navBar.Location = new System.Drawing.Point(0, 456);
+            this.navBar.Location = new System.Drawing.Point(0, 886);
             this.navBar.Name = "navBar";
             this.navBar.Padding = new System.Windows.Forms.Padding(16, 5, 0, 5);
-            this.navBar.Size = new System.Drawing.Size(2376, 119);
+            this.navBar.Size = new System.Drawing.Size(1455, 119);
             this.navBar.TabIndex = 0;
             this.navBar.Text = "menuStrip1";
-            // 
-            // mainPageSearchButton
-            // 
-            this.mainPageSearchButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(191)))), ((int)(((byte)(163)))));
-            this.mainPageSearchButton.FlatAppearance.BorderSize = 0;
-            this.mainPageSearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.mainPageSearchButton.ForeColor = System.Drawing.SystemColors.Window;
-            this.mainPageSearchButton.Location = new System.Drawing.Point(269, 196);
-            this.mainPageSearchButton.Name = "mainPageSearchButton";
-            this.mainPageSearchButton.Size = new System.Drawing.Size(141, 74);
-            this.mainPageSearchButton.TabIndex = 2;
-            this.mainPageSearchButton.Text = "Go";
-            this.mainPageSearchButton.UseVisualStyleBackColor = false;
-            this.mainPageSearchButton.Click += new System.EventHandler(this.mainSearchButton_Click);
             // 
             // pageTitleTextBox
             // 
@@ -232,60 +210,6 @@ namespace SaveYourGroceries
             this.labelForSaveOnFoodsToggle.TabIndex = 24;
             this.labelForSaveOnFoodsToggle.Text = "Save On Foods";
             // 
-            // settingsPageTitleLabel
-            // 
-            this.settingsPageTitleLabel.AutoSize = true;
-            this.settingsPageTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.settingsPageTitleLabel.Location = new System.Drawing.Point(85, 74);
-            this.settingsPageTitleLabel.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.settingsPageTitleLabel.Name = "settingsPageTitleLabel";
-            this.settingsPageTitleLabel.Size = new System.Drawing.Size(223, 63);
-            this.settingsPageTitleLabel.TabIndex = 8;
-            this.settingsPageTitleLabel.Text = "Settings";
-            // 
-            // settingsPageNotificationLabel
-            // 
-            this.settingsPageNotificationLabel.Location = new System.Drawing.Point(0, 0);
-            this.settingsPageNotificationLabel.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.settingsPageNotificationLabel.Name = "settingsPageNotificationLabel";
-            this.settingsPageNotificationLabel.Size = new System.Drawing.Size(224, 45);
-            this.settingsPageNotificationLabel.TabIndex = 12;
-            // 
-            // settingsPageNotificationCheckbox
-            // 
-            this.settingsPageNotificationCheckbox.AutoSize = true;
-            this.settingsPageNotificationCheckbox.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.settingsPageNotificationCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.settingsPageNotificationCheckbox.Location = new System.Drawing.Point(144, 365);
-            this.settingsPageNotificationCheckbox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.settingsPageNotificationCheckbox.Name = "settingsPageNotificationCheckbox";
-            this.settingsPageNotificationCheckbox.Size = new System.Drawing.Size(719, 44);
-            this.settingsPageNotificationCheckbox.TabIndex = 10;
-            this.settingsPageNotificationCheckbox.Text = "Get push notification on finding lower price";
-            this.settingsPageNotificationCheckbox.UseVisualStyleBackColor = true;
-            // 
-            // settingsPageSaveButton
-            // 
-            this.settingsPageSaveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(191)))), ((int)(((byte)(163)))));
-            this.settingsPageSaveButton.FlatAppearance.BorderSize = 0;
-            this.settingsPageSaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.settingsPageSaveButton.ForeColor = System.Drawing.SystemColors.Window;
-            this.settingsPageSaveButton.Location = new System.Drawing.Point(892, 330);
-            this.settingsPageSaveButton.Margin = new System.Windows.Forms.Padding(21, 17, 21, 17);
-            this.settingsPageSaveButton.Name = "settingsPageSaveButton";
-            this.settingsPageSaveButton.Size = new System.Drawing.Size(176, 97);
-            this.settingsPageSaveButton.TabIndex = 11;
-            this.settingsPageSaveButton.Text = "Save";
-            this.settingsPageSaveButton.UseVisualStyleBackColor = false;
-            this.settingsPageSaveButton.Click += new System.EventHandler(this.settingsPageSaveButton_Click);
-            this.settingsPage.Location = new System.Drawing.Point(0, 1);
-            this.settingsPage.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
-            this.settingsPage.Name = "settingsPage";
-            this.settingsPage.Size = new System.Drawing.Size(332, 454);
-            this.settingsPage.State = System.Windows.Forms.CheckState.Unchecked;
-            this.settingsPage.TabIndex = 7;
-            this.settingsPage.Hide();
-            // 
             // savedItemsListLabel
             // 
             this.savedItemsListLabel.AutoSize = true;
@@ -303,7 +227,7 @@ namespace SaveYourGroceries
             this.savedItemsListPageRefreshButton.FlatAppearance.BorderSize = 0;
             this.savedItemsListPageRefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.savedItemsListPageRefreshButton.ForeColor = System.Drawing.SystemColors.Window;
-            this.savedItemsListPageRefreshButton.Location = new System.Drawing.Point(915, 101);
+            this.savedItemsListPageRefreshButton.Location = new System.Drawing.Point(860, 92);
             this.savedItemsListPageRefreshButton.Margin = new System.Windows.Forms.Padding(21, 17, 21, 17);
             this.savedItemsListPageRefreshButton.Name = "savedItemsListPageRefreshButton";
             this.savedItemsListPageRefreshButton.Size = new System.Drawing.Size(185, 95);
@@ -314,12 +238,27 @@ namespace SaveYourGroceries
             // 
             // settingsPage
             // 
-            this.settingsPage.Location = new System.Drawing.Point(0, 1);
+            this.settingsPage.Location = new System.Drawing.Point(278, 200);
             this.settingsPage.Margin = new System.Windows.Forms.Padding(0);
             this.settingsPage.Name = "settingsPage";
-            this.settingsPage.Size = new System.Drawing.Size(332, 454);
+            this.settingsPage.Size = new System.Drawing.Size(898, 480);
             this.settingsPage.State = System.Windows.Forms.CheckState.Unchecked;
             this.settingsPage.TabIndex = 7;
+            // 
+            // mainPageSearchButton
+            // 
+            this.mainPageSearchButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(191)))), ((int)(((byte)(163)))));
+            this.mainPageSearchButton.FlatAppearance.BorderSize = 0;
+            this.mainPageSearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.mainPageSearchButton.ForeColor = System.Drawing.SystemColors.Window;
+            this.mainPageSearchButton.Location = new System.Drawing.Point(873, 433);
+            this.mainPageSearchButton.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.mainPageSearchButton.Name = "mainPageSearchButton";
+            this.mainPageSearchButton.Size = new System.Drawing.Size(141, 74);
+            this.mainPageSearchButton.TabIndex = 27;
+            this.mainPageSearchButton.Text = "Go";
+            this.mainPageSearchButton.UseVisualStyleBackColor = false;
+            this.mainPageSearchButton.Click += new System.EventHandler(this.mainSearchButton_Click);
             // 
             // toggleButtonSaveOnFoods
             // 
@@ -374,7 +313,8 @@ namespace SaveYourGroceries
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(2376, 2348);
+            this.ClientSize = new System.Drawing.Size(1455, 1005);
+            this.Controls.Add(this.mainPageSearchButton);
             this.Controls.Add(this.savedItemsListPageRefreshButton);
             this.Controls.Add(this.savedItemsListLabel);
             this.Controls.Add(this.labelForSaveOnFoodsToggle);
@@ -386,17 +326,11 @@ namespace SaveYourGroceries
             this.Controls.Add(this.toggleButtonTnT);
             this.Controls.Add(this.toggleButtonWalmart);
             this.Controls.Add(this.toggleButtonSuperstore);
-            this.Controls.Add(this.settingsPageSaveButton);
-            this.Controls.Add(this.settingsPageNotificationCheckbox);
-            this.Controls.Add(this.settingsPageNotificationLabel);
-            this.Controls.Add(this.settingsPageTitleLabel);
-            this.ClientSize = new System.Drawing.Size(332, 506);
             this.Controls.Add(this.settingsPage);
             this.Controls.Add(this.searchPageSearchButton);
             this.Controls.Add(this.searchPageSearchBox);
             this.Controls.Add(this.mainPageLogoBox);
             this.Controls.Add(this.pageTitleTextBox);
-            this.Controls.Add(this.mainPageSearchButton);
             this.Controls.Add(this.mainPageSearchBox);
             this.Controls.Add(this.navBar);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -417,7 +351,6 @@ namespace SaveYourGroceries
         private System.Windows.Forms.ToolStripMenuItem searchMenu;
         private System.Windows.Forms.ToolStripMenuItem settingsMenu;
         private System.Windows.Forms.MenuStrip navBar;
-        private System.Windows.Forms.Button mainPageSearchButton;
         private System.Windows.Forms.TextBox pageTitleTextBox;
         private System.Windows.Forms.PictureBox mainPageLogoBox;
         private Button searchPageSearchButton;
@@ -431,12 +364,13 @@ namespace SaveYourGroceries
         private Label labelForWalmartToggle;
         private Label labelForTnTToggle;
         private Label labelForSaveOnFoodsToggle;
-        private Label settingsPageTitleLabel;
-        private Label settingsPageNotificationLabel;
-        private CheckBox settingsPageNotificationCheckbox;
-        private Button settingsPageSaveButton;
+        //private Label settingsPageTitleLabel;
+        //private Label settingsPageNotificationLabel;
+        //private CheckBox settingsPageNotificationCheckbox;
+        //private Button settingsPageSaveButton;
         private Label savedItemsListLabel;
         private Button savedItemsListPageRefreshButton;
         private SettingsPage settingsPage;
+        private Button mainPageSearchButton;
     }
 }
