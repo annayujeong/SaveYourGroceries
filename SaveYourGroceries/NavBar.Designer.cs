@@ -37,38 +37,38 @@
             // 
             this.navSavedListButton.Location = new System.Drawing.Point(0, 0);
             this.navSavedListButton.Name = "navSavedListButton";
-            this.navSavedListButton.Size = new System.Drawing.Size(272, 130);
+            this.navSavedListButton.Size = new System.Drawing.Size(229, 109);
             this.navSavedListButton.TabIndex = 0;
             this.navSavedListButton.Text = "Saved";
             this.navSavedListButton.UseVisualStyleBackColor = true;
             // 
             // navSearchButton
             // 
-            this.navSearchButton.Location = new System.Drawing.Point(268, 0);
+            this.navSearchButton.Location = new System.Drawing.Point(226, 0);
             this.navSearchButton.Name = "navSearchButton";
-            this.navSearchButton.Size = new System.Drawing.Size(284, 130);
+            this.navSearchButton.Size = new System.Drawing.Size(239, 109);
             this.navSearchButton.TabIndex = 1;
             this.navSearchButton.Text = "Search";
             this.navSearchButton.UseVisualStyleBackColor = true;
             // 
             // navSettingsButton
             // 
-            this.navSettingsButton.Location = new System.Drawing.Point(546, 0);
+            this.navSettingsButton.Location = new System.Drawing.Point(460, 0);
             this.navSettingsButton.Name = "navSettingsButton";
-            this.navSettingsButton.Size = new System.Drawing.Size(272, 130);
+            this.navSettingsButton.Size = new System.Drawing.Size(229, 109);
             this.navSettingsButton.TabIndex = 2;
             this.navSettingsButton.Text = "Settings";
             this.navSettingsButton.UseVisualStyleBackColor = true;
             // 
             // NavBar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.navSettingsButton);
             this.Controls.Add(this.navSearchButton);
             this.Controls.Add(this.navSavedListButton);
             this.Name = "NavBar";
-            this.Size = new System.Drawing.Size(818, 130);
+            this.Size = new System.Drawing.Size(689, 109);
             this.ResumeLayout(false);
 
         }
