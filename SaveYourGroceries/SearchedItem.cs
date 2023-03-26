@@ -62,89 +62,17 @@ using Item = SaveYourGroceriesLib.Item;
         private void saveItemToJSON(object sender, EventArgs e)
         {
             jsonParser.addItem(item);
-            MessageBox.Show(item.name);
+            
+            MessageBox.Show(item.name + "Has been added to the Saved List");
             MessageBox.Show(jsonParser.getSavedItemsLength().ToString());
             jsonParser.serializeItems();
-
-        }
-
-
-
-        // 
-       // private void saveItemToJsonSavedList_Click(object sender, EventArgs e, List<Item> savedListOfItems, SearchedItem savedGroceryListItem, ArrayList itemList)
-        //{
-           // List<Item> savedItems = new List<Item>();
-
-           // string itemNameValue = Convert.ToString(itemNameTextBox.Text);
-            //string itemPriceValue = Convert.ToString(itemPriceTextBox.Text);
-            //string itemStoreNameValue = Convert.ToString(storeNameTextBox.Text);
-
-
-            //var savedGroceryItem = new SearchedItem(itemNameTextBox.Text, itemPriceTextBox.Text, storeNameTextBox.Text);
-            //var savedGroceryItem = new Item(itemNameValue, itemPriceValue, itemStoreNameValue);
-
-            //savedItems.Add(savedGroceryItem);
-
-            //jsonParser.addItem(savedGroceryItem);
-
-            //jsonParser.serializeItems();
-
-            // Display Saved Item List after
-            //MainForm.DisplaySavedItems();
-
-         // ------------------  Array foreach loop  ---------------------
-            //{
-            //    if (this.Controls["searchedItemsList"] != null)
-            //    {
-            //        this.Controls.Remove(this.Controls["searchedItemsList"]);
-            //    }
-
-            //    SearchedItemsList searchedItemsList = new SearchedItemsList
-            //    {
-            //        Location = new Point(5, 50),
-            //        Name = "searchedItemsList"
-            //    };
-
-            //    int itemBoxHeight = 150;
-            //    int itemBoxGap = 5;
-
-
-            //    // TODO: handle if an item is not found, or one or more properties is not found
-            //    // -> current web parse methods all return an Item, even if that Item is null
-            //    foreach (Item item in itemList)
-            //    {
-            //        SearchedItem searchedItem = new SearchedItem();
-            //        searchedItem.itemNameTextBox.Text = item.name;
-            //        searchedItem.itemPriceTextBox.Text = item.price;
-            //        searchedItem.storeNameTextBox.Text = item.store;
-                    
-
-            //        // temporary code to handle when Walmart blocks us lol, need to change
-            //        if (item.imageUrl == "")
-            //        {
-            //            searchedItem.itemPictureBox.Load("https://static.vecteezy.com/system/resources/thumbnails/000/536/310/small/food_paper_bag-01.jpg");
-            //        }
-            //        else
-            //        {
-            //            searchedItem.itemPictureBox.Load(item.imageUrl);
-            //        }
-
-            //        searchedItem.Location = new Point(5, itemBoxGap);
-            //        savedItemsList.Add(searchedItem);
-            //        itemBoxGap += itemBoxHeight;
-            //    }
-
-            //    this.Controls.Add(savedItemsList);
-
-            //    jsonParser.addItem(savedGroceryItem);
-
-            //    jsonParser.serializeItems();
-            //}
-
+            
 
         }
 
     }
+
+ }
 
 
 

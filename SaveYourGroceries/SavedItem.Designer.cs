@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.savedItemRemoveButton = new System.Windows.Forms.Button();
+           
             this.savedItemNameTextBox = new System.Windows.Forms.TextBox();
             this.savedItemPriceTextBox = new System.Windows.Forms.TextBox();
             this.savedItemStoreTextBox = new System.Windows.Forms.TextBox();
@@ -50,32 +51,48 @@
             // 
             // savedItemNameTextBox
             // 
-            this.savedItemNameTextBox.Location = new System.Drawing.Point(335, 32);
+            this.savedItemNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            this.savedItemNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.savedItemNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.savedItemNameTextBox.Location = new System.Drawing.Point(335, 42);
+            this.savedItemNameTextBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.savedItemNameTextBox.Name = "savedItemNameTextBox";
             this.savedItemNameTextBox.Size = new System.Drawing.Size(384, 38);
-            this.savedItemNameTextBox.TabIndex = 1;
+            this.savedItemNameTextBox.TabIndex = 7;
+            this.savedItemNameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // savedItemPriceTextBox
             // 
-            this.savedItemPriceTextBox.Location = new System.Drawing.Point(335, 99);
+            this.savedItemPriceTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            this.savedItemPriceTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.savedItemPriceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.savedItemPriceTextBox.Location = new System.Drawing.Point(335, 107);
+            this.savedItemPriceTextBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.savedItemPriceTextBox.Name = "savedItemPriceTextBox";
             this.savedItemPriceTextBox.Size = new System.Drawing.Size(384, 38);
-            this.savedItemPriceTextBox.TabIndex = 2;
+            this.savedItemPriceTextBox.TabIndex = 8;
+            this.savedItemPriceTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // savedItemStoreTextBox
             // 
-            this.savedItemStoreTextBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.savedItemStoreTextBox.Location = new System.Drawing.Point(335, 169);
+            this.savedItemStoreTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            this.savedItemStoreTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.savedItemStoreTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.savedItemStoreTextBox.Location = new System.Drawing.Point(335, 178);
+            this.savedItemStoreTextBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.savedItemStoreTextBox.Name = "savedItemStoreTextBox";
             this.savedItemStoreTextBox.Size = new System.Drawing.Size(384, 38);
-            this.savedItemStoreTextBox.TabIndex = 3;
+            this.savedItemStoreTextBox.TabIndex = 9;
+            this.savedItemStoreTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // savedItemPictureBox
             // 
-            this.savedItemPictureBox.Location = new System.Drawing.Point(23, 32);
+            this.savedItemPictureBox.Location = new System.Drawing.Point(26, 19);
+            this.savedItemPictureBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.savedItemPictureBox.Name = "savedItemPictureBox";
             this.savedItemPictureBox.Size = new System.Drawing.Size(293, 262);
-            this.savedItemPictureBox.TabIndex = 4;
+            this.savedItemPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.savedItemPictureBox.TabIndex = 10;
             this.savedItemPictureBox.TabStop = false;
             // 
             // SavedItem

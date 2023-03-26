@@ -9,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SearchedItems = SaveYourGroceries.SearchedItem;
 
 namespace SaveYourGroceries
 {
@@ -34,13 +33,13 @@ namespace SaveYourGroceries
         /// <param name="e"></param>
         private void removeItemFromJSON(object sender, EventArgs e)
         {
-            MessageBox.Show("Button Has Been Clicked");
             jsonParser.removeItem(item);
             MessageBox.Show(item.name + "Has been removed from the list");
             jsonParser.serializeItems();
             jsonParser.deserializeItems();
             MessageBox.Show(jsonParser.getSavedItemsLength().ToString());
-            
+            jsonParser.getSavedItems();
+          
         }
        
       }

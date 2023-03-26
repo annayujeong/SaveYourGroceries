@@ -58,6 +58,13 @@ namespace SaveYourGroceries
             DisplaySavedItemList(sender, e, jsonParser.getSavedItems());
         }
 
+        private void refreshSavedItemsListButton_Click(object sender, EventArgs e)
+        {
+            ShowSaveControls();
+
+            DisplaySavedItemList(sender, e, jsonParser.getSavedItems());
+        }
+
         private void searchPageSearchButton_Click(object sender, EventArgs e)
         {
             ArrayList itemList = scraper.SearchItem(sender, e, this.searchPageSearchBox.Text, storesToSearch);
@@ -84,13 +91,15 @@ namespace SaveYourGroceries
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        /// 
+
+        // ---------------- Toggle Button Superstore -------------------- // 
 
         private void toggleButtonSuperstore_Load(object sender, EventArgs e)
         {
             if (toggleButtonSuperstore.Check == true)
             {
                 storesToSearch.Add("Superstore");
-               //scraper.SearchItem(sender, e, this.toggleButton1);
                 
                 MessageBox.Show("You are now going to receive search results from Superstore!");
 
@@ -103,6 +112,8 @@ namespace SaveYourGroceries
                    storesToSearch.Remove("Superstore");             
             }
         }
+
+        // ---------------- Toggle Button Walmart -------------------- // 
 
         private void toggleButtonWalmart_Load(object sender, EventArgs e)
         {
@@ -119,6 +130,8 @@ namespace SaveYourGroceries
             }
         }
 
+        // ---------------- Toggle Button T&T -------------------- // 
+
         private void toggleButtonTnT_Load(object sender, EventArgs e)
         {
             if (toggleButtonTnT.Check == true)
@@ -132,6 +145,8 @@ namespace SaveYourGroceries
                 storesToSearch.Remove("TNT");
             }
         }
+
+        // ---------------- Toggle Button Save on Foods -------------------- // 
 
         private void toggleButtonSaveOnFoods_Load(object sender, EventArgs e)
         {
@@ -206,7 +221,7 @@ namespace SaveYourGroceries
         public void DisplaySavedItemList(object sender, EventArgs e, ArrayList savedList)
         {
 
-            MessageBox.Show("Clicked");
+            //MessageBox.Show("Clicked");
 
             if (this.Controls["savedItemsList"] != null)
             {
@@ -253,7 +268,6 @@ namespace SaveYourGroceries
             this.Controls.Add(savedItemsList);
         }
 
-
         private void ShowMainControls()
         {
             string controlName;
@@ -297,7 +311,7 @@ namespace SaveYourGroceries
             foreach (var control in Controls.OfType<Control>())
             {
                 controlName = control.Name;
-                if (controlName.Contains("savedItemsList") || controlName == "navBar")
+                if (controlName.Contains("savedItemsList") || controlName == "navBar" || controlName == "savedItemsListLabel" || controlName == "savedItemsListPageRefreshButton")
                 {
                     control.Show();
                 }

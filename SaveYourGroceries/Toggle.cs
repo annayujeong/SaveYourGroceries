@@ -11,8 +11,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/// <summary>
+/// 
+/// This class represents the Toggle button created in a separate User Control Class file.
+/// Functionality of the button includes the UI appearance when button is toggled on or off. 
+/// Also has the public boolean value Check that is tied to any conditional statements that we attached
+/// to it, specifically whether the user will receive search results from a grocery store of their choice. 
+/// 
+/// </summary>
+
 namespace SaveYourGroceries
 {
+ 
     public partial class Toggle : UserControl
     {
         public Toggle()
@@ -48,10 +58,6 @@ namespace SaveYourGroceries
         {
             Check = !check;
         }
-          //  void setApparence() 
-          //{
-
-          //}
 
         void onChangeAppearance()
         {

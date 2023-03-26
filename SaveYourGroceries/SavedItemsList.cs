@@ -26,6 +26,9 @@ namespace SaveYourGroceries
             this.Controls.Add(searchedItem);
         }
 
-
+        internal void Remove(SavedItem searchedItem)
+        {
+            this.Controls.Remove(searchedItem);
+        }
     }
 }

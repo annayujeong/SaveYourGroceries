@@ -49,14 +49,16 @@ namespace SaveYourGroceries
             this.labelForWalmartToggle = new System.Windows.Forms.Label();
             this.labelForTnTToggle = new System.Windows.Forms.Label();
             this.labelForSaveOnFoodsToggle = new System.Windows.Forms.Label();
-            this.toggleButtonSaveOnFoods = new SaveYourGroceries.Toggle();
-            this.toggleButtonTnT = new SaveYourGroceries.Toggle();
-            this.toggleButtonWalmart = new SaveYourGroceries.Toggle();
-            this.toggleButtonSuperstore = new SaveYourGroceries.Toggle();
             this.settingsPageTitleLabel = new System.Windows.Forms.Label();
             this.settingsPageNotificationLabel = new System.Windows.Forms.Label();
             this.settingsPageNotificationCheckbox = new System.Windows.Forms.CheckBox();
             this.settingsPageSaveButton = new System.Windows.Forms.Button();
+            this.savedItemsListLabel = new System.Windows.Forms.Label();
+            this.toggleButtonSaveOnFoods = new SaveYourGroceries.Toggle();
+            this.toggleButtonTnT = new SaveYourGroceries.Toggle();
+            this.toggleButtonWalmart = new SaveYourGroceries.Toggle();
+            this.toggleButtonSuperstore = new SaveYourGroceries.Toggle();
+            this.savedItemsListPageRefreshButton = new System.Windows.Forms.Button();
             this.navBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPageLogoBox)).BeginInit();
             this.SuspendLayout();
@@ -143,7 +145,7 @@ namespace SaveYourGroceries
             // 
             // mainPageLogoBox
             // 
-            this.mainPageLogoBox.Image = global::SaveYourGroceries.Properties.Resources.logo;
+            this.mainPageLogoBox.Image = ((System.Drawing.Image)(resources.GetObject("mainPageLogoBox.Image")));
             this.mainPageLogoBox.Location = new System.Drawing.Point(31, 153);
             this.mainPageLogoBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.mainPageLogoBox.Name = "mainPageLogoBox";
@@ -221,50 +223,6 @@ namespace SaveYourGroceries
             this.labelForSaveOnFoodsToggle.TabIndex = 24;
             this.labelForSaveOnFoodsToggle.Text = "Save On Foods";
             // 
-            // toggleButtonSaveOnFoods
-            // 
-            this.toggleButtonSaveOnFoods.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("toggleButtonSaveOnFoods.BackgroundImage")));
-            this.toggleButtonSaveOnFoods.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.toggleButtonSaveOnFoods.Check = false;
-            this.toggleButtonSaveOnFoods.Location = new System.Drawing.Point(30, 745);
-            this.toggleButtonSaveOnFoods.Name = "toggleButtonSaveOnFoods";
-            this.toggleButtonSaveOnFoods.Size = new System.Drawing.Size(65, 40);
-            this.toggleButtonSaveOnFoods.TabIndex = 19;
-            this.toggleButtonSaveOnFoods.Click += new System.EventHandler(this.toggleButtonSaveOnFoods_Load);
-            // 
-            // toggleButtonTnT
-            // 
-            this.toggleButtonTnT.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("toggleButtonTnT.BackgroundImage")));
-            this.toggleButtonTnT.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.toggleButtonTnT.Check = false;
-            this.toggleButtonTnT.Location = new System.Drawing.Point(30, 682);
-            this.toggleButtonTnT.Name = "toggleButtonTnT";
-            this.toggleButtonTnT.Size = new System.Drawing.Size(65, 40);
-            this.toggleButtonTnT.TabIndex = 18;
-            this.toggleButtonTnT.Click += new System.EventHandler(this.toggleButtonTnT_Load);
-            // 
-            // toggleButtonWalmart
-            // 
-            this.toggleButtonWalmart.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("toggleButtonWalmart.BackgroundImage")));
-            this.toggleButtonWalmart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.toggleButtonWalmart.Check = false;
-            this.toggleButtonWalmart.Location = new System.Drawing.Point(30, 620);
-            this.toggleButtonWalmart.Name = "toggleButtonWalmart";
-            this.toggleButtonWalmart.Size = new System.Drawing.Size(65, 40);
-            this.toggleButtonWalmart.TabIndex = 17;
-            this.toggleButtonWalmart.Click += new System.EventHandler(this.toggleButtonWalmart_Load);
-            // 
-            // toggleButtonSuperstore
-            // 
-            this.toggleButtonSuperstore.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("toggleButtonSuperstore.BackgroundImage")));
-            this.toggleButtonSuperstore.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.toggleButtonSuperstore.Check = false;
-            this.toggleButtonSuperstore.Location = new System.Drawing.Point(30, 557);
-            this.toggleButtonSuperstore.Name = "toggleButtonSuperstore";
-            this.toggleButtonSuperstore.Size = new System.Drawing.Size(65, 40);
-            this.toggleButtonSuperstore.TabIndex = 14;
-            this.toggleButtonSuperstore.Click += new System.EventHandler(this.toggleButtonSuperstore_Load);
-            // 
             // settingsPageTitleLabel
             // 
             this.settingsPageTitleLabel.AutoSize = true;
@@ -309,12 +267,83 @@ namespace SaveYourGroceries
             this.settingsPageSaveButton.UseVisualStyleBackColor = false;
             this.settingsPageSaveButton.Click += new System.EventHandler(this.settingsPageSaveButton_Click);
             // 
+            // savedItemsListLabel
+            // 
+            this.savedItemsListLabel.AutoSize = true;
+            this.savedItemsListLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.savedItemsListLabel.Location = new System.Drawing.Point(23, 81);
+            this.savedItemsListLabel.Name = "savedItemsListLabel";
+            this.savedItemsListLabel.Size = new System.Drawing.Size(295, 39);
+            this.savedItemsListLabel.TabIndex = 25;
+            this.savedItemsListLabel.Text = "Your Saved Items:";
+            // 
+            // toggleButtonSaveOnFoods
+            // 
+            this.toggleButtonSaveOnFoods.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("toggleButtonSaveOnFoods.BackgroundImage")));
+            this.toggleButtonSaveOnFoods.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.toggleButtonSaveOnFoods.Check = false;
+            this.toggleButtonSaveOnFoods.Location = new System.Drawing.Point(30, 745);
+            this.toggleButtonSaveOnFoods.Name = "toggleButtonSaveOnFoods";
+            this.toggleButtonSaveOnFoods.Size = new System.Drawing.Size(65, 40);
+            this.toggleButtonSaveOnFoods.TabIndex = 19;
+            this.toggleButtonSaveOnFoods.Click += new System.EventHandler(this.toggleButtonSaveOnFoods_Load);
+            // 
+            // toggleButtonTnT
+            // 
+            this.toggleButtonTnT.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("toggleButtonTnT.BackgroundImage")));
+            this.toggleButtonTnT.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.toggleButtonTnT.Check = false;
+            this.toggleButtonTnT.Location = new System.Drawing.Point(30, 682);
+            this.toggleButtonTnT.Name = "toggleButtonTnT";
+            this.toggleButtonTnT.Size = new System.Drawing.Size(65, 40);
+            this.toggleButtonTnT.TabIndex = 18;
+            this.toggleButtonTnT.Click += new System.EventHandler(this.toggleButtonTnT_Load);
+            // 
+            // toggleButtonWalmart
+            // 
+            this.toggleButtonWalmart.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("toggleButtonWalmart.BackgroundImage")));
+            this.toggleButtonWalmart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.toggleButtonWalmart.Check = false;
+            this.toggleButtonWalmart.Location = new System.Drawing.Point(30, 620);
+            this.toggleButtonWalmart.Name = "toggleButtonWalmart";
+            this.toggleButtonWalmart.Size = new System.Drawing.Size(65, 40);
+            this.toggleButtonWalmart.TabIndex = 17;
+            this.toggleButtonWalmart.Click += new System.EventHandler(this.toggleButtonWalmart_Load);
+            // 
+            // toggleButtonSuperstore
+            // 
+            this.toggleButtonSuperstore.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("toggleButtonSuperstore.BackgroundImage")));
+            this.toggleButtonSuperstore.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.toggleButtonSuperstore.Check = false;
+            this.toggleButtonSuperstore.Location = new System.Drawing.Point(30, 557);
+            this.toggleButtonSuperstore.Name = "toggleButtonSuperstore";
+            this.toggleButtonSuperstore.Size = new System.Drawing.Size(65, 40);
+            this.toggleButtonSuperstore.TabIndex = 14;
+            this.toggleButtonSuperstore.Click += new System.EventHandler(this.toggleButtonSuperstore_Load);
+            // 
+            // savedItemsListPageRefreshButton
+            // 
+            this.savedItemsListPageRefreshButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(191)))), ((int)(((byte)(163)))));
+            this.savedItemsListPageRefreshButton.FlatAppearance.BorderSize = 0;
+            this.savedItemsListPageRefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.savedItemsListPageRefreshButton.ForeColor = System.Drawing.SystemColors.Window;
+            this.savedItemsListPageRefreshButton.Location = new System.Drawing.Point(338, 65);
+            this.savedItemsListPageRefreshButton.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.savedItemsListPageRefreshButton.Name = "savedItemsListPageRefreshButton";
+            this.savedItemsListPageRefreshButton.Size = new System.Drawing.Size(141, 74);
+            this.savedItemsListPageRefreshButton.TabIndex = 26;
+            this.savedItemsListPageRefreshButton.Text = "Refresh Page";
+            this.savedItemsListPageRefreshButton.UseVisualStyleBackColor = false;
+            this.savedItemsListPageRefreshButton.Click += new System.EventHandler(this.refreshSavedItemsListButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(891, 1219);
+            this.Controls.Add(this.savedItemsListPageRefreshButton);
+            this.Controls.Add(this.savedItemsListLabel);
             this.Controls.Add(this.labelForSaveOnFoodsToggle);
             this.Controls.Add(this.labelForTnTToggle);
             this.Controls.Add(this.labelForWalmartToggle);
@@ -371,5 +400,7 @@ namespace SaveYourGroceries
         private Label settingsPageNotificationLabel;
         private CheckBox settingsPageNotificationCheckbox;
         private Button settingsPageSaveButton;
+        private Label savedItemsListLabel;
+        private Button savedItemsListPageRefreshButton;
     }
 }
