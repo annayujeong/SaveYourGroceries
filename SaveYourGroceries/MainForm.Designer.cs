@@ -54,6 +54,10 @@ namespace SaveYourGroceries
             this.settingsPageNotificationCheckbox = new System.Windows.Forms.CheckBox();
             this.settingsPageSaveButton = new System.Windows.Forms.Button();
             this.savedItemsListLabel = new System.Windows.Forms.Label();
+            this.toggleButtonSaveOnFoods = new SaveYourGroceries.Toggle();
+            this.toggleButtonTnT = new SaveYourGroceries.Toggle();
+            this.toggleButtonWalmart = new SaveYourGroceries.Toggle();
+            this.toggleButtonSuperstore = new SaveYourGroceries.Toggle();
             this.savedItemsListPageRefreshButton = new System.Windows.Forms.Button();
             this.settingsPage = new SaveYourGroceries.SettingsPage();
             this.toggleButtonSaveOnFoods = new SaveYourGroceries.Toggle();
@@ -79,6 +83,7 @@ namespace SaveYourGroceries
             this.savedListMenu.Name = "savedListMenu";
             this.savedListMenu.Size = new System.Drawing.Size(121, 109);
             this.savedListMenu.Text = "Saved";
+            this.savedListMenu.Click += new System.EventHandler(this.savedItemsButton_Click);
             // 
             // searchMenu
             // 

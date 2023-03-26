@@ -55,6 +55,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="JSONParserTest.cs" />
+    <Compile Include="ToggleButtonTests.cs" />
+    <Compile Include="SavedItemsListTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PriceUpdateTest.cs" />
@@ -66,6 +68,10 @@
     <ProjectReference Include="..\SaveYourGroceriesLib\SaveYourGroceriesLib.csproj">
       <Project>{1165e309-65de-4fcb-8b8b-f1c58b79fb37}</Project>
       <Name>SaveYourGroceriesLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SaveYourGroceries\SaveYourGroceries.csproj">
+      <Project>{112D8D07-8113-4D51-86D2-0501504DAC51}</Project>
+      <Name>SaveYourGroceries</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

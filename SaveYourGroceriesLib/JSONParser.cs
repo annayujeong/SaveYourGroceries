@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenQA.Selenium.Internal;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
@@ -73,7 +74,10 @@ namespace SaveYourGroceriesLib
 
         public void addItem(Item item)
         {
-            savedItems.Add(item);
+            if (!savedItems.Contains(item))
+            {
+                savedItems.Add(item);
+            }
         }
 
         public void removeItem(Item item) { 
@@ -151,6 +155,21 @@ namespace SaveYourGroceriesLib
         public Boolean JSONFileExists()
         {
             return File.Exists(Constants.JSON_FILE_LOCATION);
+        }
+
+        public ArrayList getSavedItems()
+        {
+
+            // type conversion
+
+            ArrayList itemsToSend = new ArrayList();
+
+            foreach(Item item in savedItems)
+            {
+                itemsToSend.Add(item);
+            }
+
+            return itemsToSend;
         }
 
         /// <summary>
