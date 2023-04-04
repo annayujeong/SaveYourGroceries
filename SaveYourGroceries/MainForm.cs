@@ -268,7 +268,7 @@ namespace SaveYourGroceries
                 savedItem.Location = new Point(5, itemBoxGap);
                 itemBoxGap += itemBoxHeight;
                 savedItemsList.Add(savedItem);
-                MessageBox.Show(item.name);
+                //MessageBox.Show(item.name);
             }
 
             this.Controls.Add(savedItemsList);
@@ -345,5 +345,9 @@ namespace SaveYourGroceries
             }
         }
 
+       // private void MainForm_Load(object sender, EventArgs e)
+       // {
+
+        //}
     }
 }

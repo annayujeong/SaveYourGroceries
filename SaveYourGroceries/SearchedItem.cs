@@ -64,7 +64,7 @@ using Item = SaveYourGroceriesLib.Item;
             jsonParser.addItem(item);
             
             MessageBox.Show(item.name + "Has been added to the Saved List");
-            MessageBox.Show(jsonParser.getSavedItemsLength().ToString());
+            //MessageBox.Show(jsonParser.getSavedItemsLength().ToString());
             jsonParser.serializeItems();
             
 

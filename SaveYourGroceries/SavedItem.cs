@@ -37,7 +37,7 @@ namespace SaveYourGroceries
             MessageBox.Show(item.name + "Has been removed from the list");
             jsonParser.serializeItems();
             jsonParser.deserializeItems();
-            MessageBox.Show(jsonParser.getSavedItemsLength().ToString());
+            //MessageBox.Show(jsonParser.getSavedItemsLength().ToString());
             jsonParser.getSavedItems();
           
         }
