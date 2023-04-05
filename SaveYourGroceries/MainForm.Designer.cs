@@ -128,7 +128,7 @@ namespace SaveYourGroceries
             // 
             // mainPageLogoBox
             // 
-            this.mainPageLogoBox.Image = SaveYourGroceriesLib.Properties.Resources.logo;
+            this.mainPageLogoBox.Image = global::SaveYourGroceries.Properties.Resources.logo;
             this.mainPageLogoBox.Location = new System.Drawing.Point(151, 174);
             this.mainPageLogoBox.Margin = new System.Windows.Forms.Padding(10, 13, 10, 13);
             this.mainPageLogoBox.Name = "mainPageLogoBox";
