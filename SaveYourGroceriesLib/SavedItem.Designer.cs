@@ -1,4 +1,4 @@
-﻿namespace SaveYourGroceries
+﻿namespace SaveYourGroceriesLib
 {
     partial class SavedItem
     {

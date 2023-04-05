@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SaveYourGroceries
+namespace SaveYourGroceriesLib
 {
 
     public partial class SavedItem : UserControl
@@ -31,7 +31,7 @@ namespace SaveYourGroceries
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void removeItemFromJSON(object sender, EventArgs e)
+        public void removeItemFromJSON(object sender, EventArgs e)
         {
             jsonParser.removeItem(item);
             MessageBox.Show(item.name + "Has been removed from the list");
