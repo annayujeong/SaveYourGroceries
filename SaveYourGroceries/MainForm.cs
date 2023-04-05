@@ -188,7 +188,7 @@ namespace SaveYourGroceries
 
             SearchedItemsList searchedItemsList = new SearchedItemsList
             {
-                Location = new Point(5, 50),
+                Location = new Point(20, 50),
                 Name = "searchedItemsList"
             };
 
