@@ -44,6 +44,11 @@ namespace SaveYourGroceriesLib
 
         }
 
+
+
+        /// <summary>
+        /// Boolean check that upon designation will set the appearance of the toggle button 
+        /// </summary>
         bool check;
 
         public bool Check
@@ -55,11 +60,17 @@ namespace SaveYourGroceriesLib
                 
         }
 
+        /// <summary>
+        /// Method that upon designation will set the appearance of the toggle button 
+        /// </summary>
         public void ChangeValue()
         {
             Check = !check;
         }
 
+        /// <summary>
+        /// Method that references the Toggle Button Resources that lists the various states of the Toggle button 
+        /// </summary>
         void onChangeAppearance()
         {
             switch (appearance)
@@ -84,6 +95,10 @@ namespace SaveYourGroceriesLib
 
             }
         }
+
+        /// <summary>
+        /// Sets the appearance of the toggle buttton based on the condition 
+        /// </summary>
         void setAppearance()
         {
 
@@ -103,7 +118,12 @@ namespace SaveYourGroceriesLib
         }
 
         }
-
+        /// <summary>
+        /// Toggle_Click is the main method that activates the conditions once a given Toggle button is 
+        /// clicked. Changes the buttons value and activates the conditions that come with the toggle button state 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Toggle_Click(Object sender, EventArgs e) 
         { 
             ChangeValue();
