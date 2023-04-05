@@ -72,7 +72,16 @@ namespace SaveYourGroceries
 
             if (state == CheckState.Checked)
             {
-                int notificationFrequencyHours = GetFrequencyHour();
+                int notificationFrequencyHours;
+                try
+                {
+                    notificationFrequencyHours = GetFrequencyHour();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
 
                 config.AppSettings.Settings["notificationCheckboxStatus"].Value = "true";
                 config.AppSettings.Settings["notificationFrequencyHours"].Value = Convert.ToString(notificationFrequencyHours);
@@ -95,16 +104,7 @@ namespace SaveYourGroceries
         /// <returns>frequency in int</returns>
         private int GetFrequencyHour()
         {
-            int result = 0;
-            try
-            {
-                result = Convert.ToInt32(settingsPageHourTextBox.Text);
-            } 
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            return result;
+            return Convert.ToInt32(settingsPageHourTextBox.Text);
         }
     }
 }
