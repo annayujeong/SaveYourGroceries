@@ -1,19 +1,9 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SaveYourGroceriesLib;
-using Newtonsoft.Json;
-using System.IO;
-using System.Net.Mime;
-using System.Drawing.Text;
 
 namespace SaveYourGroceries
 {
@@ -22,14 +12,10 @@ namespace SaveYourGroceries
     public partial class MainForm : Form
     {
         WebScraper scraper = new WebScraper();
-
         JSONParser jsonParser = JSONParser.getInstance();
 
         public Item item;
-
-        string queriedItem;
-
-        public SavedItemsList savedItems;
+        public SavedItemsList savedItems; // Anna: why do we need global variables for this?
 
         ArrayList storesToSearch = new ArrayList();
 
@@ -39,15 +25,19 @@ namespace SaveYourGroceries
             ShowMainControls();
         }
 
-        // TODO: add loading indicator while driver is searching for the item
-        // TODO: clear search results for previous search when user does a new search
+        /// <summary>
+        /// Handle searching functionality in the main (Search) page.
+        /// It will display Search controls, call the web scraper and display the searched items control.
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">EventArgs</param>
         private void mainSearchButton_Click(object sender, EventArgs e)
         {
             ShowSearchControls();
 
             ArrayList itemList = scraper.SearchItem(sender, e, this.mainPageSearchBox.Text, storesToSearch);
             this.mainPageSearchBox.Text = String.Empty;
-            DisplaySearchedItems(sender, e, itemList);
+            DisplaySearchedItems(itemList);
         }
 
         private void savedItemsButton_Click(object sender, EventArgs e)
@@ -64,18 +54,34 @@ namespace SaveYourGroceries
             DisplaySavedItemList(sender, e, jsonParser.getSavedItems());
         }
 
+        /// <summary>
+        /// Handle search functionality when inside of the searched items list.
+        /// Call the web scraper and search for the items again.
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">EventArgs</param>
         private void searchPageSearchButton_Click(object sender, EventArgs e)
         {
             ArrayList itemList = scraper.SearchItem(sender, e, this.searchPageSearchBox.Text, storesToSearch);
             this.searchPageSearchBox.Text = String.Empty;
-            DisplaySearchedItems(sender, e, itemList);
+            DisplaySearchedItems(itemList);
         }
 
+        /// <summary>
+        /// Show the main (Search) controls
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">EventArgs</param>
         private void searchMenu_Click(object sender, EventArgs e)
         {
             ShowMainControls();
         }
 
+        /// <summary>
+        /// Show the Settings controls.
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">EventArgs</param>
         private void settingsMenu_Click(object sender, EventArgs e)
         {
             ShowSettingsControls();
@@ -161,14 +167,22 @@ namespace SaveYourGroceries
             }     
         }
 
-
+        /// <summary>
+        /// Handle saving settings saving event.
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">EventArgs</param>
         private void settingsPageSaveButton_Click(object sender, EventArgs e)
         {
             ShowSettingsControls();
         }
 
-
-        private void DisplaySearchedItems(object sender, EventArgs e, ArrayList itemList)
+        /// <summary>
+        /// Scrap the item information from the selected stores 
+        /// and create SearchedItemsList that will contain SearchedItem control
+        /// </summary>
+        /// <param name="itemList">item list in ArrayList</param>
+        private void DisplaySearchedItems(ArrayList itemList)
         {
             if (this.Controls["searchedItemsList"] != null)
             {
@@ -273,6 +287,9 @@ namespace SaveYourGroceries
             this.Controls.Add(savedItemsList);
         }
 
+        /// <summary>
+        /// Displays main (Search) controls only.
+        /// </summary>
         private void ShowMainControls()
         {
             string controlName;
@@ -292,6 +309,9 @@ namespace SaveYourGroceries
             }
         }
 
+        /// <summary>
+        /// Display Search page controls only.
+        /// </summary>
         private void ShowSearchControls()
         {
             string controlName;
@@ -327,6 +347,9 @@ namespace SaveYourGroceries
             }
         }
 
+        /// <summary>
+        /// Display Settings controls only.
+        /// </summary>
         private void ShowSettingsControls()
         {
             string controlName;
@@ -344,9 +367,6 @@ namespace SaveYourGroceries
             }
         }
 
-       // private void MainForm_Load(object sender, EventArgs e)
-       // {
-
-        //}
     }
+
 }

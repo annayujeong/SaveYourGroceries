@@ -1,5 +1,4 @@
 ﻿using Microsoft.Toolkit.Uwp.Notifications;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Quartz;
 using SaveYourGroceriesLib;
 using System;

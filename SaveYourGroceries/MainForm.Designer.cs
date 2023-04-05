@@ -245,6 +245,7 @@ namespace SaveYourGroceries
             this.settingsPage.Size = new System.Drawing.Size(1072, 576);
             this.settingsPage.State = System.Windows.Forms.CheckState.Unchecked;
             this.settingsPage.TabIndex = 7;
+            this.settingsPage.Hide();
             // 
             // mainPageSearchButton
             // 
