@@ -121,6 +121,11 @@ namespace SaveYourGroceries
             return notificationCount;
         }
 
+        /// <summary>
+        /// Extracts a double value from the given string.
+        /// </summary>
+        /// <param name="priceString"></param>
+        /// <returns>a double</returns>
         public double ExtractDoubleFromString(string priceString)
         {
             double result = 0;

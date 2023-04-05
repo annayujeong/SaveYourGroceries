@@ -9,28 +9,47 @@ using System.Windows.Forms;
 
 namespace SaveYourGroceriesLib
 {
+    /// <summary>
+    /// This class is responsible for creating a web browser responsible for scraping information from different grocery stores.
+    /// Author: Bradner
+    /// </summary>
     public class WebScraper
     {
-        public IWebDriver driver = new ChromeDriver();
+        //public IWebDriver driver = new ChromeDriver();
+
+        public IWebDriver driver;
 
         public WebScraper()
-        {
-            // Need to wait for page to be fully loaded
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+        { 
 
-            //var options = new ChromeOptions()
+            var options = new ChromeOptions();
             //{
             //    BinaryLocation = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
             //};
 
             //options.AddArguments(new List<string>() { "headless", "disable-gpu" });
+            //options.AddArgument("headless");
+            options.AddArgument("--disable-blink-features=AutomationControlled");
+            options.AddArgument("useAutomaticExtension=false");
+            
+
+            driver = new ChromeDriver(options);
+
+            // Need to wait for page to be fully loaded
+
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+
         }
 
-        // console doesn't close if application crashes?
-
-        // limitation -> grabbing only first element that matches the class name/xpath/etc, so
-        // generic query such as "apple" may result in different types of apples being compared
-
+        /// <summary>
+        /// Takes in a list of gorcery stores to search and scrapes each grocery store for item information, and returns
+        /// a list of Item objects.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="itemName"></param>
+        /// <param name="storesToSearch">a list of grocery stores to search</param>
+        /// <returns>an array list of Items</returns>
         public ArrayList SearchItem(object sender, EventArgs e, string itemName, ArrayList storesToSearch)
         {
 
@@ -38,48 +57,31 @@ namespace SaveYourGroceriesLib
 
             foreach (string item in storesToSearch)
             {
-                
-                if (item.Equals("Superstore"))
+                if (item.Equals(Store.Superstore.ToString()))
                 {
                     items.Add(SearchItemSuperstore(itemName));
                 }
-
-               
-                if (item.Equals("Walmart"))
+                if (item.Equals(Store.Walmart.ToString()))
                 {
                     items.Add(SearchItemWalmart(itemName));
                 }
-
-              
-                if (item.Equals("TNT"))
+                if (item.Equals(Store.T_and_T.ToString()))
                 {
                     items.Add(SearchItemsTandT(itemName));
                 }
-
-                
-                if (item.Equals("SaveOnFoods"))
+                if (item.Equals(Store.Save_On_Foods.ToString()))
                 {
                     items.Add(SearchItemSaveOnFoods(itemName));
                 }
-
             }
-            // TODO: Searching more than once causes Walmart to block further searches
-            
-            //items.Add(SearchItemWalmart(itemName));
-            //items.Add(SearchItemSaveOnFoods(itemName));
-            //items.Add(SearchItemsTandT(itemName));
-            //items.Add(SearchItemSuperstore(itemName));    
-
-
-            foreach(Item item in items)
-            {
-                MessageBox.Show(item.name + "\n" + item.price + "\n" + item.imageUrl + "\n" + item.itemURL);
-            }
-
             return items;
         }
 
-        // Superstore has sponsored items in its search result, how to handle?
+        /// <summary>
+        /// Searches the Superstore website for the given item and returns it if found.
+        /// </summary>
+        /// <param name="queriedItem">the item to search</param>
+        /// <returns>an Item object</returns>
         public Item SearchItemSuperstore(string queriedItem)
         {
             Item item = new Item();
@@ -94,8 +96,7 @@ namespace SaveYourGroceriesLib
                 string itemName = driver.FindElement(By.ClassName(Constants.SUPERSTORE_ITEM_NAME)).GetAttribute("title");
                 item.name = itemName;
 
-                // ignoring image banner, better method?
-                string imageURL = driver.FindElements(By.ClassName(Constants.SUPERSTORE_ITEM_IMAGE))[1].GetAttribute("src");
+                string imageURL = driver.FindElements(By.ClassName(Constants.SUPERSTORE_ITEM_IMAGE))[0].GetAttribute("src");
                 item.imageUrl = imageURL;
 
                 string itemURL = driver.FindElement(By.ClassName(Constants.SUPERSTORE_ITEM_URL)).GetAttribute("href");
@@ -110,6 +111,11 @@ namespace SaveYourGroceriesLib
             return item;
         }
 
+        /// <summary>
+        /// Searches the Walmart website for the given item and returns it if found.
+        /// </summary>
+        /// <param name="queriedItem">the item to search</param>
+        /// <returns>an Item object</returns>
         public Item SearchItemWalmart(string queriedItem)
         {
             Item item = new Item();
@@ -141,13 +147,14 @@ namespace SaveYourGroceriesLib
 
         }
 
+        /// <summary>
+        /// Searches the Superstore website for the given item and returns it if found.
+        /// </summary>
+        /// <param name="queriedItem">the item to search</param>
+        /// <returns>an Item object</returns>
         public Item SearchItemSaveOnFoods(string queriedItem)
         {
             Item item = new Item();
-
-            // element found, but empty string -> need to get "innerText" attribute
-            //driver.Url = "https://www.saveonfoods.com/sm/pickup/rsid/1982/results?q=apple";
-            //string price = driver.FindElement(By.ClassName("jwvBiZ")).GetAttribute("innerText");
 
             try
             {
@@ -156,11 +163,9 @@ namespace SaveYourGroceriesLib
                 string itemPrice = driver.FindElement(By.ClassName(Constants.SAVE_ON_FOODS_ITEM_PRICE)).GetAttribute("innerText");
                 item.price = itemPrice;
 
-                string itemName = driver.FindElement(By.ClassName(Constants.SAVE_ON_FOODS_ITEM_NAME)).Text;
+                string itemName = driver.FindElement(By.ClassName(Constants.SAVE_ON_FOODS_ITEM_NAME)).GetAttribute("innerText");
                 item.name = itemName;
 
-                // skipping past shop banner image
-                //string imageURL = driver.FindElements(By.ClassName("Image--v39pjb"))[2].GetAttribute("src");
                 string imageURL = driver.FindElement(By.ClassName(Constants.SAVE_ON_FOODS_ITEM_IMAGE)).GetAttribute("src");
                 item.imageUrl = imageURL;
 
@@ -176,6 +181,11 @@ namespace SaveYourGroceriesLib
             return item;
         }
 
+        /// <summary>
+        /// Searches the Superstore website for the given item and returns it if found.
+        /// </summary>
+        /// <param name="queriedItem">the item to search</param>
+        /// <returns>an Item object</returns>
         public Item SearchItemsTandT(string itemName)
         {
 

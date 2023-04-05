@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace SaveYourGroceriesLib
 {
+    /// <summary>
+    /// This class is used to store constants for various classes in our application.
+    /// Author: Bradner
+    /// </summary>
     public static class Constants
     {
         // The name of Save Your Groceries' JSON file

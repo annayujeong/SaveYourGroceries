@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace SaveYourGroceriesLib
 {
+    /// <summary>
+    /// This class represents a grocery store item, and contains the name, price, url of the item, the corresponding store,
+    /// and the
+    /// Author: Bradner
+    /// </summary>
     public class Item
     {
         public string name { get; set; }
@@ -15,9 +20,6 @@ namespace SaveYourGroceriesLib
         public string store { get; set; }
 
         public string itemURL { get; set; }
-        //public string ItemNameValue { get; }
-        //public string ItemPriceValue { get; }
-        //public string ItemStoreNameValue { get; }
 
         public Item() {
             this.name = "";
@@ -35,12 +37,5 @@ namespace SaveYourGroceriesLib
             this.store = store;
             this.itemURL = itemURL;
         }
-
-        //public Item(string itemNameValue, string itemPriceValue, string itemStoreNameValue)
-        //{
-        //    ItemNameValue = itemNameValue;
-        //    ItemPriceValue = itemPriceValue;
-        //    ItemStoreNameValue = itemStoreNameValue;
-        //}
     }
 }

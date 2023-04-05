@@ -53,7 +53,7 @@ namespace SaveYourGroceriesTest
             webScraper.driver.Quit();
 
             // Assert
-            Assert.AreEqual("T & T Supermarket", item.store);
+            Assert.AreEqual(Store.T_and_T.ToString(), item.store);
         }
 
         [TestMethod]
@@ -110,7 +110,7 @@ namespace SaveYourGroceriesTest
             webScraper.driver.Quit();
 
             // Assert
-            Assert.AreEqual("Save On Foods", item.store);
+            Assert.AreEqual(Store.Save_On_Foods.ToString(), item.store);
         }
 
         [TestMethod]
@@ -190,7 +190,7 @@ namespace SaveYourGroceriesTest
         {
             // Arrange
             WebScraper webScraper = new WebScraper();
-            string expectedUrl = "https://assets.shop.loblaws.ca/products/20132621001/b1/en/front/20132621001_front_a01.png";
+            string expectedUrl = "https://assets.shop.loblaws.ca/products/20083526001/b1/en/front/20083526001_front_a01.png";
 
             // Act
             Item item = webScraper.SearchItemSuperstore("apple");

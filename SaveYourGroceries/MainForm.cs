@@ -18,8 +18,6 @@ using System.Drawing.Text;
 
 namespace SaveYourGroceries
 {
-    // TODO: Have JSONParser load in data from an existing JSON form
-    // -> How to do a unit test for this?
     public partial class MainForm : Form
     {
         WebScraper scraper = new WebScraper();
@@ -27,8 +25,6 @@ namespace SaveYourGroceries
         JSONParser jsonParser = JSONParser.getInstance();
 
         public Item item;
-
-        string queriedItem;
 
         public SavedItemsList savedItems;
 
@@ -91,7 +87,6 @@ namespace SaveYourGroceries
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        /// 
 
         // ---------------- Toggle Button Superstore -------------------- // 
 
@@ -99,7 +94,7 @@ namespace SaveYourGroceries
         {
             if (toggleButtonSuperstore.Check == true)
             {
-                storesToSearch.Add("Superstore");
+                storesToSearch.Add(Store.Superstore.ToString());
                 
                 MessageBox.Show("You are now going to receive search results from Superstore!");
 
@@ -109,7 +104,7 @@ namespace SaveYourGroceries
             {
                 MessageBox.Show("You are not going to receive search results from Superstore");
                             
-                   storesToSearch.Remove("Superstore");             
+                   storesToSearch.Remove(Store.Superstore.ToString());             
             }
         }
 
@@ -119,14 +114,14 @@ namespace SaveYourGroceries
         {
             if (toggleButtonWalmart.Check == true)
             {
-                storesToSearch.Add("Walmart");
+                storesToSearch.Add(Store.Walmart.ToString());
                 MessageBox.Show("You are now going to receive search results from Walmart!");
             }
 
             else if (toggleButtonWalmart.Check == false)
             {
                 MessageBox.Show("You are not going to receive search results from Walmart");
-                storesToSearch.Remove("Walmart");
+                storesToSearch.Remove(Store.Walmart.ToString());
             }
         }
 
@@ -136,13 +131,13 @@ namespace SaveYourGroceries
         {
             if (toggleButtonTnT.Check == true)
             {
-                storesToSearch.Add("TNT");
+                storesToSearch.Add(Store.T_and_T.ToString());
                 MessageBox.Show("You are now going to receive search results from T & T!");
             }
             else if (toggleButtonTnT.Check == false)
             {
                 MessageBox.Show("You are not going to receive search results from T & T");
-                storesToSearch.Remove("TNT");
+                storesToSearch.Remove(Store.T_and_T.ToString());
             }
         }
 
@@ -152,16 +147,15 @@ namespace SaveYourGroceries
         {
             if (toggleButtonSaveOnFoods.Check == true)
             {
-                storesToSearch.Add("SaveOnFoods");
+                storesToSearch.Add(Store.Save_On_Foods.ToString());
                 MessageBox.Show("You are now going to receive search results from Save On Foods!");
             }
             else if (toggleButtonSaveOnFoods.Check == false)
             {
                MessageBox.Show("You are not going to receive search results from Save On Foods");
-                storesToSearch.Remove("SaveOnFoods");
+                storesToSearch.Remove(Store.Save_On_Foods.ToString());
             }     
         }
-
 
         private void settingsPageSaveButton_Click(object sender, EventArgs e)
         {
@@ -344,10 +338,5 @@ namespace SaveYourGroceries
                 }
             }
         }
-
-       // private void MainForm_Load(object sender, EventArgs e)
-       // {
-
-        //}
     }
 }

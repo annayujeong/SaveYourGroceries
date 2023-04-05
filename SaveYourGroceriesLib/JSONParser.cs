@@ -11,6 +11,7 @@ namespace SaveYourGroceriesLib
     /// <summary>
     /// This is a singleton implementation of a class responsible for reading and writing to 
     /// our application's JSON file.
+    /// Author: Bradner
     /// </summary>
 
     public class JSONParser
@@ -67,11 +68,18 @@ namespace SaveYourGroceriesLib
             
         }
 
+        /// <summary>
+        /// Creates a JSON file at the given file location.
+        /// </summary>
         public void createJSONFile()
         {
-            using (StreamWriter sw = File.CreateText(Constants.JSON_FILE_LOCATION)) ;
+            using (StreamWriter sw = File.CreateText(Constants.JSON_FILE_LOCATION));
         }
 
+        /// <summary>
+        /// Adds the given item to the list of saved items if it doesn't already exist in the list.
+        /// </summary>
+        /// <param name="item"></param>
         public void addItem(Item item)
         {
             if (!savedItems.Contains(item))
@@ -80,16 +88,30 @@ namespace SaveYourGroceriesLib
             }
         }
 
+        /// <summary>
+        /// Removes the given item from the list of saved items.
+        /// </summary>
+        /// <param name="item"></param>
         public void removeItem(Item item) { 
             savedItems.Remove(item);
         }
 
+        /// <summary>
+        /// Returns the length of the list of saved items.
+        /// </summary>
+        /// <returns></returns>
         public int getSavedItemsLength()
         {
             return savedItems.Count;
         }
 
         // return List<Item> or ArrayList()?
+        /// <summary>
+        /// Reads from the JSON file at the given location and deserializes it into a list of Item objects.
+        /// </summary>
+        /// <returns>a list of Items</returns>
+        /// <exception cref="Exception"></exception>
+        /// <exception cref="System.IO.FileNotFoundException"></exception>
         public List<Item> deserializeItems()
         {
             var serializer = new JsonSerializer();
@@ -101,19 +123,11 @@ namespace SaveYourGroceriesLib
                     using (var reader = new JsonTextReader(sw))
                     {
 
-                        Console.WriteLine(savedItems == null);
-
-
                         List<Item> deserializedItems = serializer.Deserialize<List<Item>>(reader);
 
                         savedItems = deserializedItems != null ? deserializedItems : savedItems;
 
-                        //Console.WriteLine(deserializedItems == null);
-
-                        //savedItems = deserializedItems;
-
                         return savedItems;
-                        //return serializer.Deserialize<List<Item>>(reader);
                     }
                 } catch (Exception e)
                 {
@@ -157,6 +171,10 @@ namespace SaveYourGroceriesLib
             return File.Exists(Constants.JSON_FILE_LOCATION);
         }
 
+        /// <summary>
+        /// Converts the list of saved items into an array list.
+        /// </summary>
+        /// <returns></returns>
         public ArrayList getSavedItems()
         {
 
