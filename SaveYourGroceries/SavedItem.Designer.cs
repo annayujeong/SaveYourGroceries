@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.savedItemRemoveButton = new System.Windows.Forms.Button();
-           
             this.savedItemNameTextBox = new System.Windows.Forms.TextBox();
             this.savedItemPriceTextBox = new System.Windows.Forms.TextBox();
             this.savedItemStoreTextBox = new System.Windows.Forms.TextBox();
@@ -39,6 +38,7 @@
             // 
             // savedItemRemoveButton
             // 
+            this.savedItemRemoveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.savedItemRemoveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.savedItemRemoveButton.ForeColor = System.Drawing.Color.White;
             this.savedItemRemoveButton.Location = new System.Drawing.Point(490, 226);
@@ -51,6 +51,7 @@
             // 
             // savedItemNameTextBox
             // 
+            this.savedItemNameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.savedItemNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
             this.savedItemNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.savedItemNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
@@ -63,6 +64,7 @@
             // 
             // savedItemPriceTextBox
             // 
+            this.savedItemPriceTextBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.savedItemPriceTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
             this.savedItemPriceTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.savedItemPriceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
@@ -75,6 +77,7 @@
             // 
             // savedItemStoreTextBox
             // 
+            this.savedItemStoreTextBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.savedItemStoreTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
             this.savedItemStoreTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.savedItemStoreTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
@@ -87,6 +90,7 @@
             // 
             // savedItemPictureBox
             // 
+            this.savedItemPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.savedItemPictureBox.Location = new System.Drawing.Point(26, 19);
             this.savedItemPictureBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.savedItemPictureBox.Name = "savedItemPictureBox";
@@ -99,6 +103,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.Controls.Add(this.savedItemPictureBox);
             this.Controls.Add(this.savedItemStoreTextBox);
             this.Controls.Add(this.savedItemPriceTextBox);

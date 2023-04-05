@@ -35,6 +35,7 @@
             // 
             // navSavedListButton
             // 
+            this.navSavedListButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.navSavedListButton.Location = new System.Drawing.Point(0, 0);
             this.navSavedListButton.Name = "navSavedListButton";
             this.navSavedListButton.Size = new System.Drawing.Size(229, 109);
@@ -44,6 +45,7 @@
             // 
             // navSearchButton
             // 
+            this.navSearchButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.navSearchButton.Location = new System.Drawing.Point(226, 0);
             this.navSearchButton.Name = "navSearchButton";
             this.navSearchButton.Size = new System.Drawing.Size(239, 109);
@@ -53,6 +55,7 @@
             // 
             // navSettingsButton
             // 
+            this.navSettingsButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.navSettingsButton.Location = new System.Drawing.Point(460, 0);
             this.navSettingsButton.Name = "navSettingsButton";
             this.navSettingsButton.Size = new System.Drawing.Size(229, 109);

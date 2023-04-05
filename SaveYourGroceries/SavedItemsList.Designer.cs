@@ -35,6 +35,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.AutoSize = true;
             this.Location = new System.Drawing.Point(200, 40);
             this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "SavedItemsList";
