@@ -1,6 +1,6 @@
-﻿namespace SaveYourGroceries
+﻿namespace SaveYourGroceriesLib
 {
-    partial class SavedItemsList
+    partial class SearchedItemsList
     {
         /// <summary> 
         /// Required designer variable.
@@ -30,14 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // SavedItemsList
+            // SearchedItemsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.Location = new System.Drawing.Point(200, 40);
             this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.Name = "SavedItemsList";
+            this.Name = "SearchedItemsList";
             this.Size = new System.Drawing.Size(853, 954);
             this.ResumeLayout(false);
 

@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SaveYourGroceries
+namespace SaveYourGroceriesLib
 {
     public partial class SavedItemsList : UserControl
     {
@@ -21,12 +21,12 @@ namespace SaveYourGroceries
             InitializeComponent();
         }
 
-        internal void Add(SavedItem searchedItem)
+        public void Add(SavedItem searchedItem)
         {
             this.Controls.Add(searchedItem);
         }
 
-        internal void Remove(SavedItem searchedItem)
+        public void Remove(SavedItem searchedItem)
         {
             this.Controls.Remove(searchedItem);
         }

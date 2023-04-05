@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SaveYourGroceries
+namespace SaveYourGroceriesLib
 {
-    public partial class NavBar : UserControl
+    public partial class SearchedItemsList : UserControl
     {
-        public NavBar()
+        public SearchedItemsList()
         {
             InitializeComponent();
+        }
+
+        public void Add(SearchedItem searchedItem)
+        {
+            this.Controls.Add(searchedItem);
         }
     }
 }

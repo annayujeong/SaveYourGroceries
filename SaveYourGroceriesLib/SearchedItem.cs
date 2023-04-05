@@ -17,7 +17,7 @@ using Item = SaveYourGroceriesLib.Item;
 
 
 
- namespace SaveYourGroceries
+ namespace SaveYourGroceriesLib
 {
     public partial class SearchedItem : UserControl
     {
@@ -59,7 +59,7 @@ using Item = SaveYourGroceriesLib.Item;
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void saveItemToJSON(object sender, EventArgs e)
+        public void saveItemToJSON(object sender, EventArgs e)
         {
             jsonParser.addItem(item);
             

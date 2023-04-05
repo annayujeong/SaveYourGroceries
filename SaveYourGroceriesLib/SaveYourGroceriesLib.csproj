@@ -51,6 +51,30 @@
     <Compile Include="JSONParser.cs" />
     <Compile Include="PriceNotification.cs" />
     <Compile Include="PriceUpdate.cs" />
+    <Compile Include="SavedItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SavedItem.Designer.cs">
+      <DependentUpon>SavedItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SavedItemsList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SavedItemsList.Designer.cs">
+      <DependentUpon>SavedItemsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchedItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchedItem.Designer.cs">
+      <DependentUpon>SearchedItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchedItemsList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchedItemsList.Designer.cs">
+      <DependentUpon>SearchedItemsList.cs</DependentUpon>
+    </Compile>
     <Compile Include="SettingsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -84,6 +108,18 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="SavedItem.resx">
+      <DependentUpon>SavedItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SavedItemsList.resx">
+      <DependentUpon>SavedItemsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchedItem.resx">
+      <DependentUpon>SearchedItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchedItemsList.resx">
+      <DependentUpon>SearchedItemsList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SettingsPage.resx">
       <DependentUpon>SettingsPage.cs</DependentUpon>
     </EmbeddedResource>

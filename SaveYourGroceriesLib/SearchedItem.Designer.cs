@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace SaveYourGroceries
+namespace SaveYourGroceriesLib
 {
     partial class SearchedItem
     {
