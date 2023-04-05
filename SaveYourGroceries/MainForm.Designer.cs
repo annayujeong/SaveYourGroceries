@@ -64,7 +64,7 @@ namespace SaveYourGroceries
             // mainPageSearchBox
             // 
             this.mainPageSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainPageSearchBox.Location = new System.Drawing.Point(20, 200);
+            this.mainPageSearchBox.Location = new System.Drawing.Point(19, 177);
             this.mainPageSearchBox.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
             this.mainPageSearchBox.Name = "mainPageSearchBox";
             this.mainPageSearchBox.Size = new System.Drawing.Size(234, 31);
@@ -106,7 +106,7 @@ namespace SaveYourGroceries
             this.savedListMenu,
             this.searchMenu,
             this.settingsMenu});
-            this.navBar.Location = new System.Drawing.Point(3, 417);
+            this.navBar.Location = new System.Drawing.Point(3, 468);
             this.navBar.Name = "navBar";
             this.navBar.Padding = new System.Windows.Forms.Padding(9, 5, 0, 5);
             this.navBar.Size = new System.Drawing.Size(389, 47);
@@ -130,7 +130,7 @@ namespace SaveYourGroceries
             // mainPageLogoBox
             // 
             this.mainPageLogoBox.Image = global::SaveYourGroceries.Properties.Resources.logo;
-            this.mainPageLogoBox.Location = new System.Drawing.Point(20, 99);
+            this.mainPageLogoBox.Location = new System.Drawing.Point(23, 72);
             this.mainPageLogoBox.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
             this.mainPageLogoBox.Name = "mainPageLogoBox";
             this.mainPageLogoBox.Size = new System.Drawing.Size(287, 76);
@@ -144,7 +144,7 @@ namespace SaveYourGroceries
             this.searchPageSearchButton.FlatAppearance.BorderSize = 0;
             this.searchPageSearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.searchPageSearchButton.ForeColor = System.Drawing.SystemColors.Window;
-            this.searchPageSearchButton.Location = new System.Drawing.Point(276, 13);
+            this.searchPageSearchButton.Location = new System.Drawing.Point(268, 13);
             this.searchPageSearchButton.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
             this.searchPageSearchButton.Name = "searchPageSearchButton";
             this.searchPageSearchButton.Size = new System.Drawing.Size(49, 31);
@@ -156,10 +156,10 @@ namespace SaveYourGroceries
             // searchPageSearchBox
             // 
             this.searchPageSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchPageSearchBox.Location = new System.Drawing.Point(12, 14);
+            this.searchPageSearchBox.Location = new System.Drawing.Point(12, 13);
             this.searchPageSearchBox.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
             this.searchPageSearchBox.Name = "searchPageSearchBox";
-            this.searchPageSearchBox.Size = new System.Drawing.Size(256, 31);
+            this.searchPageSearchBox.Size = new System.Drawing.Size(242, 31);
             this.searchPageSearchBox.TabIndex = 5;
             // 
             // labelToggleInstructions
@@ -229,7 +229,7 @@ namespace SaveYourGroceries
             this.savedItemsListPageRefreshButton.FlatAppearance.BorderSize = 0;
             this.savedItemsListPageRefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.savedItemsListPageRefreshButton.ForeColor = System.Drawing.SystemColors.Window;
-            this.savedItemsListPageRefreshButton.Location = new System.Drawing.Point(238, 14);
+            this.savedItemsListPageRefreshButton.Location = new System.Drawing.Point(220, 13);
             this.savedItemsListPageRefreshButton.Margin = new System.Windows.Forms.Padding(12, 17, 12, 17);
             this.savedItemsListPageRefreshButton.Name = "savedItemsListPageRefreshButton";
             this.savedItemsListPageRefreshButton.Size = new System.Drawing.Size(87, 31);
@@ -244,7 +244,7 @@ namespace SaveYourGroceries
             this.mainPageSearchButton.FlatAppearance.BorderSize = 0;
             this.mainPageSearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.mainPageSearchButton.ForeColor = System.Drawing.SystemColors.Window;
-            this.mainPageSearchButton.Location = new System.Drawing.Point(258, 200);
+            this.mainPageSearchButton.Location = new System.Drawing.Point(261, 177);
             this.mainPageSearchButton.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
             this.mainPageSearchButton.Name = "mainPageSearchButton";
             this.mainPageSearchButton.Size = new System.Drawing.Size(49, 31);
@@ -303,7 +303,7 @@ namespace SaveYourGroceries
             // 
             // settingsPage
             // 
-            this.settingsPage.Location = new System.Drawing.Point(3, 4);
+            this.settingsPage.Location = new System.Drawing.Point(6, 10);
             this.settingsPage.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.settingsPage.Name = "settingsPage";
             this.settingsPage.Size = new System.Drawing.Size(314, 383);
@@ -314,7 +314,7 @@ namespace SaveYourGroceries
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(332, 466);
+            this.ClientSize = new System.Drawing.Size(332, 517);
             this.Controls.Add(this.mainPageSearchButton);
             this.Controls.Add(this.savedItemsListPageRefreshButton);
             this.Controls.Add(this.savedItemsListLabel);

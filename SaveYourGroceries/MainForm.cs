@@ -246,7 +246,7 @@ namespace SaveYourGroceries
 
             SavedItemsList savedItemsList = new SavedItemsList
             {
-                Location = new Point(5, 50),
+                Location = new Point(20, 50),
                 Name = "savedItemsList"
             };
 
