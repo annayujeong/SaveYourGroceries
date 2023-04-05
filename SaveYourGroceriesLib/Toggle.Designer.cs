@@ -1,4 +1,4 @@
-﻿namespace SaveYourGroceries
+﻿namespace SaveYourGroceriesLib
 {
     partial class Toggle
     {
@@ -34,7 +34,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::SaveYourGroceries.Properties.Resources.ToggleButtonOff;
+            this.BackgroundImage = global::SaveYourGroceriesLib.Properties.Resources.ToggleButtonOff;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.DoubleBuffered = true;
             this.Name = "Toggle";

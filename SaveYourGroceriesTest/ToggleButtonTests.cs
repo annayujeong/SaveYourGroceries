@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using JSONParser = SaveYourGroceriesLib.JSONParser;
-using Toggle = SaveYourGroceries.Toggle;
 using System.Windows.Forms;
 using System.Collections;
 

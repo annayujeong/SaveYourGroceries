@@ -3,6 +3,7 @@ using OpenQA.Selenium.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
@@ -20,7 +21,7 @@ using System.Windows.Forms;
 /// 
 /// </summary>
 
-namespace SaveYourGroceries
+namespace SaveYourGroceriesLib
 {
  
     public partial class Toggle : UserControl

@@ -51,6 +51,11 @@
     <Compile Include="JSONParser.cs" />
     <Compile Include="PriceNotification.cs" />
     <Compile Include="PriceUpdate.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="SavedItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -81,6 +86,12 @@
     <Compile Include="SettingsPage.Designer.cs">
       <DependentUpon>SettingsPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Toggle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Toggle.Designer.cs">
+      <DependentUpon>Toggle.cs</DependentUpon>
+    </Compile>
     <Compile Include="WebScraper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -108,6 +119,11 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="SavedItem.resx">
       <DependentUpon>SavedItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -123,6 +139,15 @@
     <EmbeddedResource Include="SettingsPage.resx">
       <DependentUpon>SettingsPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Toggle.resx">
+      <DependentUpon>Toggle.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToggleButtonOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToggleButtonOn.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

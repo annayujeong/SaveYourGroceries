@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SaveYourGroceriesLib;
+using System;
 using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
@@ -52,10 +53,10 @@ namespace SaveYourGroceries
             this.savedItemsListPageRefreshButton = new System.Windows.Forms.Button();
             this.settingsPage = new SaveYourGroceries.SettingsPage();
             this.mainPageSearchButton = new System.Windows.Forms.Button();
-            this.toggleButtonSaveOnFoods = new SaveYourGroceries.Toggle();
-            this.toggleButtonTnT = new SaveYourGroceries.Toggle();
-            this.toggleButtonWalmart = new SaveYourGroceries.Toggle();
-            this.toggleButtonSuperstore = new SaveYourGroceries.Toggle();
+            this.toggleButtonSaveOnFoods = new SaveYourGroceriesLib.Toggle();
+            this.toggleButtonTnT = new SaveYourGroceriesLib.Toggle();
+            this.toggleButtonWalmart = new SaveYourGroceriesLib.Toggle();
+            this.toggleButtonSuperstore = new SaveYourGroceriesLib.Toggle();
             this.navBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPageLogoBox)).BeginInit();
             this.SuspendLayout();
@@ -127,7 +128,7 @@ namespace SaveYourGroceries
             // 
             // mainPageLogoBox
             // 
-            this.mainPageLogoBox.Image = global::SaveYourGroceries.Properties.Resources.logo;
+            this.mainPageLogoBox.Image = SaveYourGroceriesLib.Properties.Resources.logo;
             this.mainPageLogoBox.Location = new System.Drawing.Point(151, 174);
             this.mainPageLogoBox.Margin = new System.Windows.Forms.Padding(10, 13, 10, 13);
             this.mainPageLogoBox.Name = "mainPageLogoBox";

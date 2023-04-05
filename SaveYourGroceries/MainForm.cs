@@ -13,7 +13,6 @@ using SaveYourGroceriesLib;
 using Newtonsoft.Json;
 using System.IO;
 using System.Net.Mime;
-using Toggle = SaveYourGroceries.Toggle;
 using System.Drawing.Text;
 
 namespace SaveYourGroceries
