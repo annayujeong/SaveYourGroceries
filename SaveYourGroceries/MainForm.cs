@@ -13,7 +13,7 @@ namespace SaveYourGroceries
         JSONParser jsonParser = JSONParser.getInstance();
 
         public Item item;
-        public SavedItemsList savedItems; // Anna: why do we need global variables for this?
+        
 
         ArrayList storesToSearch = new ArrayList();
 
