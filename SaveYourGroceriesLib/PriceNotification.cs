@@ -2,18 +2,19 @@
 using Quartz;
 using SaveYourGroceries;
 
+
+/// <summary>
+/// Author: Anna
+/// Contain push notification functionality.
+/// reference: https://christkho.medium.com/background-job-with-quartz-net-in-c-and-net-core-a5a2f8cb5619
+/// </summary>
 namespace SaveYourGroceriesLib
 {
-    /// <summary>
-    /// Author: Anna
-    /// Contain push notification functionality.
-    /// </summary>
     public class PriceNotification
     {
         /// <summary>
         /// Create scheduler factory and the job to enable pushing notification on price update
         /// depending on whether the user turned the notification setting on and how often they want to get notified.
-        /// reference: https://christkho.medium.com/background-job-with-quartz-net-in-c-and-net-core-a5a2f8cb5619
         /// </summary>
         /// <param name="hours">int</param>
         public async void PushNotificationOnFrequencySet(int hours)

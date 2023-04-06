@@ -3,13 +3,12 @@ using System.Drawing;
 using System.Windows.Forms;
 
 
-
+/// <summary>
+/// Author: Anna
+/// Contain Searched Item Control.
+/// </summary>
 namespace SaveYourGroceriesLib
 {
-    /// <summary>
-    /// Author: Anna
-    /// Contain Searched Item Control.
-    /// </summary>
     public partial class SearchedItem : UserControl
     {
         JSONParser jsonParser = JSONParser.getInstance();

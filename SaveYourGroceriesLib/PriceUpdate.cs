@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 
+
+/// <summary>
+/// Author: Anna
+/// Contain reading saved item json file and get new prices.
+/// Send a notification If lower prices are found.
+/// </summary>
 namespace SaveYourGroceries
 {
-    /// <summary>
-    /// Author: Anna
-    /// Contain reading saved item json file and get new prices.
-    /// Send a notification If lower prices are found.
-    /// </summary>
     public class PriceUpdate: IJob
     {
         List<Item> savedItems = null;

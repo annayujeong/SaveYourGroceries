@@ -27,8 +27,8 @@ namespace SaveYourGroceriesLib
             //    BinaryLocation = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
             //};
 
-            //options.AddArguments(new List<string>() { "headless", "disable-gpu" });
-            //options.AddArgument("headless");
+            options.AddArguments(new List<string>() { "headless", "disable-gpu" });
+            options.AddArgument("headless");
             options.AddArgument("--disable-blink-features=AutomationControlled");
             options.AddArgument("useAutomaticExtension=false");
             
