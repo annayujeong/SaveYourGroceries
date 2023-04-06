@@ -86,15 +86,6 @@ namespace SaveYourGroceries
         }
 
 
-        // ---------------- Toggle Button functionality -------------------- // 
-
-        /// <summary>
-        /// Toggle buttons that displays / hides search results from the Searh Results page. 
-        /// It provides users with a Message indicating the stores they will receive search results from.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-
         // ---------------- Toggle Button Superstore -------------------- // 
 
         private void toggleButtonSuperstore_Load(object sender, EventArgs e)
@@ -103,13 +94,13 @@ namespace SaveYourGroceries
             {
                 storesToSearch.Add(Store.Superstore.ToString());
                 
-                MessageBox.Show("You are now going to receive search results from Superstore!");
+               // MessageBox.Show("You are now going to receive search results from Superstore!");
 
 
             }
             else if (toggleButtonSuperstore.Check == false)
             {
-                MessageBox.Show("You are not going to receive search results from Superstore");
+                //MessageBox.Show("You are not going to receive search results from Superstore");
                             
                    storesToSearch.Remove(Store.Superstore.ToString());             
             }
@@ -122,12 +113,12 @@ namespace SaveYourGroceries
             if (toggleButtonWalmart.Check == true)
             {
                 storesToSearch.Add(Store.Walmart.ToString());
-                MessageBox.Show("You are now going to receive search results from Walmart!");
+                //MessageBox.Show("You are now going to receive search results from Walmart!");
             }
 
             else if (toggleButtonWalmart.Check == false)
             {
-                MessageBox.Show("You are not going to receive search results from Walmart");
+                //MessageBox.Show("You are not going to receive search results from Walmart");
                 storesToSearch.Remove(Store.Walmart.ToString());
             }
         }
@@ -139,11 +130,11 @@ namespace SaveYourGroceries
             if (toggleButtonTnT.Check == true)
             {
                 storesToSearch.Add(Store.T_and_T.ToString());
-                MessageBox.Show("You are now going to receive search results from T & T!");
+                //MessageBox.Show("You are now going to receive search results from T & T!");
             }
             else if (toggleButtonTnT.Check == false)
             {
-                MessageBox.Show("You are not going to receive search results from T & T");
+                //MessageBox.Show("You are not going to receive search results from T & T");
                 storesToSearch.Remove(Store.T_and_T.ToString());
             }
         }
@@ -155,11 +146,11 @@ namespace SaveYourGroceries
             if (toggleButtonSaveOnFoods.Check == true)
             {
                 storesToSearch.Add(Store.Save_On_Foods.ToString());
-                MessageBox.Show("You are now going to receive search results from Save On Foods!");
+                //MessageBox.Show("You are now going to receive search results from Save On Foods!");
             }
             else if (toggleButtonSaveOnFoods.Check == false)
             {
-               MessageBox.Show("You are not going to receive search results from Save On Foods");
+              // MessageBox.Show("You are not going to receive search results from Save On Foods");
                 storesToSearch.Remove(Store.Save_On_Foods.ToString());
             }     
         }
