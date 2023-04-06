@@ -94,13 +94,13 @@ namespace SaveYourGroceries
             {
                 storesToSearch.Add(Store.Superstore.ToString());
                 
-               // MessageBox.Show("You are now going to receive search results from Superstore!");
+              
 
 
             }
             else if (toggleButtonSuperstore.Check == false)
             {
-                //MessageBox.Show("You are not going to receive search results from Superstore");
+               
                             
                    storesToSearch.Remove(Store.Superstore.ToString());             
             }
@@ -113,12 +113,12 @@ namespace SaveYourGroceries
             if (toggleButtonWalmart.Check == true)
             {
                 storesToSearch.Add(Store.Walmart.ToString());
-                //MessageBox.Show("You are now going to receive search results from Walmart!");
+               
             }
 
             else if (toggleButtonWalmart.Check == false)
             {
-                //MessageBox.Show("You are not going to receive search results from Walmart");
+                
                 storesToSearch.Remove(Store.Walmart.ToString());
             }
         }
@@ -130,11 +130,11 @@ namespace SaveYourGroceries
             if (toggleButtonTnT.Check == true)
             {
                 storesToSearch.Add(Store.T_and_T.ToString());
-                //MessageBox.Show("You are now going to receive search results from T & T!");
+                
             }
             else if (toggleButtonTnT.Check == false)
             {
-                //MessageBox.Show("You are not going to receive search results from T & T");
+                
                 storesToSearch.Remove(Store.T_and_T.ToString());
             }
         }
@@ -146,11 +146,11 @@ namespace SaveYourGroceries
             if (toggleButtonSaveOnFoods.Check == true)
             {
                 storesToSearch.Add(Store.Save_On_Foods.ToString());
-                //MessageBox.Show("You are now going to receive search results from Save On Foods!");
+                
             }
             else if (toggleButtonSaveOnFoods.Check == false)
             {
-              // MessageBox.Show("You are not going to receive search results from Save On Foods");
+              
                 storesToSearch.Remove(Store.Save_On_Foods.ToString());
             }     
         }
