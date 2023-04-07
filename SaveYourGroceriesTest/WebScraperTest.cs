@@ -2,9 +2,6 @@
 using OpenQA.Selenium;
 using SaveYourGroceriesLib;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Windows.Forms;
 
 namespace SaveYourGroceriesTest
 {
@@ -12,7 +9,7 @@ namespace SaveYourGroceriesTest
     /// Unit tests to determine correct functionality for the Webscraper class.
     /// </summary>
     [TestClass]
-    public class UnitTest1
+    public class WebScraperTest
     {
         /// <summary>
         /// Test whether a NoSuchElementException is thrown by the webscraper.

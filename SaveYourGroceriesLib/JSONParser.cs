@@ -1,20 +1,18 @@
 ﻿using Newtonsoft.Json;
-using OpenQA.Selenium.Internal;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
+
 namespace SaveYourGroceriesLib
 {
-
     /// <summary>
     /// This is a singleton implementation of a class responsible for reading and writing to 
     /// our application's JSON file.
     /// Author: Bradner
     /// Resources used/referenced: https://www.newtonsoft.com/json/help/html/Introduction.htm
     /// </summary>
-
     public class JSONParser
     {
         // singleton instance

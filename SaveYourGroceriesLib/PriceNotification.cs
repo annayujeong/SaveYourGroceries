@@ -3,13 +3,13 @@ using Quartz;
 using SaveYourGroceries;
 
 
-/// <summary>
-/// Author: Anna
-/// Contain push notification functionality.
-/// reference: https://christkho.medium.com/background-job-with-quartz-net-in-c-and-net-core-a5a2f8cb5619
-/// </summary>
 namespace SaveYourGroceriesLib
 {
+    /// <summary>
+    /// Author: Anna
+    /// Contain push notification functionality.
+    /// reference: https://christkho.medium.com/background-job-with-quartz-net-in-c-and-net-core-a5a2f8cb5619
+    /// </summary>
     public class PriceNotification
     {
         /// <summary>

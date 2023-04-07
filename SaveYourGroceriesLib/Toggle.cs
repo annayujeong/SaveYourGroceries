@@ -1,27 +1,16 @@
-﻿using OpenQA.Selenium.DevTools.V108.Debugger;
-using OpenQA.Selenium.Internal;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
-using System.Data;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
-/// <summary>
-/// This class represents the Toggle button created in a separate User Control Class file.
-/// Functionality of the button includes the UI appearance when button is toggled on or off. 
-/// Also has the public boolean value Check that is tied to any conditional statements that we attached
-/// to it, specifically whether the user will receive search results from a grocery store of their choice. 
-/// Author: Kristopher
-/// </summary>
 
 namespace SaveYourGroceriesLib
 {
+    /// <summary>
+    /// This class represents the Toggle button created in a separate User Control Class file.
+    /// Functionality of the button includes the UI appearance when button is toggled on or off. 
+    /// Also has the public boolean value Check that is tied to any conditional statements that we attached
+    /// to it, specifically whether the user will receive search results from a grocery store of their choice. 
+    /// Author: Kristopher
+    /// </summary>
     public partial class Toggle : UserControl
     {
         public Toggle()
@@ -39,7 +28,6 @@ namespace SaveYourGroceriesLib
             set { appearance = value;
                 onChangeAppearance();
             }
-
         }
 
         /// <summary>
@@ -136,27 +124,3 @@ namespace SaveYourGroceriesLib
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

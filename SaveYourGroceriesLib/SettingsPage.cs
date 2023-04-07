@@ -3,12 +3,13 @@ using System;
 using System.Configuration;
 using System.Windows.Forms;
 
-/// <summary>
-/// Author: Anna
-/// Contain configuration for app settings page and its functionality.
-/// </summary>
+
 namespace SaveYourGroceries
 {
+    /// <summary>
+    /// Author: Anna
+    /// Contain configuration for app settings page and its functionality.
+    /// </summary>
     public partial class SettingsPage : UserControl
     {
         private CheckState state;

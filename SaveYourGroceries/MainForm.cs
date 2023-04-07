@@ -5,12 +5,13 @@ using System.Linq;
 using System.Windows.Forms;
 using SaveYourGroceriesLib;
 
-///<summary>
-/// The UI for our application's main page.
-/// Authors: Anna, Bradner, Kristopher
-///</summary>
+
 namespace SaveYourGroceries
 {
+    ///<summary>
+    /// The UI for our application's main page.
+    /// Authors: Anna, Bradner, Kristopher
+    ///</summary>
     public partial class MainForm : Form
     {
         WebScraper scraper = new WebScraper();

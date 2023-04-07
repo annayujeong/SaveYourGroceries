@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SaveYourGroceriesLib
+﻿namespace SaveYourGroceriesLib
 {
     /// <summary>
     /// This class represents a grocery store item, and contains the name, price, url of the item, the corresponding store,
-    /// and the
+    /// and the url for item to the website.
     /// Author: Bradner
     /// </summary>
     public class Item

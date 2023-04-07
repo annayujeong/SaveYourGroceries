@@ -1,20 +1,13 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Firefox;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Windows.Forms;
+
 
 namespace SaveYourGroceriesLib
 {
-    /// <summary>
-    /// This class is responsible for creating a web browser responsible for scraping information from different grocery stores.
-    /// Author: Bradner
-    /// Resources used/referenced: https://www.selenium.dev/documentation/
-    ///                            https://www.guru99.com/selenium-tutorial.html
-    /// </summary>
     public class WebScraper
     {
         public IWebDriver driver;

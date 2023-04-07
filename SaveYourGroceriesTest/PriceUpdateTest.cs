@@ -7,11 +7,17 @@ using System.Drawing.Printing;
 
 namespace SaveYourGroceriesTest
 {
+    /// <summary>
+    /// Unit test class for testing Price Update Feature.
+    /// </summary>
     [TestClass]
     public class PriceUpdateTest
     {
         PriceUpdate priceUpdate = new PriceUpdate();
 
+        /// <summary>
+        /// Push notification if lower price is available by counting number of notification pushed.
+        /// </summary>
         [TestMethod]
         public void TestPushNotificationOnLowerPriceFound()
         {
@@ -36,6 +42,9 @@ namespace SaveYourGroceriesTest
             Assert.AreEqual(3, notificationCount);
         }
 
+        /// <summary>
+        /// Test converting price string that contains other strings to double.
+        /// </summary>
         [TestMethod]
         public void TestExtractDoubleFromString()
         {

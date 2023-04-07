@@ -1,11 +1,12 @@
 ﻿using System.Windows.Forms;
 
-/// <summary>
-/// Author: Anna
-/// Contain Searched Item List Control.
-/// </summary>
+
 namespace SaveYourGroceriesLib
 {
+    /// <summary>
+    /// Author: Anna
+    /// Contain Searched Item List Control.
+    /// </summary>
     public partial class SearchedItemsList : UserControl
     {
         public SearchedItemsList()
