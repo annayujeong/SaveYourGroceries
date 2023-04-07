@@ -10,6 +10,12 @@ namespace SaveYourGroceriesLib
 {
     public class WebScraper
     {
+        /// <summary>
+        /// This class is responsible for creating a web browser responsible for scraping information from different grocery stores.
+        /// Author: Bradner
+        /// Resources used/referenced: https://www.selenium.dev/documentation/
+        ///                            https://www.guru99.com/selenium-tutorial.html
+        /// </summary>
         public IWebDriver driver;
 
         public WebScraper()
