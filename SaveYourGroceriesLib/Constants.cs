@@ -52,6 +52,9 @@ namespace SaveYourGroceriesLib
         public static string TANDT_ITEM_URL = "item-images-Uve";
     }
 
+    /// <summary>
+    /// An enum which contains the list of store names.
+    /// </summary>
     public enum Store
     {
        Superstore,

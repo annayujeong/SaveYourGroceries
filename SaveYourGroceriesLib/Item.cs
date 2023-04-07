@@ -21,6 +21,9 @@ namespace SaveYourGroceriesLib
 
         public string itemURL { get; set; }
 
+        /// <summary>
+        /// Item constructor with all atttributes set as empty strings by default.
+        /// </summary>
         public Item() {
             this.name = "";
             this.price = "";
@@ -29,6 +32,14 @@ namespace SaveYourGroceriesLib
             this.itemURL = "";
         }
 
+        /// <summary>
+        /// Item constructor which takes in a name, price, image URL, store name, and an item URL.
+        /// </summary>
+        /// <param name="name">the item name</param>
+        /// <param name="price">the item price</param>
+        /// <param name="imageUrl">the URL for the item image</param>
+        /// <param name="store">the store name</param>
+        /// <param name="itemURL">the URL for the item</param>
         public Item(string name, string price, string imageUrl, string store, string itemURL)
         {
             this.name = name;

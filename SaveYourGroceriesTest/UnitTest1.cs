@@ -8,9 +8,15 @@ using System.Windows.Forms;
 
 namespace SaveYourGroceriesTest
 {
+    /// <summary>
+    /// Unit tests to determine correct functionality for the Webscraper class.
+    /// </summary>
     [TestClass]
     public class UnitTest1
     {
+        /// <summary>
+        /// Test whether a NoSuchElementException is thrown by the webscraper.
+        /// </summary>
         [TestMethod]
         public void TestNoSuchElementException()
         {
@@ -28,6 +34,9 @@ namespace SaveYourGroceriesTest
             Assert.IsTrue(exception is NoSuchElementException);
         }
 
+        /// <summary>
+        /// Test whether the webscraper succesfully gets an item from the T and T website.
+        /// </summary>
         [TestMethod]
         public void TestScrapTnTItemName()
         {
@@ -42,6 +51,9 @@ namespace SaveYourGroceriesTest
             Assert.AreEqual("Gala Apple 3.2lbs", item.name);
         }
 
+        /// <summary>
+        /// Test whether the webscraper successfully gets a result from the T and T website.
+        /// </summary>
         [TestMethod]
         public void TestScrapTnTItemStoreName()
         {
@@ -56,6 +68,9 @@ namespace SaveYourGroceriesTest
             Assert.AreEqual(Store.T_and_T.ToString(), item.store);
         }
 
+        /// <summary>
+        /// Test whether the correct image URL is scraped from the T and T website.
+        /// </summary>
         [TestMethod]
         public void TestScrapTnTItemImageUrl()
         {
@@ -71,6 +86,9 @@ namespace SaveYourGroceriesTest
             Assert.AreEqual(expectedUrl, item.imageUrl);
         }
 
+        /// <summary>
+        /// Test whether the correct item price is scraped from the T and T website.
+        /// </summary>
         [TestMethod]
         public void TestScrapTnTItemPrice()
         {
@@ -85,6 +103,9 @@ namespace SaveYourGroceriesTest
             Assert.IsTrue(item.price.Contains("$2.22"));
         }
 
+        /// <summary>
+        /// Test whether the correct item name is scraped from the Save on Foods website.
+        /// </summary>
         [TestMethod]
         public void TestScrapSaveOnFoodItemName()
         {
@@ -99,6 +120,9 @@ namespace SaveYourGroceriesTest
             Assert.IsTrue(item.name.Contains("Apples - Granny Smith, 160 Gram"));
         }
 
+        /// <summary>
+        /// Test whether a search result is returned for the Save on Foods website.
+        /// </summary>
         [TestMethod]
         public void TestScrapSaveOnFoodsItemStoreName()
         {
@@ -113,6 +137,9 @@ namespace SaveYourGroceriesTest
             Assert.AreEqual(Store.Save_On_Foods.ToString(), item.store);
         }
 
+        /// <summary>
+        /// Test whether the correct image URL is scraped from the Save on Foods website.
+        /// </summary>
         [TestMethod]
         public void TestScrapSaveOnFoodsItemImageUrl()
         {
@@ -127,6 +154,10 @@ namespace SaveYourGroceriesTest
             // Assert
             Assert.AreEqual(expectedUrl, item.imageUrl);
         }
+
+        /// <summary>
+        /// Test whether the correct item price is scraped from the Save on Foods website.
+        /// </summary>
         public void TestScrapSaveOnFoodsItemPrice()
         {
             // Arrange
@@ -140,6 +171,9 @@ namespace SaveYourGroceriesTest
             Assert.IsTrue(item.price.Contains("$1.05"));
         }
 
+        /// <summary>
+        /// Test whether a WebDriverException is thrown when the Webscraper class is given an invalid URL.
+        /// </summary>
         [TestMethod]
         public void TestInvalidDriverUrl()
         {
@@ -157,6 +191,9 @@ namespace SaveYourGroceriesTest
             Assert.IsTrue(exception is WebDriverException);
         }
 
+        /// <summary>
+        /// Test whether the correct item name is scraped from the Superstore website.
+        /// </summary>
         [TestMethod]
         public void TestScrapSuperStoreItemName()
         {
@@ -171,6 +208,9 @@ namespace SaveYourGroceriesTest
             Assert.AreEqual("Royal Gala Apples", item.name);
         }
 
+        /// <summary>
+        /// Test whether a search query is returned from the Superstore website.
+        /// </summary>
         [TestMethod]
         public void TestScrapSuperStoreItemStoreName()
         {
@@ -182,9 +222,12 @@ namespace SaveYourGroceriesTest
             webScraper.driver.Quit();
 
             // Assert
-            Assert.AreEqual("Superstore", item.store);
+            Assert.AreEqual(Store.Superstore.ToString(), item.store);
         }
 
+        /// <summary>
+        /// Test whether the correct image URL is scraped from the Superstore website.
+        /// </summary>
         [TestMethod]
         public void TestScrapSuperStoreItemImageUrl()
         {
@@ -200,6 +243,9 @@ namespace SaveYourGroceriesTest
             Assert.AreEqual(expectedUrl, item.imageUrl);
         }
 
+        /// <summary>
+        /// Test whether the correct item price is scraped from the Superstore website.
+        /// </summary>
         [TestMethod]
         public void TestScrapSuperStoreItemPrice()
         {

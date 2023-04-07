@@ -10,6 +10,9 @@ using Newtonsoft.Json;
 
 namespace SaveYourGroceriesTest
 {
+    /// <summary>
+    /// Unit tests to determine whether JSON CRUD operations are correctly working.
+    /// </summary>
 
     [TestClass]
     public class JSONParserTest
@@ -23,6 +26,9 @@ namespace SaveYourGroceriesTest
         private Item strawberry = new Item("Strawberries", "9.43", "https://upload.wikimedia.org/wikipedia/commons/6/64/Garden_strawberry_%28Fragaria_%C3%97_ananassa%29_single.jpg", "Walmart", "https://en.wikipedia.org/wiki/Main_Page");
         private Item watermelon = new Item("Watermelon", "24.23", "https://www.veseys.com/media/catalog/product/cache/image/700x700/e9c3970ab036de70892d86c6d221abfe/s/u/sunsugarmelon-sunsugarmelon-image-15725%20sunsugar.jpg", "T & T Supermarket", "https://en.wikipedia.org/wiki/Main_Page");
 
+        /// <summary>
+        /// Test whether a JSON file can be serialized and deserialized from.
+        /// </summary>
         [TestMethod]
         public void TestJSONParserSerializeAndDeserialize()
         {
@@ -60,12 +66,14 @@ namespace SaveYourGroceriesTest
             }
         }
 
+        /// <summary>
+        /// Test whether a JSON file is created in the proper location.
+        /// </summary>
         [TestMethod]
         public void TestJSONFileCreation()
         {
             // Arrange
             JSONParser parser = JSONParser.getInstance();
-            //parser.clearSavedItems();
 
             // Act
             parser.createJSONFile();
@@ -74,6 +82,9 @@ namespace SaveYourGroceriesTest
             Assert.IsTrue(parser.JSONFileExists());
         }
 
+        /// <summary>
+        /// Test whether an item can be successfully added to the list of saved items.
+        /// </summary>
         [TestMethod]
         public void TestItemsListAddition()
         {
@@ -90,6 +101,9 @@ namespace SaveYourGroceriesTest
             Assert.AreEqual(3, parser.getSavedItemsLength());
         }
 
+        /// <summary>
+        /// Test whether an item can be successfully removed from the list of saved items.
+        /// </summary>
         [TestMethod]
         public void TestItemsListDeletion()
         {
@@ -108,6 +122,9 @@ namespace SaveYourGroceriesTest
             Assert.AreEqual(1, parser.getSavedItemsLength());
         }
 
+        /// <summary>
+        /// Test whether a JSON file can be serialized from multiple times in succession.
+        /// </summary>
         [TestMethod]
         public void TestSerializeMultipleTimes()
         {
@@ -133,6 +150,9 @@ namespace SaveYourGroceriesTest
             Assert.AreEqual(4, testItems.Count);
         }
 
+        /// <summary>
+        /// Test whether a JSON file can successfully be loaded from.
+        /// </summary>
         [TestMethod]
         public void TestLoadJSONData()
         {
@@ -147,6 +167,9 @@ namespace SaveYourGroceriesTest
             Assert.AreEqual(3, parser.getSavedItemsLength());
         }
 
+        /// <summary>
+        /// Test whether the class successfully handles loading from an empty JSON file.
+        /// </summary>
         [TestMethod]
         public void TestDeserializeEmptyFile()
         {
@@ -162,8 +185,9 @@ namespace SaveYourGroceriesTest
             Assert.AreEqual(0, parser.getSavedItemsLength() );
         }
 
-
-        // TODO: Fails if all tests are run, but passes if run by itself
+        /// <summary>
+        /// Test whether a corrupt JSON file is correctly handled.
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(System.Exception))]
         public void TestLoadJSONDataCorrupted()

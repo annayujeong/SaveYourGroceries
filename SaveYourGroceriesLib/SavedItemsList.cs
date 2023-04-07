@@ -12,6 +12,10 @@ using System.Windows.Forms;
 
 namespace SaveYourGroceriesLib
 {
+    /// <summary>
+    /// Contains the Saved Item List control.
+    /// Author: Kristopher
+    /// </summary>
     public partial class SavedItemsList : UserControl
     {
 
@@ -21,14 +25,22 @@ namespace SaveYourGroceriesLib
             InitializeComponent();
         }
 
-        public void Add(SavedItem searchedItem)
+        /// <summary>
+        /// Add the saved item to the control.
+        /// </summary>
+        /// <param name="savedItem"></param>
+        public void Add(SavedItem savedItem)
         {
-            this.Controls.Add(searchedItem);
+            this.Controls.Add(savedItem);
         }
 
-        public void Remove(SavedItem searchedItem)
+        /// <summary>
+        /// Remove the saved item from the control.
+        /// </summary>
+        /// <param name="savedItem"></param>
+        public void Remove(SavedItem savedItem)
         {
-            this.Controls.Remove(searchedItem);
+            this.Controls.Remove(savedItem);
         }
     }
 }

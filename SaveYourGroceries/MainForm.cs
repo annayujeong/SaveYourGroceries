@@ -5,16 +5,17 @@ using System.Linq;
 using System.Windows.Forms;
 using SaveYourGroceriesLib;
 
+///<summary>
+/// The UI for our application's main page.
+/// Authors: Anna, Bradner, Kristopher
+///</summary>
 namespace SaveYourGroceries
 {
     public partial class MainForm : Form
     {
         WebScraper scraper = new WebScraper();
         JSONParser jsonParser = JSONParser.getInstance();
-
-        public Item item;
         
-
         ArrayList storesToSearch = new ArrayList();
 
         public MainForm()
@@ -32,23 +33,30 @@ namespace SaveYourGroceries
         private void mainSearchButton_Click(object sender, EventArgs e)
         {
             ShowSearchControls();
-
             ArrayList itemList = scraper.SearchItem(sender, e, this.mainPageSearchBox.Text, storesToSearch);
             this.mainPageSearchBox.Text = String.Empty;
             DisplaySearchedItems(itemList);
         }
 
+        /// <summary>
+        /// Displays the page for the user's currently saved items.
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">EventArgs</param>
         private void savedItemsButton_Click(object sender, EventArgs e)
         {
             ShowSaveControls();
-
             DisplaySavedItemList(sender, e, jsonParser.getSavedItems());
         }
 
+        /// <summary>
+        /// Refresh the UI of the saved items page.
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">EventArgs</param>
         private void refreshSavedItemsListButton_Click(object sender, EventArgs e)
         {
             ShowSaveControls();
-
             DisplaySavedItemList(sender, e, jsonParser.getSavedItems());
         }
 
@@ -85,72 +93,70 @@ namespace SaveYourGroceries
             ShowSettingsControls();
         }
 
-
-        // ---------------- Toggle Button Superstore -------------------- // 
-
+        /// <summary>
+        /// Changes whether Superstore should be inclued as a store in a search query
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">EventArgs</param>
         private void toggleButtonSuperstore_Load(object sender, EventArgs e)
         {
             if (toggleButtonSuperstore.Check == true)
             {
                 storesToSearch.Add(Store.Superstore.ToString());
-                
-              
-
-
             }
             else if (toggleButtonSuperstore.Check == false)
             {
-               
-                            
                    storesToSearch.Remove(Store.Superstore.ToString());             
             }
         }
 
-        // ---------------- Toggle Button Walmart -------------------- // 
-
+        /// <summary>
+        /// Changes whether Walmrat should be inclued as a store in a search query
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">EventArgs</param>
         private void toggleButtonWalmart_Load(object sender, EventArgs e)
         {
             if (toggleButtonWalmart.Check == true)
             {
                 storesToSearch.Add(Store.Walmart.ToString());
-               
             }
-
             else if (toggleButtonWalmart.Check == false)
             {
-                
                 storesToSearch.Remove(Store.Walmart.ToString());
             }
         }
 
-        // ---------------- Toggle Button T&T -------------------- // 
-
+        /// <summary>
+        /// Changes whether T and T should be inclued as a store in a search query
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">EventArgs</param>
         private void toggleButtonTnT_Load(object sender, EventArgs e)
         {
             if (toggleButtonTnT.Check == true)
             {
                 storesToSearch.Add(Store.T_and_T.ToString());
-                
             }
             else if (toggleButtonTnT.Check == false)
             {
-                
                 storesToSearch.Remove(Store.T_and_T.ToString());
             }
         }
 
-        // ---------------- Toggle Button Save on Foods -------------------- // 
-
+        /// <summary>
+        /// Changes whether Save on Foods should be inclued as a store in a search query
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">EventArgs</param>
         private void toggleButtonSaveOnFoods_Load(object sender, EventArgs e)
         {
             if (toggleButtonSaveOnFoods.Check == true)
             {
                 storesToSearch.Add(Store.Save_On_Foods.ToString());
-                
             }
             else if (toggleButtonSaveOnFoods.Check == false)
             {
-              
                 storesToSearch.Remove(Store.Save_On_Foods.ToString());
             }     
         }
@@ -186,9 +192,6 @@ namespace SaveYourGroceries
             int itemBoxHeight = 150;
             int itemBoxGap = 5;
 
-
-            // TODO: handle if an item is not found, or one or more properties is not found
-            // -> current web parse methods all return an Item, even if that Item is null
             foreach (Item item in itemList)
             {
                 SearchedItem searchedItem = new SearchedItem();
@@ -197,7 +200,6 @@ namespace SaveYourGroceries
                 searchedItem.itemPriceTextBox.Text = item.price;
                 searchedItem.storeNameTextBox.Text = item.store;
 
-                // temporary code to handle when Walmart blocks us lol, need to change
                 if(item.imageUrl == "")
                 {
                     searchedItem.itemPictureBox.Load("https://static.vecteezy.com/system/resources/thumbnails/000/536/310/small/food_paper_bag-01.jpg");
@@ -210,13 +212,8 @@ namespace SaveYourGroceries
                 searchedItemsList.Add(searchedItem);
                 itemBoxGap += itemBoxHeight;
             }
-
             this.Controls.Add(searchedItemsList);
         }
-
-
-
-        // ----------  Display Saved Items List --------------------- //
         
         /// <summary>
         /// Displays Saved Items into a Empty UserControl (SavedItemsList) and populates it with 
@@ -227,9 +224,6 @@ namespace SaveYourGroceries
         /// <param name="savedList"></param>
         public void DisplaySavedItemList(object sender, EventArgs e, ArrayList savedList)
         {
-
-            //MessageBox.Show("Clicked");
-
             if (this.Controls["savedItemsList"] != null)
             {
                 this.Controls.Remove(this.Controls["savedItemsList"]);
@@ -244,9 +238,6 @@ namespace SaveYourGroceries
             int itemBoxHeight = 150;
             int itemBoxGap = 5;
 
-
-            // TODO: handle if an item is not found, or one or more properties is not found
-            // -> current web parse methods all return an Item, even if that Item is null
             foreach (Item item in savedList)
             {
                 SavedItem savedItem = new SavedItem();
@@ -255,8 +246,6 @@ namespace SaveYourGroceries
                 savedItem.savedItemPriceTextBox.Text = item.price;
                 savedItem.savedItemStoreTextBox.Text = item.store;
 
-
-                // temporary code to handle when Walmart blocks us lol, need to change
                 if (item.imageUrl == "")
                 {
                     savedItem.savedItemPictureBox.Load("https://static.vecteezy.com/system/resources/thumbnails/000/536/310/small/food_paper_bag-01.jpg");
@@ -269,9 +258,7 @@ namespace SaveYourGroceries
                 savedItem.Location = new Point(5, itemBoxGap);
                 itemBoxGap += itemBoxHeight;
                 savedItemsList.Add(savedItem);
-                //MessageBox.Show(item.name);
             }
-
             this.Controls.Add(savedItemsList);
         }
 
@@ -318,6 +305,9 @@ namespace SaveYourGroceries
             }
         }
 
+        /// <summary>
+        /// Display Save controls only.
+        /// </summary>
         private void ShowSaveControls()
         {
             string controlName;

@@ -12,6 +12,7 @@ namespace SaveYourGroceriesLib
     /// This is a singleton implementation of a class responsible for reading and writing to 
     /// our application's JSON file.
     /// Author: Bradner
+    /// Resources used/referenced: https://www.newtonsoft.com/json/help/html/Introduction.htm
     /// </summary>
 
     public class JSONParser
@@ -28,9 +29,6 @@ namespace SaveYourGroceriesLib
         /// </summary>
         public JSONParser()
         {
-            // TODO: Load in data from previous exisiting file
-            //savedItems = deserializeItems();
-
             List<Item> previousItems;
 
             try { 
@@ -49,7 +47,15 @@ namespace SaveYourGroceriesLib
                 }
             } catch (Newtonsoft.Json.JsonReaderException e)
             {
-
+                Console.WriteLine(Console.Error);
+            }
+            catch (ArgumentException)
+            {
+                createJSONFile();
+            }
+            catch (FileNotFoundException)
+            {
+                createJSONFile();
             }
         }
 
@@ -105,7 +111,6 @@ namespace SaveYourGroceriesLib
             return savedItems.Count;
         }
 
-        // return List<Item> or ArrayList()?
         /// <summary>
         /// Reads from the JSON file at the given location and deserializes it into a list of Item objects.
         /// </summary>
@@ -132,7 +137,7 @@ namespace SaveYourGroceriesLib
                 } catch (Exception e)
                 {
                     Console.WriteLine("This JSON file appears to be incorrectly formatted.");
-                    throw new Exception("This JSON file appears to be incorrectly formatted");
+                    throw new ArgumentException("This JSON file appears to be incorrectly formatted");
                 }
             } else
             {
@@ -179,7 +184,6 @@ namespace SaveYourGroceriesLib
         {
 
             // type conversion
-
             ArrayList itemsToSend = new ArrayList();
 
             foreach(Item item in savedItems)

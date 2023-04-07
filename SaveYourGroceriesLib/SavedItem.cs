@@ -12,7 +12,10 @@ using System.Windows.Forms;
 
 namespace SaveYourGroceriesLib
 {
-
+    /// <summary>
+    /// Contains the Saved Item control.
+    /// Author: Kristopher
+    /// </summary>
     public partial class SavedItem : UserControl
     {
         JSONParser jsonParser = JSONParser.getInstance();
@@ -37,11 +40,7 @@ namespace SaveYourGroceriesLib
             MessageBox.Show(item.name + "Has been removed from the list");
             jsonParser.serializeItems();
             jsonParser.deserializeItems();
-            //MessageBox.Show(jsonParser.getSavedItemsLength().ToString());
             jsonParser.getSavedItems();
-          
         }
-       
       }
-
    }

@@ -12,33 +12,25 @@ namespace SaveYourGroceriesLib
     /// <summary>
     /// This class is responsible for creating a web browser responsible for scraping information from different grocery stores.
     /// Author: Bradner
+    /// Resources used/referenced: https://www.selenium.dev/documentation/
+    ///                            https://www.guru99.com/selenium-tutorial.html
     /// </summary>
     public class WebScraper
     {
-        //public IWebDriver driver = new ChromeDriver();
-
         public IWebDriver driver;
 
         public WebScraper()
         { 
-
             var options = new ChromeOptions();
-            //{
-            //    BinaryLocation = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
-            //};
 
             options.AddArguments(new List<string>() { "headless", "disable-gpu" });
             options.AddArgument("headless");
             options.AddArgument("--disable-blink-features=AutomationControlled");
             options.AddArgument("useAutomaticExtension=false");
-            
-
             driver = new ChromeDriver(options);
 
-            // Need to wait for page to be fully loaded
-
+            // wait time for the page to fully load
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-
         }
 
         /// <summary>
@@ -106,7 +98,7 @@ namespace SaveYourGroceriesLib
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                Debug.WriteLine(e.Message);
             }
             return item;
         }
@@ -142,9 +134,7 @@ namespace SaveYourGroceriesLib
             {
                 Debug.WriteLine(ex.Message);
             }
-
             return item;
-
         }
 
         /// <summary>
@@ -176,7 +166,7 @@ namespace SaveYourGroceriesLib
 
             } catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Debug.WriteLine(ex.Message);
             }
             return item;
         }
@@ -204,20 +194,6 @@ namespace SaveYourGroceriesLib
 
             item.store = Store.T_and_T.ToString();
 
-            //try
-            //{
-            //    // TODO: need to set wait in here or in MainForm searchButton_Click
-            //    //       since sometimes it takes some time to load the search result
-            //    item.name = driver.FindElement(By.ClassName("item-name--yq")).GetAttribute("title");
-            //    item.price = driver.FindElement(By.ClassName("item-price-zRu")).Text;
-            //    item.imageUrl = driver.FindElement(By.ClassName("item-image-4D0")).GetAttribute("src");
-            //    item.store = "T & T Supermarket";
-
-            //}
-            //catch (NoSuchElementException ex)
-            //{
-            //    Debug.WriteLine(ex.Message);
-            //}
             return item;
         }
     }

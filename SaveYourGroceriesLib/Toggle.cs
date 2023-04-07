@@ -13,17 +13,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 /// <summary>
-/// 
 /// This class represents the Toggle button created in a separate User Control Class file.
 /// Functionality of the button includes the UI appearance when button is toggled on or off. 
 /// Also has the public boolean value Check that is tied to any conditional statements that we attached
 /// to it, specifically whether the user will receive search results from a grocery store of their choice. 
-/// 
+/// Author: Kristopher
 /// </summary>
 
 namespace SaveYourGroceriesLib
 {
- 
     public partial class Toggle : UserControl
     {
         public Toggle()
@@ -44,8 +42,6 @@ namespace SaveYourGroceriesLib
 
         }
 
-
-
         /// <summary>
         /// Boolean check that upon designation will set the appearance of the toggle button 
         /// </summary>
@@ -57,7 +53,6 @@ namespace SaveYourGroceriesLib
             set { check = value;
                 setAppearance();
             }
-                
         }
 
         /// <summary>
@@ -129,6 +124,11 @@ namespace SaveYourGroceriesLib
             ChangeValue();
         }
 
+        /// <summary>
+        /// Event handler to toggle the button state when the Enter or Space key is pressed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Toggle_KeysDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Enter || e.KeyCode == Keys.Space)
