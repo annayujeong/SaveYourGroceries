@@ -47,7 +47,7 @@ namespace SaveYourGroceriesTest
             ArrayList storesToSearch = new ArrayList();
             var storeTestMessage = "You are not going to receive search results from Superstore!";
 
-
+            // Act
             if (toggle.Check == false)
             {
                 storesToSearch.Remove("Superstore");
